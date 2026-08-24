@@ -47,7 +47,9 @@ export default function QrNavigatePage({ params }: { params: Promise<{ token: st
     return (
       <div className="min-h-screen flex items-center justify-center bg-ocp-gray px-4">
         <div className="max-w-sm w-full text-center space-y-4">
-          <OcpLogo size="lg" />
+          <Link href="/" aria-label="Home" className="inline-block">
+            <OcpLogo size="lg" />
+          </Link>
           <div className="bg-white rounded-xl border border-ocp-border p-6">
             <AlertCircle size={40} className="mx-auto text-red-400 mb-3" />
             <h1 className="text-lg font-bold text-ocp-navy mb-1">QR Code Not Valid</h1>

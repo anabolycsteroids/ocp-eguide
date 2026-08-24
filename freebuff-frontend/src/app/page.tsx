@@ -649,7 +649,7 @@ export default function LandingPage() {
       {/* Header */}
       <header className="relative z-10 flex items-center justify-between px-6 md:px-10 py-5">
         <Link href="/" aria-label={t("nav.home")} className="inline-flex">
-          <OcpLogo size="clamp(220px, 22vw, 300px)" />
+          <OcpLogo size="clamp(170px, 17vw, 230px)" />
         </Link>
 
         <nav className="hidden md:flex items-center gap-4 lg:gap-6">

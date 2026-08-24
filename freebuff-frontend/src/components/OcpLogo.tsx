@@ -39,7 +39,7 @@ export default function OcpLogo({
   if (!glass) return image;
 
   return (
-    <div className="inline-flex items-center justify-center rounded-2xl backdrop-blur-md bg-white/10 border border-white/20 shadow-lg shadow-black/10 p-2">
+    <div className="inline-flex items-center justify-center rounded-xl backdrop-blur-md bg-white/[0.05] border border-white/10 px-2.5 py-1.5 whitespace-nowrap select-none transition-all duration-300 hover:bg-white/[0.09] hover:brightness-110 hover:shadow-[0_0_26px_rgba(0,160,80,0.22)]">
       {image}
     </div>
   );

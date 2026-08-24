@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import OcpLogo from "@/components/OcpLogo";
 import AuthCardComponent from "@/components/AuthCard";
 import { authCards } from "@/lib/data";
@@ -64,7 +65,9 @@ export default function AuthPage() {
         {/* Header */}
         <div className="text-center mb-10">
           <div className="flex justify-center mb-4">
-            <OcpLogo size="120px" />
+            <Link href="/" aria-label="Home" className="inline-flex">
+              <OcpLogo size="120px" />
+            </Link>
           </div>
           <h1 className="text-3xl font-bold text-ocp-navy">
             {t("auth.selectRole")}
