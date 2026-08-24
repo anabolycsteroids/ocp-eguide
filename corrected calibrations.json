@@ -1,0 +1,128 @@
+{
+  "capturedAt": "2026-08-24T17:46:49.451Z",
+  "imageFile": "campus-map-wider.png",
+  "imageWidth": 1407,
+  "imageHeight": 932,
+  "points": [
+    {
+      "id": "strocjph",
+      "name": "STROC JPH",
+      "gps": {
+        "lat": 33.119172,
+        "lng": -8.607197
+      },
+      "x": 765,
+      "y": 237
+    },
+    {
+      "id": "porte_principale",
+      "name": "Porte Principale (main gate)",
+      "gps": {
+        "lat": 33.117564,
+        "lng": -8.595797
+      },
+      "x": 884,
+      "y": 271
+    },
+    {
+      "id": "idea_factory",
+      "name": "Idea Factory",
+      "gps": {
+        "lat": 33.115047,
+        "lng": -8.602092
+      },
+      "x": 812,
+      "y": 292
+    },
+    {
+      "id": "entre_est_ocp",
+      "name": "Entree EST ocp (eastern entrance)",
+      "gps": {
+        "lat": 33.111353,
+        "lng": -8.576244
+      },
+      "x": 1145,
+      "y": 313
+    },
+    {
+      "id": "imacid",
+      "name": "IMACID",
+      "gps": {
+        "lat": 33.105128,
+        "lng": -8.596222
+      },
+      "x": 868,
+      "y": 417
+    },
+    {
+      "id": "jfc_1",
+      "name": "JFC 1",
+      "gps": {
+        "lat": 33.100875,
+        "lng": -8.598725
+      },
+      "x": 826,
+      "y": 473
+    },
+    {
+      "id": "gngr_new_tech_morroco",
+      "name": "GNGR NEW TECH MORROCO (far SE plant)",
+      "gps": {
+        "lat": 33.07795,
+        "lng": -8.601228
+      },
+      "x": 768,
+      "y": 757
+    },
+    {
+      "id": "fluoralpha",
+      "name": "FLUORALPHA (southern plant)",
+      "gps": {
+        "lat": 33.089011,
+        "lng": -8.615164
+      },
+      "x": 642,
+      "y": 604
+    },
+    {
+      "id": "mosquee_jorf_lasfar",
+      "name": "Mosquee jorf Lasfar",
+      "gps": {
+        "lat": 33.111792,
+        "lng": -8.597261
+      },
+      "x": 857,
+      "y": 338
+    },
+    {
+      "id": "ocp_control_tower",
+      "name": "OCP CONTROL TOWER",
+      "gps": {
+        "lat": 33.108814,
+        "lng": -8.59185
+      },
+      "x": 912,
+      "y": 382
+    },
+    {
+      "id": "centrelec",
+      "name": "Centrelec",
+      "gps": {
+        "lat": 33.1092,
+        "lng": -8.606175
+      },
+      "x": 770,
+      "y": 359
+    },
+    {
+      "id": "station_desalement",
+      "name": "Desalement ocp (desalination)",
+      "gps": {
+        "lat": 33.115869,
+        "lng": -8.600764
+      },
+      "x": 835,
+      "y": 239
+    }
+  ]
+}

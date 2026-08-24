@@ -11,6 +11,19 @@ export let MAP_W = 1520;
 export let MAP_H = 933;
 export let MAP_IMAGE = "/assets/map/campus-map.png";
 
+// Optional high-resolution zone overlays (Google-Earth-style LOD):
+// each covers a rectangle of the base map in base-map pixels and is
+// rendered above it once the zoom passes its minZoom threshold.
+export interface MapOverlay {
+  file: string;
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  minZoom?: number;
+}
+export let MAP_OVERLAYS: MapOverlay[] = [];
+
 export async function loadMapData(): Promise<MapData> {
   const [placesRes, nodesRes, edgesRes, connRes, configRes] = await Promise.all([
     fetch("/assets/map/places.json"),
@@ -31,6 +44,7 @@ export async function loadMapData(): Promise<MapData> {
     MAP_W = configJson.coordinateSystem?.width ?? 1520;
     MAP_H = configJson.coordinateSystem?.height ?? 933;
   }
+  MAP_OVERLAYS = Array.isArray(configJson.overlays) ? configJson.overlays : [];
   return {
     places: placesJson.places,
     nodes: nodesJson.nodes,

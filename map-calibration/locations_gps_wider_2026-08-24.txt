@@ -1,0 +1,98 @@
+07B 33°06'39.85"N 8°36'23.52"W elev 57m
+07C 33°06'38.01"N 8°36'24.92"W elev 57m
+255 33°07'03.94"N 8°36'56.89"W elev 56m
+A 33°06'06.91"N 8°35'28.33"W elev 63m
+Acces ocp chateau 33°06'29.54"N 8°35'01.45"W elev 63m
+Actemium office 33°05'59.29"N 8°35'23.30"W elev 67m
+AFC 33°06'07.32"N 8°35'50.72"W elev 60m
+Atelier electrique instrumentation (PAP) 33°06'43.42"N 8°36'10.50"W elev 56m
+atner office 33°05'58.78"N 8°35'26.06"W elev 66m
+batiment phosphorique jln 33°06'48.60"N 8°36'16.49"W elev 57m
+BASE ART VERT 33°06'26.64"N 8°35'32.08"W elev 60m
+base de vie Jdida improvement 33°07'06.98"N 8°36'31.98"W elev 57m
+base de vie phb 33°05'44.45"N 8°36'15.64"W elev 67m
+batiment D 33°06'39.65"N 8°35'41.93"W elev 57m
+Bureau rhandi 33°06'25.34"N 8°35'18.94"W elev 61m
+centre de formation HSE PMP 33°06'11.56"N 8°36'16.86"W elev 60m
+centre de recherche et developement 33°06'38.42"N 8°35'36.02"W elev 58m
+Centrelec 33°06'33.12"N 8°36'22.23"W elev 55m
+CENTRELEC SA (project offices) 33°06'28.69"N 8°35'47.16"W elev 58m
+cobco factory 33°05'28.83"N 8°35'42.56"W elev 67m
+complexe ocp jorf lasfar-porte principale 33°07'03.23"N 8°35'44.87"W elev 56m
+107 DEF ocp 33°05'41.18"N 8°36'55.01"W elev 58m
+DAP 107 E 33°05'39.73"N 8°36'55.56"W elev 57m
+DAP-107 F 33°05'41.29"N 8°36'59.41"W elev 57m
+DDDD 33°05'28.00"N 8°36'28.06"W elev 59m
+decharge zone 2 33°05'50.82"N 8°37'14.93"W elev 54m
+desalement ocp 33°07'08.99"N 8°35'59.36"W elev 58m
+desalination plant 33°07'08.26"N 8°35'57.99"W elev 58m
+DOWNstreamflashdryer 33°06'36.52"N 8°37'17.76"W elev 59m
+emaphos(euro-maroc phosphore) 33°06'47.59"N 8°36'19.93"W elev 56m
+entre est ocp 33°06'40.87"N 8°34'34.48"W elev 66m
+entre Nord ocp 33°06'32.01"N 8°34'44.73"W elev 68m
+entre principale 33°06'55.20"N 8°35'49.67"W elev 56m
+entreee ouest ocp 33°07'48.41"N 8°36'32.18"W elev 48m
+es data 33°07'09.26"N 8°36'32.16"W elev 55m
+FLUORALPHA 33°05'20.44"N 8°36'54.59"W elev 58m
+FLUORALPHA JESA TSF 33°05'23.54"N 8°36'57.07"W elev 57m
+generale 33°06'38.51"N 8°36'00.15"W elev 57m
+GNGR NEW TECH MORROCO 33°04'40.62"N 8°36'04.42"W elev 67m
+GOBCO 33°04'48.70"N 8°36'11.38"W elev 68m
+GTR JORFoffice 33°05'23.67"N 8°37'01.25"W elev 58m
+Idea factory 33°06'54.17"N 8°36'07.53"W elev 62m
+IMACID 33°06'18.46"N 8°35'46.40"W elev 59m
+infirmerie OCP 33°06'41.50"N 8°36'02.25"W elev 57m
+jesa mission 33°07'06.23"N 8°35'44.74"W elev 55m
+jesa site office 33°06'23.95"N 8°35'38.85"W elev 61m
+JESA TSF BLOC 7 JPH 33°06'47.51"N 8°36'31.01"W elev 56m
+JESA BLOC 6 33°06'47.83"N 8°36'29.93"W elev 56m
+JFC 1 33°06'03.15"N 8°35'55.41"W elev 60m
+JFC4-ODI P5 33°05'57.02"N 8°36'30.79"W elev 59m
+JOHN COCKERILL MAROC TSF 33°05'32.91"N 8°37'08.95"W elev 55m
+Jorf fertilizer company 4(JFC4) 33°05'49.41"N 8°36'34.56"W elev 60m
+jorf fertilizer company V (JFC V) 33°06'09.95"N 8°36'22.36"W elev 59m
+Jorf fertilizer company2 (JFC 2) 33°05'51.54"N 8°36'42.68"W elev 58m
+jorf fertilizers company V (JFC5) 33°06'07.75"N 8°36'25.47"W elev 60m
+KOFERT ex JFC2 33°05'53.99"N 8°35'52.95"W elev 61m
+la base 33°06'35.23"N 8°36'50.08"W elev 59m
+ligne AB 33°06'39.70"N 8°36'07.60"W elev 57m
+LIGNE F 33°06'46.00"N 8°36'06.17"W elev 57m
+MAG downstream 33°06'25.90"N 8°36'55.88"W elev 58m
+MOLTEN SULFUR U363 33°07'10.70"N 8°36'28.77"W elev 57m
+mosquee jorf Lasfar 33°06'42.45"N 8°35'50.14"W elev 57m
+NEW RSS 33°06'29.87"N 8°37'09.06"W elev 59m
+OCP CONTROL TOWER 33°06'31.73"N 8°35'30.66"W elev 60m
+ocp green water 33°06'59.77"N 8°35'56.12"W elev 55m
+ocp jorf Lasfar 33°05'56.56"N 8°35'49.16"W elev 60m
+ocp mainteance solution Jorf Lasfar 33°06'37.18"N 8°35'57.93"W elev 57m
+OFAS 33°05'30.58"N 8°36'35.25"W elev 61m
+PAKISTAN Maroc phosphore 33°06'17.53"N 8°36'15.35"W elev 59m
+PARKX 33°04'55.16"N 8°36'33.94"W elev 59m
+PE 262 33°07'19.93"N 8°36'51.16"W elev 52m
+PJ-2 33°07'15.83"N 8°37'06.14"W elev 52m
+PMP 33°06'17.78"N 8°36'21.14"W elev 58m
+point de rassemblement JPH 33°06'43.23"N 8°36'50.38"W elev 60m
+printer C 308 33°06'05.72"N 8°35'28.73"W elev 63m
+entite infrastructure JPH 33°06'44.86"N 8°36'48.20"W elev 60m
+salle de controle phosphorique 33°06'22.54"N 8°35'48.32"W elev 59m
+SAPE 33°06'25.40"N 8°35'30.30"W elev 59m
+Scif TSF 33°05'30.42"N 8°36'43.06"W elev 60m
+SMART COMPOSITE COMPANY TSF 33°05'31.02"N 8°36'45.85"W elev 56m
+service electrique MMG 33°06'29.18"N 8°35'16.33"W elev 61m
+Service genie civil 33°06'27.74"N 8°35'20.33"W elev 61m
+SOGEA AHF PLANT 33°05'19.35"N 8°36'50.35"W elev 57m
+sogea maroc office 33°06'03.91"N 8°35'33.15"W elev 62m
+Station Desalement d'eau de mer Jorflasfar 33°06'57.13"N 8°36'02.75"W elev 57m
+station terminale 33°05'46.98"N 8°35'45.32"W elev 64m
+strocJPH 33°07'09.02"N 8°36'25.91"W elev 57m
+surete operationnel OCP 33°05'33.17"N 8°35'37.38"W elev 67m
+Ted ligne D 33°06'32.41"N 8°35'43.48"W elev 58m
+TSF 33°05'25.00"N 8°36'57.53"W elev 57m
+TSF JESA HANDLING PROJECT 33°05'44.40"N 8°37'07.52"W elev 55m
+TSF JESA HANDLING SYSTEM &AX3 project 33°05'50.68"N 8°36'21.50"W elev 63m
+TSF NEW WATER 33°06'38.60"N 8°35'29.28"W elev 60m
+TSF SCIF AMMONIA STORAGE 33°05'35.79"N 8°36'43.46"W elev 59m
+TSF X DAEWOO 33°06'08.13"N 8°35'30.67"W elev 62m
+TSP1 33°06'10.22"N 8°36'56.31"W elev 64m
+wave 2 east 33°06'52.43"N 8°35'33.51"W elev 55m
+centre sensibilisation ocp 33°06'50.56"N 8°35'15.29"W elev 57m

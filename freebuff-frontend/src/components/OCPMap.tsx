@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState, useCallback, useMemo } from "react";
 import { Search, X, Plus, Minus, Maximize2, Minimize2, ChevronRight, Clock, Ruler, Bug, Crosshair } from "lucide-react";
-import { loadMapData, searchLocations, getRoute, MAP_W, MAP_H, MAP_IMAGE } from "@/lib/mapEngine";
+import { loadMapData, searchLocations, getRoute, MAP_W, MAP_H, MAP_IMAGE, MAP_OVERLAYS, type MapOverlay } from "@/lib/mapEngine";
 import { loadCalibration, gpsToMap, type Calibration } from "@/lib/geoTransform";
 import { useI18n } from "@/i18n";
 import type { MapData, MapPlace, RouteResult } from "@/types/map";
@@ -87,6 +87,7 @@ export default function OCPMap({
   const [routeError, setRouteError] = useState<string>("");
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageSrc, setImageSrc] = useState<string>("");
+  const [overlays, setOverlays] = useState<MapOverlay[]>([]);
   const [showInstructions, setShowInstructions] = useState(false);
   const [showGeoWarning, setShowGeoWarning] = useState(true);
   const [debugEnabled, setDebugEnabled] = useState(false);
@@ -146,6 +147,7 @@ export default function OCPMap({
     loadMapData().then(d => {
       setData(d);
       setImageSrc(MAP_IMAGE);
+      setOverlays([...MAP_OVERLAYS]);
     });
     loadCalibration().then(c => setCalibration(c));
   }, []);
@@ -412,6 +414,25 @@ export default function OCPMap({
           className="block select-none"
           style={{ imageRendering: zoom >= 3 ? "pixelated" : "auto" }}
         />
+
+        {/* High-resolution LOD zone overlays: appear above the base image at deep zoom */}
+        {overlays
+          .filter(o => zoom >= (o.minZoom ?? 2.5))
+          .map(o => (
+            <img
+              key={o.file}
+              src={`/assets/map/${o.file}`}
+              alt=""
+              draggable={false}
+              className="absolute select-none pointer-events-none"
+              style={{
+                left: `${(o.x / MAP_W) * 100}%`,
+                top: `${(o.y / MAP_H) * 100}%`,
+                width: `${(o.w / MAP_W) * 100}%`,
+                height: `${(o.h / MAP_H) * 100}%`,
+              }}
+            />
+          ))}
 
         {/* Route polyline + leader lines live in PNG pixel space (SVG viewBox) */}
         <svg

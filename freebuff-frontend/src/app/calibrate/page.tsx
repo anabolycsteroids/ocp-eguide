@@ -17,8 +17,13 @@ const TARGETS = [
   { id: "jfc_1", name: "JFC 1", gps: { lat: 33.100875, lng: -8.598725 } },
   { id: "gngr_new_tech_morroco", name: "GNGR NEW TECH MORROCO (far SE plant)", gps: { lat: 33.077950, lng: -8.601228 } },
   { id: "fluoralpha", name: "FLUORALPHA (southern plant)", gps: { lat: 33.089011, lng: -8.615164 } },
+  { id: "mosquee_jorf_lasfar", name: "Mosquee jorf Lasfar", gps: { lat: 33.111792, lng: -8.597261 } },
+  { id: "ocp_control_tower", name: "OCP CONTROL TOWER", gps: { lat: 33.108814, lng: -8.591850 } },
+  { id: "centrelec", name: "Centrelec", gps: { lat: 33.109200, lng: -8.606175 } },
+  { id: "station_desalement", name: "Desalement ocp (desalination)", gps: { lat: 33.115869, lng: -8.600764 } },
 ];
 
+const IMAGE_WIDER = "/assets/map/campus-map-wider.png";
 const IMAGE_WIDE = "/assets/map/campus-map-wide.png";
 const IMAGE_CORE = "/assets/map/campus-map.png";
 
@@ -59,16 +64,16 @@ function CaptureTab() {
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [stage, setStage] = useState({ w: 0, h: 0 });
-  const [nat, setNat] = useState({ w: 776, h: 942 });
+  const [nat, setNat] = useState({ w: 1407, h: 932 });
   const wrapRef = useRef<HTMLDivElement>(null);
   const dragRef = useRef<{ sx: number; sy: number; ox: number; oy: number; moved: boolean } | null>(null);
 
   useEffect(() => {
-    const saved = localStorage.getItem("calib-clicks-wide");
+    const saved = localStorage.getItem("calib-clicks-wider");
     if (saved) { try { setClicks(JSON.parse(saved)); } catch {} }
   }, []);
   useEffect(() => {
-    localStorage.setItem("calib-clicks-wide", JSON.stringify(clicks));
+    localStorage.setItem("calib-clicks-wider", JSON.stringify(clicks));
   }, [clicks]);
 
   const layout = useCallback(() => {
@@ -126,8 +131,27 @@ function CaptureTab() {
     const n = toNative(e.clientX, e.clientY);
     if (!n || n.x < 0 || n.x >= nat.w || n.y < 0 || n.y >= nat.h) return;
     const nextId = TARGETS[clicks.length]?.id;
-    if (!nextId) return;
-    setClicks(c => (c.some(p => p.id === nextId) ? c : [...c, { id: nextId, ...n }]));
+    const targetId =
+      nextId ??
+      (() => {
+        // All targets placed → replace the nearest existing click within 30px.
+        let best: { id: string; d: number } | null = null;
+        for (const c of clicks) {
+          const d = Math.hypot(c.x - n.x, c.y - n.y);
+          if (!best || d < best.d) best = { id: c.id, d };
+        }
+        return best && best.d <= 30 ? best.id : undefined;
+      })();
+    if (!targetId) return;
+    setClicks(c => {
+      const i = c.findIndex(p => p.id === targetId);
+      if (i >= 0) {
+        const nc = [...c];
+        nc[i] = { id: targetId, x: n.x, y: n.y };
+        return nc;
+      }
+      return [...c, { id: targetId, x: n.x, y: n.y }];
+    });
   };
 
   const undo = () => setClicks(c => c.slice(0, -1));
@@ -135,7 +159,7 @@ function CaptureTab() {
 
   const buildJson = (): CalibrationFile => ({
     capturedAt: new Date().toISOString(),
-    imageFile: "campus-map-wide.png",
+    imageFile: "campus-map-wider.png",
     imageWidth: nat.w,
     imageHeight: nat.h,
     points: clicks.map(c => {
@@ -174,7 +198,8 @@ function CaptureTab() {
         <aside className="w-72 flex-shrink-0 overflow-y-auto bg-[#092033] border-r border-white/10 p-3 space-y-2">
           <p className="text-xs text-gray-400 leading-relaxed">
             These 8 control points span the whole complex (north gate to southern plants).
-            Click the CENTER of each structure. If a target is truly unfindable, skip it — minimum 4 total.
+            Click the CENTER of each structure. Zoom in (wheel) — pixels sharpen past ×1.6.
+            To FIX a point after all 12 are placed: just click again within ~30px of it. Markers stay one fixed size at any zoom; labels appear when zoomed.
           </p>
           {TARGETS.map((t, i) => {
             const hit = clicks.find(c => c.id === t.id);
@@ -226,8 +251,8 @@ function CaptureTab() {
                 width: stage.w, height: stage.h,
                 transform: `scale(${zoom})`,
               }}>
-              <img src={IMAGE_WIDE} alt="campus satellite wide" draggable={false} className="w-full h-full"
-                style={{ imageRendering: zoom >= 3 ? "pixelated" : "auto" }}
+              <img src={IMAGE_WIDER} alt="campus satellite wider" draggable={false} className="w-full h-full"
+                style={{ imageRendering: zoom >= 1.6 ? "pixelated" : "auto" }}
                 onLoad={e => {
                   const im = e.currentTarget;
                   if (im.naturalWidth && (im.naturalWidth !== nat.w || im.naturalHeight !== nat.h)) {
@@ -236,9 +261,13 @@ function CaptureTab() {
                 }} />
               {clicks.map(c => (
                 <div key={c.id} className="absolute pointer-events-none" style={{ left: `${(c.x / nat.w) * 100}%`, top: `${(c.y / nat.h) * 100}%` }}>
-                  <div className="w-3 h-3 -ml-1.5 -mt-1.5 rounded-full border-2 border-[#00e070] bg-black/40" />
-                  <div className="absolute left-2 -top-4 text-[9px] font-mono bg-black/80 text-[#00e070] px-1 rounded whitespace-nowrap">
-                    {TARGETS.find(t => t.id === c.id)?.name} ({c.x},{c.y})
+                  <div className="relative" style={{ transform: `scale(${1 / zoom})`, transformOrigin: "0 0" }}>
+                    <div className="w-2.5 h-2.5 -ml-[5px] -mt-[5px] rounded-full border border-[#00e070] bg-black/50 shadow-[0_0_6px_rgba(0,224,112,0.9)]" />
+                    {zoom >= 1.8 && (
+                      <div className="absolute left-3 -top-3 text-[9px] font-mono bg-black/80 text-[#00e070] px-1 rounded whitespace-nowrap">
+                        {TARGETS.find(t => t.id === c.id)?.name} ({Math.round(c.x)},{Math.round(c.y)})
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
