@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>OCP Map - GPS Coordinate Verification</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #1a1a2e; color: #fff; font-family: monospace; overflow: hidden; }
+  #canvas { cursor: crosshair; }
+  #info {
+    position: fixed; top: 10px; left: 10px;
+    background: rgba(0,0,0,0.85); padding: 12px; border-radius: 8px;
+    font-size: 12px; z-index: 100; max-width: 320px;
+    border: 1px solid #444;
+  }
+  #info h3 { color: #0f0; margin-bottom: 6px; }
+  #info .stat { color: #aaa; }
+  #info .highlight { color: #ff0; }
+  #controls {
+    position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%);
+    background: rgba(0,0,0,0.85); padding: 10px 20px; border-radius: 8px;
+    z-index: 100; display: flex; gap: 10px; align-items: center;
+    border: 1px solid #444;
+  }
+  #controls label { color: #aaa; font-size: 12px; }
+  #controls input[type=checkbox] { margin: 0 4px; }
+  #hover-info {
+    position: fixed; pointer-events: none;
+    background: rgba(0,0,0,0.9); color: #fff; padding: 6px 10px;
+    border-radius: 4px; font-size: 11px; z-index: 200;
+    display: none; border: 1px solid #0f0;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+<div id="info">
+  <h3>🛰️ GPS Verification Overlay</h3>
+  <div>Locations: <span class="highlight" id="loc-count">0</span></div>
+  <div>Hover over markers to see details</div>
+  <div class="stat">Scroll = zoom, drag = pan</div>
+  <div class="stat">Green = inside bounds, Red = outside</div>
+</div>
+<div id="controls">
+  <label><input type="checkbox" id="showLabels" checked> Labels</label>
+  <label><input type="checkbox" id="showGrid" checked> Grid</label>
+  <label><input type="checkbox" id="showNumbers"> Numbers</label>
+  <label><input type="checkbox" id="showRefs" checked> Ref Points</label>
+</div>
+<div id="hover-info"></div>
+<canvas id="canvas"></canvas>
+
+<script>
+const MAP_W = 1520, MAP_H = 933;
+
+// 5 Verified reference points
+const refPoints = [
+  { name: "JFC 1", px: 1209, py: 374 },
+  { name: "JFC 2", px: 1163, py: 485 },
+  { name: "JFC 4", px: 1274, py: 415 },
+  { name: "JFC 5", px: 1160, py: 410 },
+  { name: "JESA TSF", px: 842, py: 421 },
+];
+
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const hoverInfo = document.getElementById('hover-info');
+
+let img = null;
+let places = [];
+let zoom = 1, offsetX = 0, offsetY = 0;
+let dragging = false, lastX = 0, lastY = 0;
+
+async function init() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  // Load satellite image
+  img = new Image();
+  img.src = '/assets/map/campus-map.png';
+  await new Promise(r => img.onload = r);
+
+  // Load places
+  const res = await fetch('/assets/map/places.json');
+  const data = await res.json();
+  places = data.places;
+
+  document.getElementById('loc-count').textContent = places.length;
+
+  // Center map
+  offsetX = (canvas.width - MAP_W * zoom) / 2;
+  offsetY = (canvas.height - MAP_H * zoom) / 2;
+
+  render();
+}
+
+function worldToScreen(wx, wy) {
+  return { x: wx * zoom + offsetX, y: wy * zoom + offsetY };
+}
+
+function screenToWorld(sx, sy) {
+  return { x: (sx - offsetX) / zoom, y: (sy - offsetY) / zoom };
+}
+
+function render() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#111';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Draw satellite image
+  if (img) {
+    ctx.imageSmoothingEnabled = zoom <= 1;
+    ctx.drawImage(img, offsetX, offsetY, MAP_W * zoom, MAP_H * zoom);
+  }
+
+  // Draw map boundary
+  const tl = worldToScreen(0, 0);
+  const br = worldToScreen(MAP_W, MAP_H);
+  ctx.strokeStyle = '#ff0';
+  ctx.lineWidth = 1;
+  ctx.strokeRect(tl.x, tl.y, br.x - tl.x, br.y - tl.y);
+
+  // Draw grid
+  if (document.getElementById('showGrid').checked) {
+    ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+    ctx.lineWidth = 0.5;
+    for (let x = 0; x <= MAP_W; x += 100) {
+      const s = worldToScreen(x, 0);
+      const e = worldToScreen(x, MAP_H);
+      ctx.beginPath(); ctx.moveTo(s.x, s.y); ctx.lineTo(e.x, e.y); ctx.stroke();
+    }
+    for (let y = 0; y <= MAP_H; y += 100) {
+      const s = worldToScreen(0, y);
+      const e = worldToScreen(MAP_W, y);
+      ctx.beginPath(); ctx.moveTo(s.x, s.y); ctx.lineTo(e.x, e.y); ctx.stroke();
+    }
+  }
+
+  const showLabels = document.getElementById('showLabels').checked;
+  const showNumbers = document.getElementById('showNumbers').checked;
+  const showRefs = document.getElementById('showRefs').checked;
+
+  // Draw reference points (larger, distinct)
+  if (showRefs) {
+    refPoints.forEach((rp, i) => {
+      const s = worldToScreen(rp.px, rp.py);
+      const r = 8;
+
+      // Pulse ring
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, r + 4, 0, Math.PI * 2);
+      ctx.strokeStyle = '#0ff';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      // Dot
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, r, 0, Math.PI * 2);
+      ctx.fillStyle = '#0ff';
+      ctx.fill();
+      ctx.strokeStyle = '#fff';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      // Label
+      if (showLabels) {
+        ctx.font = `bold ${Math.max(11, 13 / zoom)}px monospace`;
+        ctx.fillStyle = '#0ff';
+        ctx.strokeStyle = '#000';
+        ctx.lineWidth = 3;
+        ctx.strokeText(`★ ${rp.name}`, s.x + 14, s.y + 4);
+        ctx.fillText(`★ ${rp.name}`, s.x + 14, s.y + 4);
+      }
+    });
+  }
+
+  // Draw all locations
+  let insideCount = 0;
+  let outsideCount = 0;
+
+  places.forEach((p, i) => {
+    const s = worldToScreen(p.x, p.y);
+    const inBounds = p.x >= 0 && p.x <= MAP_W && p.y >= 0 && p.y <= MAP_H;
+    if (inBounds) insideCount++; else outsideCount++;
+
+    // Check if this is a reference point
+    const isRef = refPoints.some(rp => Math.abs(rp.px - p.x) < 5 && Math.abs(rp.py - p.y) < 5);
+    if (isRef && showRefs) return; // Don't double-draw ref points
+
+    const r = Math.max(3, 5 / zoom);
+    const fontSize = Math.max(9, 11 / zoom);
+
+    // Marker
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, r, 0, Math.PI * 2);
+    ctx.fillStyle = inBounds ? 'rgba(0,255,0,0.8)' : 'rgba(255,0,0,0.9)';
+    ctx.fill();
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    // Number
+    if (showNumbers) {
+      ctx.font = `bold ${fontSize}px monospace`;
+      ctx.fillStyle = '#fff';
+      ctx.strokeStyle = '#000';
+      ctx.lineWidth = 2;
+      ctx.strokeText(String(i + 1), s.x - 3, s.y - r - 2);
+      ctx.fillText(String(i + 1), s.x - 3, s.y - r - 2);
+    }
+
+    // Label
+    if (showLabels) {
+      ctx.font = `${fontSize}px monospace`;
+      ctx.fillStyle = '#fff';
+      ctx.strokeStyle = 'rgba(0,0,0,0.8)';
+      ctx.lineWidth = 3;
+      ctx.strokeText(p.name, s.x + r + 3, s.y + 3);
+      ctx.fillText(p.name, s.x + r + 3, s.y + 3);
+    }
+  });
+
+  // Update stats
+  document.getElementById('loc-count').innerHTML =
+    `<span style="color:#0f0">${insideCount} in bounds</span> | ` +
+    `<span style="color:#f00">${outsideCount} outside</span>`;
+}
+
+// Zoom
+canvas.addEventListener('wheel', e => {
+  e.preventDefault();
+  const rect = canvas.getBoundingClientRect();
+  const mx = e.clientX - rect.left;
+  const my = e.clientY - rect.top;
+
+  const oldZoom = zoom;
+  const factor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
+  zoom = Math.max(0.2, Math.min(5, zoom * factor));
+
+  // Zoom toward mouse
+  offsetX = mx - (mx - offsetX) * (zoom / oldZoom);
+  offsetY = my - (my - offsetY) * (zoom / oldZoom);
+
+  render();
+});
+
+// Pan
+canvas.addEventListener('mousedown', e => {
+  dragging = true;
+  lastX = e.clientX;
+  lastY = e.clientY;
+});
+canvas.addEventListener('mousemove', e => {
+  if (dragging) {
+    offsetX += e.clientX - lastX;
+    offsetY += e.clientY - lastY;
+    lastX = e.clientX;
+    lastY = e.clientY;
+    render();
+  }
+
+  // Hover
+  const rect = canvas.getBoundingClientRect();
+  const mx = e.clientX - rect.left;
+  const my = e.clientY - rect.top;
+
+  let closest = null, closestDist = Infinity;
+  places.forEach(p => {
+    const s = worldToScreen(p.x, p.y);
+    const d = Math.hypot(s.x - mx, s.y - my);
+    if (d < closestDist) { closestDist = d; closest = p; }
+  });
+
+  if (closest && closestDist < 30) {
+    const s = worldToScreen(closest.x, closest.y);
+    hoverInfo.style.display = 'block';
+    hoverInfo.style.left = (e.clientX + 15) + 'px';
+    hoverInfo.style.top = (e.clientY - 10) + 'px';
+    const gps = closest.gps ? `GPS: ${closest.gps.lat.toFixed(6)}, ${closest.gps.lng.toFixed(6)}` : '';
+    hoverInfo.innerHTML = `<b>${closest.name}</b><br>Pixel: (${closest.x}, ${closest.y})<br>${gps}<br>Category: ${closest.category}`;
+  } else {
+    hoverInfo.style.display = 'none';
+  }
+});
+canvas.addEventListener('mouseup', () => { dragging = false; });
+canvas.addEventListener('mouseleave', () => { dragging = false; hoverInfo.style.display = 'none'; });
+
+// Resize
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  render();
+});
+
+// Controls
+['showLabels', 'showGrid', 'showNumbers', 'showRefs'].forEach(id => {
+  document.getElementById(id).addEventListener('change', render);
+});
+
+init();
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+{
+  "version": "2.0.0",
+  "campus": "OCP Jorf Lasfar",
+  "description": "OCP campus navigation map configuration — satellite-verified only",
+  "satellite": {
+    "images": [
+      {
+        "id": "campus-01",
+        "file": "assets/satellite/campus-01.png",
+        "width": 1520,
+        "height": 933,
+        "description": "Full campus overview — largest available satellite screenshot"
+      }
+    ]
+  },
+  "coordinateSystem": {
+    "description": "Unified campus coordinate system. Coordinates are pixel positions on the campus-01 satellite image (1520x933).",
+    "originX": 0,
+    "originY": 0,
+    "width": 776,
+    "height": 942,
+    "units": "pixels",
+    "note": "Pixel coordinates on campus-map-wide.png (776x942); derived from GPS via calibration"
+  },
+  "calibration": {
+    "description": "Least-squares affine GPS→pixel transform fitted from captured control points",
+    "method": "affine-least-squares",
+    "controlPoints": 8,
+    "rmsPx": 14.44,
+    "maxResidualPx": 22.6,
+    "metersPerPixel": 6.9545,
+    "rotationDeg": -5.71,
+    "centerLat": 33.1045125,
+    "centerLng": -8.599083624999999,
+    "coeffs": {
+      "a": 0.15040896853361146,
+      "b": 0.0009502220133524695,
+      "c": 430.6250000000185,
+      "d": -0.015027723813869213,
+      "e": -0.13756220185659013,
+      "f": 398.0000000000252
+    },
+    "capturedAt": "2026-08-24T01:01:50.907Z"
+  },
+  "navigation": {
+    "walkingSpeed": 1.4,
+    "walkingSpeedUnit": "m/s",
+    "pixelsPerMeter": 0.1437925909651942,
+    "note": "1 pixel ≈ 6.954m (derived from 8-point affine calibration)"
+  },
+  "display": {
+    "defaultZoom": 1,
+    "minZoom": 0.3,
+    "maxZoom": 3,
+    "zoomStep": 0.2,
+    "labelMinZoom": 0.5,
+    "buildingMarkerMinZoom": 0.4,
+    "nodeMinZoom": 0.8
+  },
+  "image": {
+    "file": "campus-map-wide.png",
+    "width": 776,
+    "height": 942
+  }
+}

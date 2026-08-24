@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+
+# Build artifacts
+.next/
+dist/
+out/
+*.tsbuildinfo
+
+# Environment & secrets (never commit real values)
+.env
+.env.local
+.env.*.local
+.env.production
+
+# Logs
+*.log
+npm-debug.log*
+
+# Local tooling state
+.local/
+tmp/
+/tmp/
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Heavy design/media reference folders (kept locally, not in git)
+design screenshots/
+figma file of the whole design/
+pdf file export of the design/
+mapscreenshot/
+visitor dashboard/
+screenshots of detailed places/
+profiles logos/
+freebuff map/
+ocp-eguide-map/
+
+# Legacy standalone prototype app (superseded by freebuff-frontend)
+ocp-eguide/

@@ -1,0 +1,291 @@
+================================================================================
+OCP eGUIDE - FULL PROJECT CONTEXT & PROGRESS REMINDER
+Generated: 2026-08-23
+Purpose: Resume work in a new session without losing context
+================================================================================
+
+## 1. PROJECT STRUCTURE
+
+Backend:     /mnt/c/Users/unknown/Downloads/project assets/backend/
+Frontend:    /mnt/c/Users/unknown/Downloads/project assets/freebuff-frontend/
+Map Data:    /mnt/c/Users/unknown/Downloads/project assets/freebuff-frontend/public/assets/map/
+Map Proj:    /mnt/c/Users/unknown/Downloads/project assets/ocp-eguide-map/
+Screenshots: /mnt/c/Users/unknown/Downloads/project assets/screenshots of detailed places/
+
+## 2. ENVIRONMENT
+
+- Platform: Linux (WSL)
+- PostgreSQL: Compiled from source at /tmp/pg-install/ - MUST run:
+    export PATH="/tmp/pg-install/bin:$PATH"
+  before ANY pg command. Trust auth.
+  Connection: postgresql://postgres@localhost:5432/ocp_eguide?schema=public
+- Backend: Express/TypeScript, runs on port 5000
+- Frontend: Next.js, runs on port 3000
+- Backend processes DIE between shell sessions - always restart via:
+    screen -dmS backend bash -c 'export PATH="/tmp/pg-install/bin:$PATH" && node dist/server.js > /tmp/backend.log 2>&1'
+- Password pattern: firstname_lowercase + 123 (imrane123, fouad123, imane123, amine123)
+- Email convention: {first}.{last}.{emailSlug}@ocp.ma (all lowercase)
+- 76 accounts (4 people x 19 profiles), all tested and passing
+- Login response: token field is "accessToken". Backend wraps: { success: true, data: { user, accessToken } }
+- User runs in WSL - use bash directly, NOT wsl bash
+
+## 3. OCP MAP DATA SYSTEM
+
+### Current map image
+- campus-map.png: 1520x933 px (main satellite image used by canvas)
+- campus-map-small.png: 865x808 (exists but NOT used anywhere)
+- Original project has 8 satellite PNGs totaling ~20MB in ocp-eguide-map/assets/satellite/
+
+### Coordinate system
+- 1520 x 933 pixel virtual space, maps 1:1 to campus-01.png / campus-map.png
+- pixelsPerMeter: 0.8786127167630058
+- Walking speed: 1.4 m/s
+- Zoom range: 0.3 to 3.0
+
+### GPS-to-Pixel Calibration (NEW - 2026-08-23)
+- Method: Least-squares affine transformation
+- Reference points: 5 verified locations (JFC 1,2,4,5 + JESA TSF)
+- Max error: ~45px on reference points (acceptable for satellite image mapping)
+- All 89 locations now have GPS-calibrated pixel positions
+
+### Map data files (all in public/assets/map/)
+- places.json:       89 locations with GPS-calibrated pixel positions
+- nodes.json:        113 navigation nodes (89 entrance + 24 intersection)
+- edges.json:        218 walkable edges
+- place-node-connections.json: 89 place-to-node links
+- map-config.json:   Calibration, display, and navigation settings
+
+### All 89 locations (GPS-calibrated):
+  ACCESS (7):
+    - Complexe OCP Jorf Lasfar - Porte Principale
+    - Entre Est OCP, Entre Nord OCP, Entre Principale
+    - Entree Ouest OCP, Entite Infrastructure JPH
+    - Centre Sensibilisation OCP
+  
+  PRODUCTION (25+):
+    - JFC 1, JFC 2, JFC 4, JFC 5 (Jorf Fertilizer Companies)
+    - KOFERT ex JFC2
+    - JESA TSF BLOC 7 JPH, JESA BLOC 6
+    - TSF, TSF JESA Handling Project, TSF JESA Handling System & AX3
+    - TSF New Water, TSF SCIF Ammonia Storage, TSF X DAEWOO
+    - LIGNE F, LIGNE AB, Ted Ligne D
+    - TSP1, 07B, 07C
+    - DAP 107 E, DAP-107 F, 107 DEF OCP
+    - DOWNstream Flash Dryer, MOLTEN SULFUR U363
+    - John Cockerill Maroc TSF
+    - Salle de Controle Phosphorique
+    - SMART COMPOSITE COMPANY TSF
+  
+  OFFICES (10+):
+    - Bureau Rhandi, Printer C 308, JESA Mission, JESA Site Office
+    - GTR JORF Office, Sogea Maroc Office, ATNER Office
+    - CENTRELEC SA (Project Offices), Actemium Office
+    - Service Electrique MMG, Service Genie Civil
+  
+  WATER (4):
+    - Station Dessalement d'Eau de Mer, OCP Green Water
+    - TSF New Water, Desalination Plant (merged)
+  
+  FACILITIES (30+):
+    - EMAPHOS, GOBCO, DDDD, PE 262, PJ-2
+    - SCIF TSF, FLUORALPHA, FLUORALPHA JESA TSF
+    - NEW RSS, MAG Downstream, TSP1, La Base
+    - IMACID, OFAS, PARKX, PMP, SAPE
+    - Base Art Vert, Centrelec, Atelier Electrique PAP
+    - OCP Control Tower, OCP Jorf Lasfar
+    - OCP Maintenance Solution Jorf Lasfar
+    - STROC JPH, Point de Rassemblement JPH
+    - Wave 2 East, Building 255
+  
+  OTHER:
+    - Infirmerie OCP (Medical)
+    - Mosquee Jorf Lasfar (Religious)
+    - Station Terminale (Transport)
+    - Decharge Zone 2 (Waste)
+    - Batiment D, Batiment Phosphorique JLN (Buildings)
+    - Base de Vie PHB, Base de Vie Jdida Improvement
+    - Centre de Formation HSE PMP
+    - Centre de Recherche et Developement
+    - GNGR NEW TECH MOROCCO
+    - Acces OCP Chateau, ES Data, Generale
+
+### Routing stats
+- A* pathfinding: All 89 places have valid node connections
+- 89 entrance nodes + 24 intersection nodes = 113 total
+- 218 walkable edges connecting the graph
+
+## 4. MAP ENGINE ARCHITECTURE
+
+### Key files:
+- src/types/map.ts:           TypeScript types (MapPlace, MapNode, MapEdge, etc.)
+- src/lib/mapEngine.ts:       loadMapData(), searchLocations(), aStar(), routeMetrics(), genInstructions(), getRoute()
+- src/components/OCPMap.tsx:  Canvas-based map component - rendering, zoom/pan, search, routing
+- src/components/MapPreview.tsx: Landing page map preview card
+- src/components/DashboardMapCard.tsx: Reusable dashboard map card
+
+### How rendering works:
+- DPR-aware canvas rendering (devicePixelRatio)
+- World-to-viewport transform: ctx.translate(offset) then ctx.scale(zoom)
+- Places rendered as circles with labels at world coordinates
+- Route rendered as animated dashed line with A/B pins
+- Labels scale inversely with zoom (remain readable)
+
+### How search works:
+- Fuzzy scoring on place name, aliases, category, description
+- Data-driven from places.json (only searches actual places)
+- Returns sorted results with scores
+
+### How routing works:
+- A* pathfinding on node/edge graph
+- Place -> place-node-connections.json -> graph node -> A* -> route path
+- Route metrics calculated via pixelsPerMeter conversion
+- Instructions generated from node labels + directional analysis
+
+## 5. WHAT WAS COMPLETED
+
+### Phase 1-8 (Previous Sessions): Map Reconstruction - DONE
+- Fixed map-config.json, mapEngine.ts, types/map.ts
+- Improved OCPMap.tsx rendering
+- Build verified: 0 TypeScript errors
+
+### Phase 9 (Current Session): GPS Calibration - DONE
+- Created convert-coordinates.js: DMS parser + affine transformation solver
+- Created generate-map-data.js: Generates all 4 map data files
+- Parsed 94 raw locations from locations names.txt
+- Merged duplicates: 89 unique locations
+- Generated:
+  - places.json: 89 locations with GPS-calibrated pixel positions
+  - nodes.json: 113 nodes (89 entrance + 24 intersection)
+  - edges.json: 218 walkable edges
+  - place-node-connections.json: 89 connections
+- Updated types/map.ts to accept "gps-calibrated" source
+- TypeScript compiles with 0 errors
+
+## 6. WHAT NEEDS TO BE DONE NEXT
+
+### HIGH PRIORITY
+1. **Visual Verification**
+   - Start frontend and visually verify all location positions on the satellite map
+   - Check that labels are on correct buildings
+   - Fix any misplaced locations
+   - Verify routing works between all location pairs
+
+2. **Label Optimization**
+   - Reduce label overlap in dense areas (especially JFC cluster and TSF area)
+   - Improve label positioning for readability
+   - Test at different zoom levels
+
+3. **Search Validation**
+   - Test all 89 locations appear in search
+   - Verify aliases work (e.g., "JFC5" finds "JFC 5")
+   - Ensure no fictional locations appear
+
+### MEDIUM PRIORITY
+4. **Routing Validation**
+   - Test routes between representative location pairs
+   - Verify A* finds paths for all connected locations
+   - Check route instructions are sensible
+
+5. **Edge Cases**
+   - Some locations (GOBCO, GNGR, PARKX) are near image edge - verify they're visible
+   - DDDD location may be off-campus - verify
+
+6. **Duplicate Merging**
+   - Verify JFC5 variants merged correctly
+   - Verify desalination variants merged correctly
+   - Check for any remaining duplicates
+
+### LOW PRIORITY
+7. **Performance Optimization**
+   - Reduce node/edge count if routing is slow
+   - Optimize canvas rendering for many markers
+   - Test on tablet devices
+
+8. **Dead Code Cleanup**
+   - Remove convert-coordinates.js and generate-map-data.js (utility scripts)
+   - Remove converted-locations.json
+   - Clean up any unused imports
+
+## 7. KEY FILE LOCATIONS
+
+Backend source:
+  backend/src/server.ts              - Entry point
+  backend/src/routes/                - All API routes
+  backend/prisma/schema.prisma       - Database schema
+
+Frontend source:
+  frontend/src/app/page.tsx          - Landing page
+  frontend/src/app/auth/page.tsx     - Auth/role-selection
+  frontend/src/app/map/page.tsx      - Full-screen map page
+  frontend/src/app/guest/qr/[token]/page.tsx - QR scan page
+  frontend/src/app/dashboard/        - All dashboard pages (19+ roles)
+  frontend/src/components/OCPMap.tsx  - Canvas map component
+  frontend/src/components/MapPreview.tsx - Landing map card
+  frontend/src/components/DashboardMapCard.tsx - Dashboard map card
+  frontend/src/components/LanguageSelector.tsx - Language selector
+  frontend/src/components/Header.tsx - Dashboard header
+  frontend/src/components/Sidebar.tsx - Dashboard sidebar (19 role menus)
+  frontend/src/components/DashboardLayout.tsx - Dashboard wrapper
+  frontend/src/lib/mapEngine.ts      - Map engine (A*, search, routing)
+  frontend/src/types/map.ts          - Map TypeScript types
+  frontend/src/types/index.ts        - General types
+  frontend/src/i18n/index.ts         - i18n provider
+  frontend/src/i18n/en.json          - English (430 keys)
+  frontend/src/i18n/fr.json          - French (430 keys)
+  frontend/src/i18n/ar.json          - Arabic (430 keys)
+
+Map data:
+  frontend/public/assets/map/places.json              - 89 GPS-calibrated locations
+  frontend/public/assets/map/nodes.json               - 113 navigation nodes
+  frontend/public/assets/map/edges.json               - 218 walkable edges
+  frontend/public/assets/map/place-node-connections.json - 89 connections
+  frontend/public/assets/map/map-config.json           - Map config
+  frontend/public/assets/map/campus-map.png            - 1520x933 satellite
+  frontend/public/assets/map/campus-map-small.png      - 865x808 (unused)
+  frontend/public/assets/logos/ocp-eguide.png          - Official logo
+
+Reference materials:
+  screenshots of detailed places/locations names.txt   - GPS coordinates source
+  screenshots of detailed places/converted-coordinates.json - Conversion output
+  convert-coordinates.js                                - GPS-to-pixel converter
+  generate-map-data.js                                  - Map data generator
+  screenshots of detailed places/ocp whole map.png     - 776x942 annotated map
+  screenshots of detailed places/                      - 90+ location screenshots
+  ocp-eguide-map/assets/satellite/                     - 8 satellite PNGs
+
+## 8. BUILD COMMANDS
+
+  # Start backend
+  screen -dmS backend bash -c 'export PATH="/tmp/pg-install/bin:$PATH" && cd /mnt/c/Users/unknown/Downloads/project assets/backend && node dist/server.js > /tmp/backend.log 2>&1'
+
+  # Start frontend
+  cd /mnt/c/Users/unknown/Downloads/project assets/freebuff-frontend
+  npx next start -p 3000
+
+  # Build check
+  cd /mnt/c/Users/unknown/Downloads/project assets/freebuff-frontend
+  npx next build
+
+  # TypeScript check
+  npx tsc --noEmit
+
+  # Regenerate map data (if needed)
+  cd /mnt/c/Users/unknown/Downloads/project assets
+  node generate-map-data.js
+
+## 9. CRITICAL RULES
+
+1. DO NOT invent locations - only use GPS-calibrated or screenshot-verified data
+2. DO NOT guess pixel coordinates - use the affine transformation from GPS
+3. The six context/wider-angle screenshots are NOT separate locations
+4. Search must only contain verified locations
+5. Labels must point to exact building locations, not scattered nearby
+6. Every routable location must exist in the full data pipeline
+7. Backend processes die between shell sessions
+8. Always export PATH for PostgreSQL before any pg command
+9. Frontend port is 3000, backend port is 5000
+10. OCPMap uses canvas rendering - labels are vectors/text, not baked into raster
+
+================================================================================
+END OF REMINDER FILE
+================================================================================

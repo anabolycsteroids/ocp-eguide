@@ -1,0 +1,215 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f5f7f5;
+  --foreground: #1a1a2e;
+  --ocp-green: #00a050;
+  --ocp-green-dark: #007030;
+  --ocp-green-light: #e0f0e0;
+  --ocp-green-lighter: #f0f8f0;
+  --ocp-navy: #0a1628;
+  --ocp-navy-light: #162033;
+  --ocp-gray: #f0f2f0;
+  --ocp-gray-dark: #6b7280;
+  --ocp-border: #e0e4e0;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-ocp-green: var(--ocp-green);
+  --color-ocp-green-dark: var(--ocp-green-dark);
+  --color-ocp-green-light: var(--ocp-green-light);
+  --color-ocp-green-lighter: var(--ocp-green-lighter);
+  --color-ocp-navy: var(--ocp-navy);
+  --color-ocp-navy-light: var(--ocp-navy-light);
+  --color-ocp-gray: var(--ocp-gray);
+  --color-ocp-gray-dark: var(--ocp-gray-dark);
+  --color-ocp-border: var(--ocp-border);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans, "Inter", Arial, Helvetica, sans-serif);
+}
+
+/* ─── Glassmorphism Utilities ─── */
+
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.glass-dark {
+  background: rgba(10, 22, 40, 0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-green {
+  background: rgba(0, 160, 80, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 160, 80, 0.25);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* Green gradient background for auth cards */
+.auth-card-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 160, 80, 0.15) 0%,
+    rgba(0, 112, 48, 0.08) 50%,
+    rgba(0, 80, 40, 0.05) 100%
+  );
+}
+
+/* Dark auth card background */
+.auth-card-dark {
+  background: linear-gradient(
+    135deg,
+    #0a1628 0%,
+    #0d1f35 40%,
+    #00a050 120%
+  );
+}
+
+/* Sidebar navigation */
+.sidebar-active {
+  background: rgba(0, 160, 80, 0.15);
+  border-left: 3px solid var(--ocp-green);
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: all 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 160, 80, 0.15);
+}
+
+/* Profile card */
+.profile-card {
+  background: white;
+  border: 1px solid var(--ocp-border);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+.profile-card:hover {
+  border-color: var(--ocp-green);
+  box-shadow: 0 4px 12px rgba(0, 160, 80, 0.1);
+}
+
+/* Status badge */
+.status-active {
+  background: #dcfce7;
+  color: #166534;
+}
+.status-pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+.status-inactive {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* Page transition */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* Input focus */
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--ocp-green);
+  box-shadow: 0 0 0 3px rgba(0, 160, 80, 0.1);
+}
+
+/* ─── Landing Page Vegetation Background ─── */
+.vegetation-bg {
+  background: linear-gradient(160deg, #061210 0%, #0a2818 40%, #0d3a1f 100%);
+  position: relative;
+}
+
+.vegetation-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 40%, rgba(0, 120, 60, 0.45) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 20%, rgba(20, 160, 80, 0.35) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 85%, rgba(0, 100, 50, 0.4) 0%, transparent 50%),
+    radial-gradient(ellipse at 75% 60%, rgba(30, 140, 70, 0.3) 0%, transparent 40%);
+  opacity: 0.9;
+}
+
+.vegetation-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent, rgba(0, 0, 0, 0.2));
+}
+
+/* Animated route dashes (screen-space speed regardless of map zoom) */
+@keyframes routeDash {
+  to { stroke-dashoffset: -21; }
+}
+.route-dash {
+  animation: routeDash 0.9s linear infinite;
+}

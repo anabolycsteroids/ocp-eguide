@@ -1,0 +1,575 @@
+{
+  "version": "5.0.0",
+  "connections": [
+    {
+      "placeId": "07b",
+      "nodeId": "n_07b",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "07c",
+      "nodeId": "n_07c",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "dap_107_def",
+      "nodeId": "n_dap_107_def",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "255",
+      "nodeId": "n_255",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "a",
+      "nodeId": "n_a",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "acces_ocp_chateau",
+      "nodeId": "n_acces_ocp_chateau",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "actemium_office",
+      "nodeId": "n_actemium_office",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "afc",
+      "nodeId": "n_afc",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "atelier_electrique_instrumentation_pap",
+      "nodeId": "n_atelier_electrique_instrumentation_pap",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "atner_office",
+      "nodeId": "n_atner_office",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "base_art_vert",
+      "nodeId": "n_base_art_vert",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "base_de_vie_jdida_improvement",
+      "nodeId": "n_base_de_vie_jdida_improvement",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "base_de_vie_phb",
+      "nodeId": "n_base_de_vie_phb",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "batiment_d",
+      "nodeId": "n_batiment_d",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "batiment_phosphorique_jln",
+      "nodeId": "n_batiment_phosphorique_jln",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "bureau_rhandi",
+      "nodeId": "n_bureau_rhandi",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "centre_de_formation_hse_pmp",
+      "nodeId": "n_centre_de_formation_hse_pmp",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "centre_de_recherche_et_developement",
+      "nodeId": "n_centre_de_recherche_et_developement",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "centre_sensibilisation_ocp",
+      "nodeId": "n_centre_sensibilisation_ocp",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "centrelec",
+      "nodeId": "n_centrelec",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "centrelec_sa_project_offices",
+      "nodeId": "n_centrelec_sa_project_offices",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "gobco",
+      "nodeId": "n_gobco",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "porte_principale",
+      "nodeId": "n_porte_principale",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "dap_107_e",
+      "nodeId": "n_dap_107_e",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "dap_107_f",
+      "nodeId": "n_dap_107_f",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "dddd",
+      "nodeId": "n_dddd",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "decharge_zone_2",
+      "nodeId": "n_decharge_zone_2",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "station_desalement",
+      "nodeId": "n_station_desalement",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "downstreamflashdryer",
+      "nodeId": "n_downstreamflashdryer",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "emaphos_euro_maroc_phosphore",
+      "nodeId": "n_emaphos_euro_maroc_phosphore",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "entite_infrastructure_jph",
+      "nodeId": "n_entite_infrastructure_jph",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "entre_est_ocp",
+      "nodeId": "n_entre_est_ocp",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "entre_nord_ocp",
+      "nodeId": "n_entre_nord_ocp",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "entre_principale",
+      "nodeId": "n_entre_principale",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "entreee_ouest_ocp",
+      "nodeId": "n_entreee_ouest_ocp",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "es_data",
+      "nodeId": "n_es_data",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "fluoralpha",
+      "nodeId": "n_fluoralpha",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "fluoralpha_jesa_tsf",
+      "nodeId": "n_fluoralpha_jesa_tsf",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "generale",
+      "nodeId": "n_generale",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "gngr_new_tech_morroco",
+      "nodeId": "n_gngr_new_tech_morroco",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "gtr_jorfoffice",
+      "nodeId": "n_gtr_jorfoffice",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "idea_factory",
+      "nodeId": "n_idea_factory",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "imacid",
+      "nodeId": "n_imacid",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "infirmerie_ocp",
+      "nodeId": "n_infirmerie_ocp",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "jesa_bloc6",
+      "nodeId": "n_jesa_bloc6",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "jesa_mission",
+      "nodeId": "n_jesa_mission",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "jesa_site_office",
+      "nodeId": "n_jesa_site_office",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "jesa_tsf",
+      "nodeId": "n_jesa_tsf",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "jfc_1",
+      "nodeId": "n_jfc_1",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "jfc4",
+      "nodeId": "n_jfc4",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "john_cockerill_maroc_tsf",
+      "nodeId": "n_john_cockerill_maroc_tsf",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "jorf_fertilizer_company_4",
+      "nodeId": "n_jorf_fertilizer_company_4",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "jfc5",
+      "nodeId": "n_jfc5",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "jorf_fertilizer_company2_jfc_2",
+      "nodeId": "n_jorf_fertilizer_company2_jfc_2",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "jfc5_plant",
+      "nodeId": "n_jfc5_plant",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "kofert_ex_jfc2",
+      "nodeId": "n_kofert_ex_jfc2",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "la_base",
+      "nodeId": "n_la_base",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "ligne_ab",
+      "nodeId": "n_ligne_ab",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "ligne_f",
+      "nodeId": "n_ligne_f",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "mag_downstream",
+      "nodeId": "n_mag_downstream",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "molten_sulfur_u363",
+      "nodeId": "n_molten_sulfur_u363",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "mosquee_jorf_lasfar",
+      "nodeId": "n_mosquee_jorf_lasfar",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "new_rss",
+      "nodeId": "n_new_rss",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "ocp_control_tower",
+      "nodeId": "n_ocp_control_tower",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "ocp_green_water",
+      "nodeId": "n_ocp_green_water",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "ocp_jorf_lasfar",
+      "nodeId": "n_ocp_jorf_lasfar",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "ocp_mainteance_solution_jorf_lasfar",
+      "nodeId": "n_ocp_mainteance_solution_jorf_lasfar",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "ofas",
+      "nodeId": "n_ofas",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "pakistan_maroc_phosphore",
+      "nodeId": "n_pakistan_maroc_phosphore",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "parkx",
+      "nodeId": "n_parkx",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "pe_262",
+      "nodeId": "n_pe_262",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "pj_2",
+      "nodeId": "n_pj_2",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "pmp",
+      "nodeId": "n_pmp",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "point_de_rassemblement_jph",
+      "nodeId": "n_point_de_rassemblement_jph",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "printer_c_308",
+      "nodeId": "n_printer_c_308",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "salle_de_controle_phosphorique",
+      "nodeId": "n_salle_de_controle_phosphorique",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "sape",
+      "nodeId": "n_sape",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "scif_tsf",
+      "nodeId": "n_scif_tsf",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "service_electrique_mmg",
+      "nodeId": "n_service_electrique_mmg",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "service_genie_civil",
+      "nodeId": "n_service_genie_civil",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "smart_composite_company_tsf",
+      "nodeId": "n_smart_composite_company_tsf",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "sogea_ahf_plant",
+      "nodeId": "n_sogea_ahf_plant",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "sogea_maroc_office",
+      "nodeId": "n_sogea_maroc_office",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "station_terminale",
+      "nodeId": "n_station_terminale",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "strocjph",
+      "nodeId": "n_strocjph",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "surete_operationnel_ocp",
+      "nodeId": "n_surete_operationnel_ocp",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "ted_ligne_d",
+      "nodeId": "n_ted_ligne_d",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "tsf",
+      "nodeId": "n_tsf",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "tsf_jesa_handling_project",
+      "nodeId": "n_tsf_jesa_handling_project",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "tsf_jesa_handling_system_ax3_project",
+      "nodeId": "n_tsf_jesa_handling_system_ax3_project",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "tsf_new_water",
+      "nodeId": "n_tsf_new_water",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "tsf_scif_ammonia_storage",
+      "nodeId": "n_tsf_scif_ammonia_storage",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "tsf_x_daewoo",
+      "nodeId": "n_tsf_x_daewoo",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "tsp1",
+      "nodeId": "n_tsp1",
+      "accessPoint": "nearest-road",
+      "verified": true
+    },
+    {
+      "placeId": "wave_2_east",
+      "nodeId": "n_wave_2_east",
+      "accessPoint": "nearest-road",
+      "verified": true
+    }
+  ]
+}

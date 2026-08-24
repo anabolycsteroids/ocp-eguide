@@ -1,0 +1,355 @@
+================================================================================
+FREEBUFF SESSION REMINDER - OCP eGuide Project
+================================================================================
+Purpose: Complete context for resuming work in a new Freebuff session
+Last Updated: 2026-08-23
+================================================================================
+
+## ⚡ ARCHITECTURE ADDENDUM (2026-08-24) — READ FIRST
+
+GPS lat/lng (Google Earth pins, file: locations_coordinates_corrected.txt with
+elevations) are the IMMUTABLE source of truth for all 95 locations. Pixel
+positions are DERIVED ONLY:
+
+    Google Earth lat/lng → affine georeferencing (control points) → mapX/mapY
+
+CURRENT STATE: georeferenced on the WIDE master image
+public/assets/map/campus-map-wide.png (776×942, ~6.95 m/px, rotation −5.7°).
+8 control points captured via /calibrate; RMS 14.4px (~100m at this coarse
+scale). ALL 95 locations in-bounds (old core image had 36 OOB). Routing mesh:
+3423 nodes / 13346 edges, 100% pair connectivity. map-config.json `image`
+block drives which image + world dims the app uses everywhere.
+
+Pipeline pieces (already built):
+- src/lib/geoTransform.ts          — affine least-squares fit + gpsToMap/mapToGps
+- scripts/regenerate-map.mjs       — run AFTER capturing control points:
+                                      node scripts/regenerate-map.mjs
+  (reads ../../calibration-points.json, refits, rewrites places/nodes/edges/
+   connections/map-config, rebuilds walking mesh, runs all-pairs A* check,
+   writes calibration-report.txt. Use --validate-only / --force flags.)
+- /calibrate page                  — Capture tab (click 8 buildings = control
+  points) + Validate tab (projects ALL locations onto master map, flags
+  duplicates/out-of-bounds/invalid GPS/collisions)
+- /map?debug=1                     — debug overlay: click any marker to see the
+  full chain lat/lng → mapX/mapY → screen x/y → zoom/pan
+
+CRITICAL FACT: the old v4 pixel positions were produced by a DEGENERATE
+transform (5 clustered reference points) that collapsed the whole campus into
+a ~450×250px blob. v5 places.json stores gps as truth; mapX/mapY stay stale
+until control points are captured and regenerate-map.mjs is run.
+NEVER store mouse/click coordinates as location data. Labels use
+labelOffsetX/Y (visual-only); anchors never move for layout reasons.
+
+## 1. PROJECT OVERVIEW
+
+OCP eGuide is a campus navigation and information system for OCP Jorf Lasfar,
+a large phosphate and fertilizer industrial complex near El Jadida, Morocco.
+
+The system includes:
+- Interactive satellite map with zoom/pan
+- Search functionality for 90+ locations
+- A* pathfinding/routing between locations
+- Multi-language support (EN/FR/AR)
+- Role-based dashboards (19 profiles)
+- Guest/public API with QR codes
+- Authentication system
+
+## 2. PROJECT STRUCTURE
+
+```
+project assets/
+├── backend/                          # Express/TypeScript backend
+│   ├── src/
+│   │   ├── server.ts                 # Entry point, port 5000
+│   │   ├── routes/                   # API routes
+│   │   └── ...
+│   ├── prisma/
+│   │   └── schema.prisma             # Database schema
+│   └── dist/                         # Compiled output
+│
+├── freebuff-frontend/                # Next.js frontend
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── page.tsx              # Landing page
+│   │   │   ├── auth/page.tsx         # Login/role selection
+│   │   │   ├── map/page.tsx          # Full-screen map page
+│   │   │   ├── guest/qr/[token]/     # QR scan page
+│   │   │   └── dashboard/            # 19 role-based dashboards
+│   │   ├── components/
+│   │   │   ├── OCPMap.tsx            # MAIN MAP COMPONENT (canvas-based)
+│   │   │   ├── MapPreview.tsx        # Landing page map card
+│   │   │   ├── DashboardMapCard.tsx  # Dashboard map card
+│   │   │   ├── LanguageSelector.tsx
+│   │   │   ├── Header.tsx
+│   │   │   ├── Sidebar.tsx           # 19 role menus
+│   │   │   └── DashboardLayout.tsx
+│   │   ├── lib/
+│   │   │   └── mapEngine.ts          # Map engine (A*, search, routing)
+│   │   ├── types/
+│   │   │   ├── map.ts                # MapPlace, MapNode, MapEdge types
+│   │   │   └── index.ts
+│   │   ├── i18n/
+│   │   │   ├── index.ts              # I18nProvider + useI18n() hook
+│   │   │   ├── en.json               # English (430+ keys)
+│   │   │   ├── fr.json               # French
+│   │   │   └── ar.json               # Arabic (RTL)
+│   │   └── ...
+│   └── public/assets/map/
+│       ├── places.json               # ALL 90+ LOCATIONS (x, y coordinates)
+│       ├── nodes.json                # 130+ navigation nodes
+│       ├── edges.json                # 150+ walkable edges
+│       ├── place-node-connections.json # Place-to-node links
+│       ├── map-config.json           # Map configuration
+│       └── campus-map.png            # Main satellite image (1520x933)
+│
+├── screenshots of detailed places/   # REFERENCE SCREENSHOTS
+│   ├── ocp whole map.png             # Annotated campus map (776x942)
+│   ├── ocp-location-coordinates.json # 95 locations with pixel coords
+│   ├── ocp-coordinate-audit.md       # Audit report
+│   ├── location coordinates.txt      # Location coords summary
+│   └── [90+ individual location screenshots]
+│
+├── ocp-eguide-map/                   # Original map project assets
+│   └── assets/satellite/             # 8 satellite PNGs (~20MB)
+│
+├── mapscreenshot/                    # Map screenshots
+├── PROGRESS_REMINDER.txt             # Previous session progress
+└── FREEBUFF REMINDER.txt             # THIS FILE
+```
+
+## 3. ENVIRONMENT SETUP
+
+### Platform
+- **OS**: Linux (WSL on Windows)
+- **Shell**: bash
+- **Node.js**: v22.x
+
+### Database (PostgreSQL)
+- Compiled from source at: /tmp/pg-install/bin/
+- MUST run before ANY pg command:
+  ```bash
+  export PATH="/tmp/pg-install/bin:$PATH"
+  ```
+- Connection: postgresql://postgres@localhost:5432/ocp_eguide?schema=public
+- Auth: Trust (no password required)
+
+### Backend (Express/TypeScript)
+- Port: 5000
+- Start command:
+  ```bash
+  screen -dmS backend bash -c 'export PATH="/tmp/pg-install/bin:$PATH" && cd /mnt/c/Users/unknown/Downloads/project\ assets/backend && node dist/server.js > /tmp/backend.log 2>&1'
+  ```
+- IMPORTANT: Backend processes DIE between shell sessions - always restart!
+
+### Frontend (Next.js)
+- Port: 3000
+- Start command:
+  ```bash
+  cd /mnt/c/Users/unknown/Downloads/project\ assets/freebuff-frontend
+  npx next start -p 3000
+  ```
+- Build check:
+  ```bash
+  npx tsc --noEmit        # TypeScript check
+  npx next build          # Full build
+  ```
+
+### User Accounts
+- 76 accounts (4 people × 19 profiles)
+- Password pattern: firstname_lowercase + 123 (imrane123, fouad123, imane123, amine123)
+- Email: {first}.{last}.{emailSlug}@ocp.ma (all lowercase)
+- Login response: { success: true, data: { user, accessToken } }
+
+## 4. MAP SYSTEM ARCHITECTURE
+
+### Coordinate System
+- **Canvas**: 1520 × 933 pixels (campus-map.png)
+- **pixelsPerMeter**: 0.8786127167630058
+- **Walking speed**: 1.4 m/s
+- **Zoom range**: 0.3 to 3.0
+
+### How Rendering Works
+- DPR-aware canvas rendering (devicePixelRatio)
+- World-to-viewport: ctx.translate(offset) then ctx.scale(zoom)
+- Places rendered as circles with labels at world coordinates
+- Route rendered as animated dashed line with A/B pins
+- Labels scale inversely with zoom (remain readable)
+
+### How Search Works
+- Fuzzy scoring on: name, aliases, category, description
+- Data-driven from places.json
+- Returns top 10 results sorted by score
+
+### How Routing Works
+- A* pathfinding on node/edge graph
+- Place → place-node-connections.json → graph node → A* → route path
+- Route metrics via pixelsPerMeter conversion
+- Instructions generated from node labels + directional analysis
+
+## 5. CURRENT STATE (What's Been Done)
+
+### Completed (Phases 1-8 of Previous Sessions)
+✅ Phase 1: Audit - Read all map files, identified inconsistencies
+✅ Phase 2: Fix map-config.json - Corrected coordinate system
+✅ Phase 3: Fix mapEngine.ts - Added walkingSpeed param
+✅ Phase 4: Fix types/map.ts - Improved type safety
+✅ Phase 5: Remove dead SiteMapLocation
+✅ Phase 6: Improve OCPMap.tsx - DPR, labels, route rendering
+✅ Phase 7: Add Stroc JPH - BLOCKED (waiting for GPS)
+✅ Phase 8: Build and test - 0 TypeScript errors
+
+### Completed (Current Session)
+✅ Created places.json with 90+ verified locations from screenshots
+✅ Created nodes.json with 130+ navigation nodes
+✅ Created edges.json with 150+ walkable edges
+✅ Created place-node-connections.json for all locations
+✅ Merged duplicate/alias locations (JFC5 variants, JESA Mission, etc.)
+✅ Improved OCPMap.tsx for 1080p quality rendering
+✅ Created location coordinates.txt file
+✅ TypeScript compiles with 0 errors
+
+## 6. WHAT NEEDS TO BE DONE NEXT
+
+### HIGH PRIORITY
+1. **GPS Coordinate Calibration**
+   - User needs to provide GPS lat/lng for each location from Google Maps
+   - Use coordinates: ~33.114647, -8.601003 as campus center reference
+   - Need at least 3 known GPS→pixel mappings for calibration
+   - Update places.json with accurate coordinates
+
+2. **Visual Verification**
+   - Start frontend and visually verify all location positions
+   - Check that labels are in correct places
+   - Verify routing works between all location pairs
+   - Fix any misplaced locations
+
+### MEDIUM PRIORITY
+3. **Search Validation**
+   - Test all 90+ locations appear in search
+   - Verify aliases work (e.g., "JFC5" finds "JFC 5")
+   - Ensure no fictional locations appear
+
+4. **Routing Validation**
+   - Test routes between representative location pairs
+   - Verify A* finds paths for all connected locations
+   - Check route instructions are sensible
+
+5. **Label Optimization**
+   - Reduce label overlap in dense areas
+   - Improve label positioning for readability
+   - Test at different zoom levels
+
+### LOW PRIORITY
+6. **Performance Optimization**
+   - Reduce node/edge count if routing is slow
+   - Optimize canvas rendering for many markers
+   - Test on tablet devices
+
+7. **Dead Code Cleanup**
+   - Remove unused building-001 through building-008 placeholders
+   - Clean up any duplicate coordinate systems
+   - Remove temporary debug code
+
+## 7. KEY FILES TO EDIT
+
+### Location Data (Primary)
+- `freebuff-frontend/public/assets/map/places.json` - All 90+ locations with coordinates
+- `freebuff-frontend/public/assets/map/nodes.json` - Navigation graph nodes
+- `freebuff-frontend/public/assets/map/edges.json` - Navigation graph edges
+- `freebuff-frontend/public/assets/map/place-node-connections.json` - Place-node links
+
+### Map Rendering
+- `freebuff-frontend/src/components/OCPMap.tsx` - Main map component (canvas)
+- `freebuff-frontend/src/lib/mapEngine.ts` - Map engine (A*, search, routing)
+- `freebuff-frontend/src/types/map.ts` - TypeScript types
+
+### Configuration
+- `freebuff-frontend/public/assets/map/map-config.json` - Map settings
+
+### Internationalization
+- `freebuff-frontend/src/i18n/en.json` - English strings
+- `freebuff-frontend/src/i18n/fr.json` - French strings
+- `freebuff-frontend/src/i18n/ar.json` - Arabic strings
+
+## 8. IMPORTANT RULES
+
+1. **DO NOT invent locations** - Only use locations with screenshots
+2. **DO NOT guess coordinates** - Use GPS data or visual verification
+3. **DO NOT break existing features** - Preserve search, routing, i18n
+4. **DO NOT create duplicate locations** - Merge aliases into single entries
+5. **ALWAYS run TypeScript check** before finishing: `npx tsc --noEmit`
+6. **ALWAYS restart backend** after code changes
+7. **Backend processes DIE** between sessions - must restart
+
+## 9. SCREENSHOT FILES (Reference)
+
+The `screenshots of detailed places/` folder contains:
+- `ocp whole map.png` - Annotated campus map (776x942)
+- `ocp-location-coordinates.json` - 95 locations with pixel coords
+- `ocp-coordinate-audit.md` - Detailed audit report
+- `location coordinates.txt` - Location summary
+
+### Context Screenshots (NOT separate locations)
+These are wider-angle views for context only:
+- `JFC1 +details - Copie.png` → Context for JFC 1
+- `complexe ocp jorf lasfar-porte principale2 - Copie (2).png` → Context for Porte Principale
+- `emaphos(euro-maroc phosphore)2 - Copie.png` → Context for Emaphos
+- `idea factory 2 - Copie.png` → Context for Idea Factory
+- `surete operationnel OCP2.png` → Context for Sûreté Opérationnel
+- `wave 2 east.png` → Context screenshot
+- `campus ocp overall map - Copie.png` → Overall map reference
+
+## 10. GPS-TO-PIXEL CONVERSION (Future Task)
+
+To convert GPS coordinates to pixel positions:
+
+1. Get GPS coords from Google Maps for 3+ known locations
+2. Note their pixel positions on campus-map.png
+3. Create affine transformation matrix
+4. Apply to all other locations
+
+Known reference:
+- OCP Campus Center: lat 33.114647, lng -8.6010032
+- Campus width: ~1.73km (1520 pixels)
+- pixelsPerMeter: 0.8786127167630058
+
+## 11. TROUBLESHOOTING
+
+### "Backend not running"
+```bash
+screen -dmS backend bash -c 'export PATH="/tmp/pg-install/bin:$PATH" && cd /mnt/c/Users/unknown/Downloads/project\ assets/backend && node dist/server.js > /tmp/backend.log 2>&1'
+```
+
+### "TypeScript errors"
+```bash
+cd /mnt/c/Users/unknown/Downloads/project\ assets/freebuff-frontend
+npx tsc --noEmit
+```
+
+### "Map not loading"
+- Check campus-map.png exists in public/assets/map/
+- Verify places.json is valid JSON
+- Check browser console for errors
+
+### "Search not finding locations"
+- Verify location exists in places.json
+- Check aliases array includes search terms
+- Restart frontend after changes
+
+### "Routing not working"
+- Verify location has entry in place-node-connections.json
+- Check node exists in nodes.json
+- Verify edges connect nodes in edges.json
+
+## 12. CONTACT & CONTINUATION
+
+When starting a new session:
+1. Read this file first
+2. Check PROGRESS_REMINDER.txt for latest status
+3. Verify TypeScript compiles: `npx tsc --noEmit`
+4. Check if backend is running
+5. Continue from "WHAT NEEDS TO BE DONE NEXT" section
+
+================================================================================
+END OF REMINDER FILE
+================================================================================

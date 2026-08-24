@@ -1,0 +1,942 @@
+[
+  {
+    "name": "07B",
+    "lat": 33.111069444444446,
+    "lng": -8.606533333333333,
+    "px": 915,
+    "py": 410,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "07b"
+  },
+  {
+    "name": "07C",
+    "lat": 33.11055833333334,
+    "lng": -8.606922222222222,
+    "px": 925,
+    "py": 413,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "07c"
+  },
+  {
+    "name": "255",
+    "lat": 33.117761111111115,
+    "lng": -8.615802777777777,
+    "px": 676,
+    "py": 466,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "255"
+  },
+  {
+    "name": "A",
+    "lat": 33.10191944444445,
+    "lng": -8.591202777777779,
+    "px": 1262,
+    "py": 314,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "a"
+  },
+  {
+    "name": "Acces ocp chateau",
+    "lat": 33.10820555555556,
+    "lng": -8.583736111111111,
+    "px": 1163,
+    "py": 258,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "acces_ocp_chateau"
+  },
+  {
+    "name": "Actemium office",
+    "lat": 33.09980277777778,
+    "lng": -8.589805555555555,
+    "px": 1326,
+    "py": 307,
+    "category": "Office",
+    "type": "FACILITY",
+    "id": "actemium_office"
+  },
+  {
+    "name": "AFC",
+    "lat": 33.10203333333334,
+    "lng": -8.597422222222223,
+    "px": 1211,
+    "py": 356,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "afc"
+  },
+  {
+    "name": "Atelier electrique instrumentation (PAP)",
+    "lat": 33.11206111111111,
+    "lng": -8.602916666666665,
+    "px": 918,
+    "py": 384,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "atelier_electrique_instrumentation_pap"
+  },
+  {
+    "name": "atner office",
+    "lat": 33.09966111111111,
+    "lng": -8.590572222222223,
+    "px": 1323,
+    "py": 312,
+    "category": "Office",
+    "type": "FACILITY",
+    "id": "atner_office"
+  },
+  {
+    "name": "batiment phosphorique jln",
+    "lat": 33.1135,
+    "lng": -8.604580555555556,
+    "px": 869,
+    "py": 394,
+    "category": "Building",
+    "type": "BUILDING",
+    "id": "batiment_phosphorique_jln"
+  },
+  {
+    "name": "BASE ART VERT",
+    "lat": 33.1074,
+    "lng": -8.592244444444445,
+    "px": 1117,
+    "py": 316,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "base_art_vert"
+  },
+  {
+    "name": "base de  vie Jdida improvement",
+    "lat": 33.118605555555554,
+    "lng": -8.608883333333333,
+    "px": 709,
+    "py": 419,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "base_de_vie_jdida_improvement"
+  },
+  {
+    "name": "base de vie phb",
+    "lat": 33.09568055555556,
+    "lng": -8.604344444444443,
+    "px": 1315,
+    "py": 409,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "base_de_vie_phb"
+  },
+  {
+    "name": "batiment D",
+    "lat": 33.11101388888889,
+    "lng": -8.594980555555557,
+    "px": 1006,
+    "py": 331,
+    "category": "Building",
+    "type": "BUILDING",
+    "id": "batiment_d"
+  },
+  {
+    "name": "Bureau rhandi",
+    "lat": 33.10703888888889,
+    "lng": -8.588594444444444,
+    "px": 1155,
+    "py": 292,
+    "category": "Office",
+    "type": "FACILITY",
+    "id": "bureau_rhandi"
+  },
+  {
+    "name": "centre de formation  HSE PMP",
+    "lat": 33.103211111111115,
+    "lng": -8.604683333333332,
+    "px": 1125,
+    "py": 404,
+    "category": "Training",
+    "type": "FACILITY",
+    "id": "centre_de_formation_hse_pmp"
+  },
+  {
+    "name": "centre de recherche et developement",
+    "lat": 33.11067222222222,
+    "lng": -8.593338888888889,
+    "px": 1027,
+    "py": 321,
+    "category": "Research",
+    "type": "FACILITY",
+    "id": "centre_de_recherche_et_developement"
+  },
+  {
+    "name": "Centrelec",
+    "lat": 33.1092,
+    "lng": -8.606175,
+    "px": 964,
+    "py": 409,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "centrelec"
+  },
+  {
+    "name": "CENTRELEC SA (project offices)",
+    "lat": 33.10796944444444,
+    "lng": -8.596433333333334,
+    "px": 1071,
+    "py": 344,
+    "category": "Office",
+    "type": "FACILITY",
+    "id": "centrelec_sa_project_offices"
+  },
+  {
+    "name": "cobco factory",
+    "lat": 33.09134166666667,
+    "lng": -8.595155555555555,
+    "px": 1495,
+    "py": 351,
+    "category": "Production",
+    "type": "FACILITY",
+    "id": "cobco_factory"
+  },
+  {
+    "name": "complexe ocp jorf lasfar-porte principale",
+    "lat": 33.11756388888889,
+    "lng": -8.595797222222222,
+    "px": 836,
+    "py": 331,
+    "category": "Access",
+    "type": "FACILITY",
+    "id": "complexe_ocp_jorf_lasfar_porte_principale"
+  },
+  {
+    "name": "107 DEF ocp",
+    "lat": 33.094772222222225,
+    "lng": -8.615280555555556,
+    "px": 1253,
+    "py": 484,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "107_def_ocp"
+  },
+  {
+    "name": "DAP 107 E",
+    "lat": 33.094369444444446,
+    "lng": -8.615433333333334,
+    "px": 1262,
+    "py": 486,
+    "category": "Production",
+    "type": "FACILITY",
+    "id": "dap_107_e"
+  },
+  {
+    "name": "DAP-107 F",
+    "lat": 33.09480277777778,
+    "lng": -8.616502777777777,
+    "px": 1243,
+    "py": 492,
+    "category": "Production",
+    "type": "FACILITY",
+    "id": "dap_107_f"
+  },
+  {
+    "name": "DDDD",
+    "lat": 33.09111111111111,
+    "lng": -8.607794444444444,
+    "px": 1403,
+    "py": 437,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "dddd"
+  },
+  {
+    "name": "decharge zone 2",
+    "lat": 33.09745,
+    "lng": -8.62081388888889,
+    "px": 1143,
+    "py": 519,
+    "category": "Waste",
+    "type": "FACILITY",
+    "id": "decharge_zone_2"
+  },
+  {
+    "name": "desalement ocp",
+    "lat": 33.11916388888889,
+    "lng": -8.599822222222222,
+    "px": 765,
+    "py": 357,
+    "category": "Water",
+    "type": "FACILITY",
+    "id": "desalement_ocp"
+  },
+  {
+    "name": "desalination plant",
+    "lat": 33.11896111111111,
+    "lng": -8.599441666666667,
+    "px": 773,
+    "py": 354,
+    "category": "Water",
+    "type": "FACILITY",
+    "id": "desalination_plant"
+  },
+  {
+    "name": "DOWNstreamflashdryer",
+    "lat": 33.110144444444444,
+    "lng": -8.6216,
+    "px": 821,
+    "py": 513,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "downstreamflashdryer"
+  },
+  {
+    "name": "emaphos(euro-maroc phosphore)",
+    "lat": 33.11321944444445,
+    "lng": -8.60553611111111,
+    "px": 869,
+    "py": 401,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "emaphos_euro_maroc_phosphore"
+  },
+  {
+    "name": "entre est ocp",
+    "lat": 33.11135277777778,
+    "lng": -8.576244444444445,
+    "px": 1143,
+    "py": 204,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "entre_est_ocp"
+  },
+  {
+    "name": "entre Nord ocp",
+    "lat": 33.108891666666665,
+    "lng": -8.579091666666667,
+    "px": 1182,
+    "py": 225,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "entre_nord_ocp"
+  },
+  {
+    "name": "entre principale",
+    "lat": 33.11533333333333,
+    "lng": -8.597130555555555,
+    "px": 882,
+    "py": 342,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "entre_principale"
+  },
+  {
+    "name": "entreee ouest ocp",
+    "lat": 33.13011388888889,
+    "lng": -8.608938888888888,
+    "px": 421,
+    "py": 408,
+    "category": "Access",
+    "type": "FACILITY",
+    "id": "entreee_ouest_ocp"
+  },
+  {
+    "name": "es data",
+    "lat": 33.11923888888889,
+    "lng": -8.608933333333333,
+    "px": 693,
+    "py": 418,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "es_data"
+  },
+  {
+    "name": "FLUORALPHA",
+    "lat": 33.08901111111111,
+    "lng": -8.615163888888889,
+    "px": 1398,
+    "py": 489,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "fluoralpha"
+  },
+  {
+    "name": "FLUORALPHA JESA TSF",
+    "lat": 33.089872222222226,
+    "lng": -8.615852777777777,
+    "px": 1371,
+    "py": 493,
+    "category": "Production",
+    "type": "FACILITY",
+    "id": "fluoralpha_jesa_tsf"
+  },
+  {
+    "name": "generale",
+    "lat": 33.11069722222222,
+    "lng": -8.600041666666666,
+    "px": 975,
+    "py": 366,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "generale"
+  },
+  {
+    "name": "GNGR NEW TECH MORROCO",
+    "lat": 33.07795,
+    "lng": 8.601227777777778,
+    "px": 1510,
+    "py": 10,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "gngr_new_tech_morroco"
+  },
+  {
+    "name": "GOBCO",
+    "lat": 33.080194444444444,
+    "lng": -8.603161111111111,
+    "px": 1510,
+    "py": 415,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "gobco"
+  },
+  {
+    "name": "GTR JORFoffice",
+    "lat": 33.089908333333334,
+    "lng": -8.61701388888889,
+    "px": 1361,
+    "py": 500,
+    "category": "Office",
+    "type": "FACILITY",
+    "id": "gtr_jorfoffice"
+  },
+  {
+    "name": "Idea factory",
+    "lat": 33.11504722222222,
+    "lng": -8.602091666666666,
+    "px": 850,
+    "py": 376,
+    "category": "Production",
+    "type": "FACILITY",
+    "id": "idea_factory"
+  },
+  {
+    "name": "IMACID",
+    "lat": 33.10512777777778,
+    "lng": -8.596222222222222,
+    "px": 1143,
+    "py": 345,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "imacid"
+  },
+  {
+    "name": "infirmerie OCP",
+    "lat": 33.11152777777778,
+    "lng": -8.600624999999999,
+    "px": 949,
+    "py": 369,
+    "category": "Medical",
+    "type": "FACILITY",
+    "id": "infirmerie_ocp"
+  },
+  {
+    "name": "jesa mission",
+    "lat": 33.11839722222222,
+    "lng": -8.595761111111111,
+    "px": 816,
+    "py": 330,
+    "category": "Office",
+    "type": "FACILITY",
+    "id": "jesa_mission"
+  },
+  {
+    "name": "jesa site office",
+    "lat": 33.10665277777778,
+    "lng": -8.594125,
+    "px": 1121,
+    "py": 330,
+    "category": "Office",
+    "type": "FACILITY",
+    "id": "jesa_site_office"
+  },
+  {
+    "name": "JESA TSF BLOC 7 JPH",
+    "lat": 33.113197222222226,
+    "lng": -8.608613888888888,
+    "px": 846,
+    "py": 422,
+    "category": "Production",
+    "type": "FACILITY",
+    "id": "jesa_tsf_bloc_7_jph"
+  },
+  {
+    "name": "JESA BLOC 6",
+    "lat": 33.113286111111115,
+    "lng": -8.608313888888889,
+    "px": 846,
+    "py": 420,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "jesa_bloc_6"
+  },
+  {
+    "name": "JFC 1",
+    "lat": 33.100875,
+    "lng": -8.598725,
+    "px": 1230,
+    "py": 366,
+    "category": "Production",
+    "type": "FACILITY",
+    "id": "jfc_1"
+  },
+  {
+    "name": "JFC4-ODI P5",
+    "lat": 33.09917222222222,
+    "lng": -8.608552777777778,
+    "px": 1196,
+    "py": 434,
+    "category": "Production",
+    "type": "FACILITY",
+    "id": "jfc4_odi_p5"
+  },
+  {
+    "name": "JOHN COCKERILL MAROC TSF",
+    "lat": 33.092475,
+    "lng": -8.619152777777778,
+    "px": 1280,
+    "py": 513,
+    "category": "Production",
+    "type": "FACILITY",
+    "id": "john_cockerill_maroc_tsf"
+  },
+  {
+    "name": "Jorf fertilizer company 4(JFC4)",
+    "lat": 33.09705833333334,
+    "lng": -8.6096,
+    "px": 1240,
+    "py": 443,
+    "category": "Production",
+    "type": "FACILITY",
+    "id": "jorf_fertilizer_company_4_jfc4"
+  },
+  {
+    "name": "jorf fertilizer company V (JFC V)",
+    "lat": 33.10276388888889,
+    "lng": -8.606211111111111,
+    "px": 1124,
+    "py": 415,
+    "category": "Production",
+    "type": "FACILITY",
+    "id": "jorf_fertilizer_company_v_jfc_v"
+  },
+  {
+    "name": "Jorf fertilizer company2 (JFC 2)",
+    "lat": 33.09765,
+    "lng": -8.611855555555556,
+    "px": 1208,
+    "py": 458,
+    "category": "Production",
+    "type": "FACILITY",
+    "id": "jorf_fertilizer_company2_jfc_2"
+  },
+  {
+    "name": "jorf fertilizers company V (JFC5)",
+    "lat": 33.10215277777778,
+    "lng": -8.607075,
+    "px": 1133,
+    "py": 422,
+    "category": "Production",
+    "type": "FACILITY",
+    "id": "jorf_fertilizers_company_v_jfc5"
+  },
+  {
+    "name": "KOFERT ex JFC2",
+    "lat": 33.098330555555556,
+    "lng": -8.598041666666667,
+    "px": 1298,
+    "py": 364,
+    "category": "Production",
+    "type": "FACILITY",
+    "id": "kofert_ex_jfc2"
+  },
+  {
+    "name": "la base",
+    "lat": 33.10978611111111,
+    "lng": -8.613911111111111,
+    "px": 890,
+    "py": 461,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "la_base"
+  },
+  {
+    "name": "ligne AB",
+    "lat": 33.11102777777778,
+    "lng": -8.60211111111111,
+    "px": 950,
+    "py": 380,
+    "category": "Production",
+    "type": "FACILITY",
+    "id": "ligne_ab"
+  },
+  {
+    "name": "LIGNE F",
+    "lat": 33.11277777777778,
+    "lng": -8.601713888888888,
+    "px": 910,
+    "py": 375,
+    "category": "Production",
+    "type": "FACILITY",
+    "id": "ligne_f"
+  },
+  {
+    "name": "MAG downstream",
+    "lat": 33.107194444444445,
+    "lng": -8.615522222222221,
+    "px": 942,
+    "py": 474,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "mag_downstream"
+  },
+  {
+    "name": "MOLTEN SULFUR  U363",
+    "lat": 33.119638888888886,
+    "lng": -8.607991666666667,
+    "px": 690,
+    "py": 412,
+    "category": "Production",
+    "type": "FACILITY",
+    "id": "molten_sulfur_u363"
+  },
+  {
+    "name": "NEW RSS",
+    "lat": 33.10829722222223,
+    "lng": -8.619183333333334,
+    "px": 886,
+    "py": 498,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "new_rss"
+  },
+  {
+    "name": "OCP CONTROL TOWER",
+    "lat": 33.10881388888889,
+    "lng": -8.59185,
+    "px": 1085,
+    "py": 312,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "ocp_control_tower"
+  },
+  {
+    "name": "ocp green water",
+    "lat": 33.11660277777778,
+    "lng": -8.598922222222223,
+    "px": 836,
+    "py": 353,
+    "category": "Water",
+    "type": "FACILITY",
+    "id": "ocp_green_water"
+  },
+  {
+    "name": "ocp jorf Lasfar",
+    "lat": 33.099044444444445,
+    "lng": -8.59698888888889,
+    "px": 1289,
+    "py": 356,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "ocp_jorf_lasfar"
+  },
+  {
+    "name": "ocp mainteance solution Jorf Lasfar",
+    "lat": 33.110327777777776,
+    "lng": -8.599425,
+    "px": 989,
+    "py": 362,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "ocp_mainteance_solution_jorf_lasfar"
+  },
+  {
+    "name": "OFAS",
+    "lat": 33.09182777777778,
+    "lng": -8.609791666666666,
+    "px": 1369,
+    "py": 450,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "ofas"
+  },
+  {
+    "name": "PAKISTAN Maroc phosphore",
+    "lat": 33.10486944444445,
+    "lng": -8.60426388888889,
+    "px": 1087,
+    "py": 400,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "pakistan_maroc_phosphore"
+  },
+  {
+    "name": "PARKX",
+    "lat": 33.081988888888894,
+    "lng": -8.609427777777777,
+    "px": 1510,
+    "py": 456,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "parkx"
+  },
+  {
+    "name": "PE 262",
+    "lat": 33.12220277777778,
+    "lng": -8.61421111111111,
+    "px": 578,
+    "py": 452,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "pe_262"
+  },
+  {
+    "name": "PJ-2",
+    "lat": 33.12106388888889,
+    "lng": -8.618372222222222,
+    "px": 574,
+    "py": 481,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "pj_2"
+  },
+  {
+    "name": "PMP",
+    "lat": 33.10493888888889,
+    "lng": -8.605872222222223,
+    "px": 1073,
+    "py": 411,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "pmp"
+  },
+  {
+    "name": "point de rassemblement JPH",
+    "lat": 33.112008333333335,
+    "lng": -8.613994444444444,
+    "px": 834,
+    "py": 459,
+    "category": "Safety",
+    "type": "FACILITY",
+    "id": "point_de_rassemblement_jph"
+  },
+  {
+    "name": "printer C 308",
+    "lat": 33.10158888888889,
+    "lng": -8.59131388888889,
+    "px": 1269,
+    "py": 315,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "printer_c_308"
+  },
+  {
+    "name": "entite infrastructure JPH",
+    "lat": 33.11246111111111,
+    "lng": -8.613388888888888,
+    "px": 827,
+    "py": 455,
+    "category": "Access",
+    "type": "FACILITY",
+    "id": "entite_infrastructure_jph"
+  },
+  {
+    "name": "salle de controle phosphorique",
+    "lat": 33.10626111111111,
+    "lng": -8.596755555555555,
+    "px": 1111,
+    "py": 348,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "salle_de_controle_phosphorique"
+  },
+  {
+    "name": "Scif TSF",
+    "lat": 33.09178333333334,
+    "lng": -8.61196111111111,
+    "px": 1353,
+    "py": 464,
+    "category": "Production",
+    "type": "FACILITY",
+    "id": "scif_tsf"
+  },
+  {
+    "name": "SMART COMPOSITE COMPANY  TSF",
+    "lat": 33.091950000000004,
+    "lng": -8.612736111111111,
+    "px": 1343,
+    "py": 470,
+    "category": "Production",
+    "type": "FACILITY",
+    "id": "smart_composite_company_tsf"
+  },
+  {
+    "name": "service electrique MMG",
+    "lat": 33.108105555555554,
+    "lng": -8.587869444444445,
+    "px": 1134,
+    "py": 286,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "service_electrique_mmg"
+  },
+  {
+    "name": "Service genie civil",
+    "lat": 33.107705555555555,
+    "lng": -8.588980555555557,
+    "px": 1135,
+    "py": 294,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "service_genie_civil"
+  },
+  {
+    "name": "SOGEA AHF PLANT",
+    "lat": 33.08870833333334,
+    "lng": -8.61398611111111,
+    "px": 1414,
+    "py": 481,
+    "category": "Production",
+    "type": "FACILITY",
+    "id": "sogea_ahf_plant"
+  },
+  {
+    "name": "sogea maroc office",
+    "lat": 33.101086111111115,
+    "lng": -8.592541666666667,
+    "px": 1272,
+    "py": 324,
+    "category": "Office",
+    "type": "FACILITY",
+    "id": "sogea_maroc_office"
+  },
+  {
+    "name": "Station Desalement d'eau de mer Jorflasfar",
+    "lat": 33.11586944444445,
+    "lng": -8.600763888888888,
+    "px": 840,
+    "py": 366,
+    "category": "Water",
+    "type": "FACILITY",
+    "id": "station_desalement_d_eau_de_mer_jorflasfar"
+  },
+  {
+    "name": "station terminale",
+    "lat": 33.096383333333335,
+    "lng": -8.595922222222223,
+    "px": 1363,
+    "py": 351,
+    "category": "Transport",
+    "type": "FACILITY",
+    "id": "station_terminale"
+  },
+  {
+    "name": "strocJPH",
+    "lat": 33.119172222222225,
+    "lng": -8.607197222222222,
+    "px": 708,
+    "py": 407,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "strocjph"
+  },
+  {
+    "name": "Ted ligne  D",
+    "lat": 33.10900277777778,
+    "lng": -8.595411111111112,
+    "px": 1053,
+    "py": 336,
+    "category": "Production",
+    "type": "FACILITY",
+    "id": "ted_ligne_d"
+  },
+  {
+    "name": "TSF  JESA HANDLING PROJECT",
+    "lat": 33.095666666666666,
+    "lng": -8.618755555555556,
+    "px": 1204,
+    "py": 507,
+    "category": "Production",
+    "type": "FACILITY",
+    "id": "tsf_jesa_handling_project"
+  },
+  {
+    "name": "TSF JESA HANDLING SYSTEM &AX3 project",
+    "lat": 33.097411111111114,
+    "lng": -8.605972222222222,
+    "px": 1260,
+    "py": 419,
+    "category": "Production",
+    "type": "FACILITY",
+    "id": "tsf_jesa_handling_system_ax3_project"
+  },
+  {
+    "name": "TSF NEW WATER",
+    "lat": 33.11072222222222,
+    "lng": -8.591466666666667,
+    "px": 1041,
+    "py": 308,
+    "category": "Water",
+    "type": "FACILITY",
+    "id": "tsf_new_water"
+  },
+  {
+    "name": "TSF SCIF AMMONIA STORAGE",
+    "lat": 33.093275000000006,
+    "lng": -8.612072222222222,
+    "px": 1315,
+    "py": 464,
+    "category": "Production",
+    "type": "FACILITY",
+    "id": "tsf_scif_ammonia_storage"
+  },
+  {
+    "name": "TSF X DAEWOO",
+    "lat": 33.10225833333333,
+    "lng": -8.591852777777778,
+    "px": 1249,
+    "py": 318,
+    "category": "Production",
+    "type": "FACILITY",
+    "id": "tsf_x_daewoo"
+  },
+  {
+    "name": "TSP1",
+    "lat": 33.10283888888889,
+    "lng": -8.615641666666667,
+    "px": 1049,
+    "py": 479,
+    "category": "Production",
+    "type": "FACILITY",
+    "id": "tsp1"
+  },
+  {
+    "name": "wave 2 east",
+    "lat": 33.11456388888889,
+    "lng": -8.592641666666667,
+    "px": 936,
+    "py": 312,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "wave_2_east"
+  },
+  {
+    "name": "centre sensibilisation ocp",
+    "lat": 33.114044444444446,
+    "lng": -8.587580555555556,
+    "px": 988,
+    "py": 278,
+    "category": "Facility",
+    "type": "FACILITY",
+    "id": "centre_sensibilisation_ocp"
+  }
+]

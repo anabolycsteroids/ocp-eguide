@@ -1,0 +1,14 @@
+{
+  "name": "ocp-eguide-monorepo",
+  "private": true,
+  "version": "1.0.0",
+  "description": "OCP eGuide — interactive campus guide (Next.js frontend + Express API)",
+  "scripts": {
+    "dev:all": "bash scripts/dev-all.sh",
+    "dev:frontend": "npm --prefix freebuff-frontend run dev",
+    "dev:backend": "npm --prefix backend run dev",
+    "build": "npm --prefix backend run build && npm --prefix freebuff-frontend run build",
+    "start": "./start.sh",
+    "map:regen": "node freebuff-frontend/scripts/regenerate-map.mjs"
+  }
+}

@@ -1,0 +1,479 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  ADMIN
+  EMPLOYEE
+  INTERN
+  VISITOR
+  COLLABORATOR
+  PARTNER
+  SUPPLIER
+  SERVICE_PROVIDER
+}
+
+enum UserStatus {
+  ONLINE
+  BUSY
+  OFFLINE
+}
+
+enum PresenceStatus {
+  ACTIVE
+  BUSY
+  OFFLINE
+}
+
+enum PlaceStatus {
+  AVAILABLE
+  BUSY
+  FULL
+  CLOSED
+}
+
+enum UserAccountStatus {
+  ACTIVE
+  INACTIVE
+  PENDING
+  SUSPENDED
+}
+
+enum RequestType {
+  DOCUMENT_REQUEST
+  ACCESS_REQUEST
+  MEETING_REQUEST
+  SUPERVISOR_REQUEST
+  GENERAL_REQUEST
+}
+
+enum RequestStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  CANCELLED
+}
+
+enum TaskStatus {
+  TODO
+  IN_PROGRESS
+  REVIEW
+  COMPLETED
+  CANCELLED
+}
+
+enum TaskPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+enum VisitStatus {
+  PENDING
+  APPROVED
+  ARRIVED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum InternshipStatus {
+  PLANNED
+  ACTIVE
+  COMPLETED
+  TERMINATED
+}
+
+enum NotificationType {
+  TASK_ASSIGNED
+  TASK_UPDATED
+  REQUEST_CREATED
+  REQUEST_UPDATED
+  REQUEST_APPROVED
+  REQUEST_REJECTED
+  SUPERVISOR_MESSAGE
+  GENERAL
+  ANNOUNCEMENT
+  SYSTEM
+}
+
+enum LocationCategory {
+  OFFICE
+  DEPARTMENT
+  FACILITY
+  MOSQUE
+  RECEPTION
+  PARKING
+  SAFETY
+  OTHER
+}
+
+enum Department {
+  MANAGEMENT
+  HUMAN_RESOURCES
+  IT
+  SECURITY
+  FINANCE
+  ENGINEERING
+  RECEPTION
+  MAINTENANCE
+  LOGISTICS
+  LEGAL
+  COMMUNICATION
+  RESEARCH
+  OTHER
+}
+
+model User {
+  id            String          @id @default(uuid())
+  firstName     String
+  lastName      String
+  email         String          @unique
+  passwordHash  String?
+  role          UserRole        @default(EMPLOYEE)
+  department    Department      @default(OTHER)
+  position      String?
+  phone         String?
+  avatar        String?
+  status        UserStatus      @default(OFFLINE)
+  accountStatus UserAccountStatus @default(ACTIVE)
+  provider      String          @default("local")
+  lastActiveAt  DateTime        @default(now())
+  lastLoginAt   DateTime?
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  profileId     String?
+  profile       Profile?        @relation(fields: [profileId], references: [id])
+
+  supervisorId  String?
+  supervisor    User?           @relation("SupervisorRelation", fields: [supervisorId], references: [id])
+  interns       User[]          @relation("SupervisorRelation")
+
+  internProfile       InternProfile?
+  supervisorProfile   SupervisorProfile?
+  notifications       Notification[]      @relation("NotificationRecipient")
+  sentNotifications   Notification[]      @relation("NotificationSender")
+  tasks               Task[]              @relation("TaskAssignee")
+  createdTasks        Task[]              @relation("TaskCreator")
+  requests            Request[]           @relation("RequestCreator")
+  handledRequests     Request[]           @relation("RequestHandler")
+  internshipsAsIntern Internship[]        @relation("InternInternship")
+  internshipsAsSupervisor Internship[]    @relation("SupervisorInternship")
+  refreshTokens       RefreshToken[]
+  qrCodes             QrCode[]
+  presence            Presence?
+  visitsAsVisitor     Visit[]             @relation("VisitVisitor")
+  visitsAsHost        Visit[]             @relation("VisitHost")
+
+  @@index([email])
+  @@index([role])
+  @@index([department])
+  @@index([supervisorId])
+  @@index([status])
+  @@index([profileId])
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([token])
+  @@index([userId])
+}
+
+model Profile {
+  id             String   @id @default(uuid())
+  name           String
+  slug           String   @unique
+  emailSlug      String?  @unique
+  category       String
+  department     String?
+  dashboardRoute String
+  active         Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  users          User[]
+
+  @@index([slug])
+  @@index([category])
+}
+
+model InternProfile {
+  id           String   @id @default(uuid())
+  userId       String   @unique
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  university   String?
+  major        String?
+  educationLevel String?
+  startDate    DateTime
+  endDate      DateTime?
+  mentorId     String?
+  notes        String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model SupervisorProfile {
+  id              String   @id @default(uuid())
+  userId          String   @unique
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  maxInterns      Int      @default(5)
+  specializations  String?
+  bio             String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Internship {
+  id          String           @id @default(uuid())
+  title       String
+  description String?
+  status      InternshipStatus @default(PLANNED)
+  startDate   DateTime
+  endDate     DateTime?
+  department  Department
+  objectives  String?
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+
+  internId    String
+  intern      User             @relation("InternInternship", fields: [internId], references: [id])
+  supervisorId String
+  supervisor  User             @relation("SupervisorInternship", fields: [supervisorId], references: [id])
+
+  progress    InternshipProgress?
+  tasks       Task[]
+  documents   Document[]
+
+  @@index([internId])
+  @@index([supervisorId])
+  @@index([status])
+}
+
+model InternshipProgress {
+  id              String   @id @default(uuid())
+  internshipId    String   @unique
+  internship      Internship @relation(fields: [internshipId], references: [id], onDelete: Cascade)
+  completedTasks  Int      @default(0)
+  totalTasks      Int      @default(0)
+  percentage      Float    @default(0)
+  currentModule   String?
+  totalModules    Int      @default(0)
+  completedModules Int     @default(0)
+  notes           String?
+  lastUpdated     DateTime @default(now())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Task {
+  id          String       @id @default(uuid())
+  title       String
+  description String?
+  status      TaskStatus   @default(TODO)
+  priority    TaskPriority @default(MEDIUM)
+  dueDate     DateTime?
+  completedAt DateTime?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  internshipId String
+  internship   Internship  @relation(fields: [internshipId], references: [id], onDelete: Cascade)
+  assigneeId   String?
+  assignee     User?       @relation("TaskAssignee", fields: [assigneeId], references: [id])
+  creatorId    String?
+  creator      User?       @relation("TaskCreator", fields: [creatorId], references: [id])
+
+  @@index([internshipId])
+  @@index([assigneeId])
+  @@index([status])
+}
+
+model Request {
+  id          String        @id @default(uuid())
+  type        RequestType
+  title       String
+  description String?
+  status      RequestStatus @default(PENDING)
+  response    String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  resolvedAt  DateTime?
+
+  creatorId   String
+  creator     User          @relation("RequestCreator", fields: [creatorId], references: [id])
+  handlerId   String?
+  handler     User?         @relation("RequestHandler", fields: [handlerId], references: [id])
+
+  @@index([creatorId])
+  @@index([handlerId])
+  @@index([status])
+  @@index([type])
+}
+
+model Document {
+  id          String   @id @default(uuid())
+  name        String
+  fileUrl     String?
+  fileType    String?
+  fileSize    Int?
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  internshipId String
+  internship   Internship @relation(fields: [internshipId], references: [id], onDelete: Cascade)
+}
+
+model Notification {
+  id        String           @id @default(uuid())
+  title     String
+  message   String
+  type      NotificationType @default(GENERAL)
+  read      Boolean          @default(false)
+  createdAt DateTime         @default(now())
+
+  recipientId String
+  recipient   User   @relation("NotificationRecipient", fields: [recipientId], references: [id], onDelete: Cascade)
+  senderId    String?
+  sender      User?  @relation("NotificationSender", fields: [senderId], references: [id])
+
+  @@index([recipientId])
+  @@index([read])
+  @@index([createdAt])
+}
+
+model Location {
+  id          String           @id @default(uuid())
+  name        String
+  description String?
+  category    LocationCategory @default(OTHER)
+  latitude    Float?
+  longitude   Float?
+  building    String?
+  floor       String?
+  roomNumber  String?
+  metadata    Json?
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+
+  qrCodes     QrCode[]
+
+  @@index([category])
+  @@index([building])
+}
+
+model QrCode {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  type      String
+  payload   Json?
+  active    Boolean  @default(true)
+  expiresAt DateTime?
+  createdAt DateTime @default(now())
+
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  locationId String?
+  location  Location? @relation(fields: [locationId], references: [id], onDelete: SetNull)
+
+  visit     Visit?
+
+  @@index([token])
+  @@index([active])
+}
+
+model Presence {
+  id        String         @id @default(uuid())
+  userId    String         @unique
+  user      User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status    PresenceStatus @default(OFFLINE)
+  statusNote String?
+  lastSeen  DateTime       @default(now())
+  lastHeartbeat DateTime  @default(now())
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+
+  @@index([userId])
+  @@index([status])
+}
+
+model Place {
+  id                String     @id @default(uuid())
+  name              String
+  code              String     @unique
+  description       String?
+  type              String     @default("FACILITY")
+  latitude          Float?
+  longitude         Float?
+  capacity          Int        @default(0)
+  currentOccupancy  Int        @default(0)
+  status            PlaceStatus @default(AVAILABLE)
+  metadata          Json?
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+
+  occupancies       PlaceOccupancy[]
+  visits            Visit[]
+
+  @@index([code])
+  @@index([status])
+}
+
+model PlaceOccupancy {
+  id        String   @id @default(uuid())
+  placeId   String
+  place     Place    @relation(fields: [placeId], references: [id], onDelete: Cascade)
+  currentOccupancy Int @default(0)
+  capacity  Int      @default(0)
+  status    PlaceStatus @default(AVAILABLE)
+  recordedAt DateTime @default(now())
+
+  @@index([placeId])
+  @@index([recordedAt])
+}
+
+model Visit {
+  id            String      @id @default(uuid())
+  purpose       String
+  status        VisitStatus @default(PENDING)
+  scheduledDate DateTime
+  scheduledTime String?
+  checkedInAt   DateTime?
+  checkedOutAt  DateTime?
+  notes         String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  visitorId String?
+  visitor   User?     @relation("VisitVisitor", fields: [visitorId], references: [id], onDelete: Cascade)
+  hostId    String
+  host      User     @relation("VisitHost", fields: [hostId], references: [id], onDelete: Cascade)
+  placeId   String?
+  place     Place?   @relation(fields: [placeId], references: [id], onDelete: SetNull)
+  qrCodeId  String?   @unique
+  qrCode    QrCode?   @relation(fields: [qrCodeId], references: [id], onDelete: SetNull)
+
+  guestToken String?  @unique
+  guestName  String?
+  guestEmail String?
+  guestPhone String?
+
+  @@index([visitorId])
+  @@index([hostId])
+  @@index([status])
+  @@index([scheduledDate])
+  @@index([guestToken])
+}

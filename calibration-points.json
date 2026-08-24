@@ -1,0 +1,88 @@
+{
+  "capturedAt": "2026-08-24T01:01:50.907Z",
+  "imageFile": "campus-map-wide.png",
+  "imageWidth": 776,
+  "imageHeight": 942,
+  "points": [
+    {
+      "id": "strocjph",
+      "name": "STROC JPH",
+      "gps": {
+        "lat": 33.119172,
+        "lng": -8.607197
+      },
+      "x": 326,
+      "y": 183
+    },
+    {
+      "id": "porte_principale",
+      "name": "Porte Principale (main gate)",
+      "gps": {
+        "lat": 33.117564,
+        "lng": -8.595797
+      },
+      "x": 467,
+      "y": 207
+    },
+    {
+      "id": "idea_factory",
+      "name": "Idea Factory",
+      "gps": {
+        "lat": 33.115047,
+        "lng": -8.602092
+      },
+      "x": 386,
+      "y": 242
+    },
+    {
+      "id": "entre_est_ocp",
+      "name": "Entree EST ocp (eastern entrance)",
+      "gps": {
+        "lat": 33.111353,
+        "lng": -8.576244
+      },
+      "x": 767,
+      "y": 247
+    },
+    {
+      "id": "imacid",
+      "name": "IMACID",
+      "gps": {
+        "lat": 33.105128,
+        "lng": -8.596222
+      },
+      "x": 461,
+      "y": 391
+    },
+    {
+      "id": "jfc_1",
+      "name": "JFC 1",
+      "gps": {
+        "lat": 33.100875,
+        "lng": -8.598725
+      },
+      "x": 429,
+      "y": 457
+    },
+    {
+      "id": "gngr_new_tech_morroco",
+      "name": "GNGR NEW TECH MORROCO (far SE plant)",
+      "gps": {
+        "lat": 33.07795,
+        "lng": -8.601228
+      },
+      "x": 391,
+      "y": 817
+    },
+    {
+      "id": "fluoralpha",
+      "name": "FLUORALPHA (southern plant)",
+      "gps": {
+        "lat": 33.089011,
+        "lng": -8.615164
+      },
+      "x": 218,
+      "y": 640
+    }
+  ]
+}
