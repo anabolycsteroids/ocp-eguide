@@ -65,7 +65,25 @@ export class InternalError extends AppError {
   }
 }
 
-export function errorHandler(err: Error, req: Request, res: Response, _next: NextFunction): void {
+export function errorHandler(err: Error & { type?: string; statusCode?: number }, req: Request, res: Response, _next: NextFunction): void {
+  // Body-parser failures (malformed JSON, oversized payloads) are client errors.
+  if (err.type === "entity.parse.failed" || err.type === "entity.too.large" || err instanceof SyntaxError && err.statusCode === 400) {
+    res.status(err.type === "entity.too.large" ? 413 : 400).json({
+      success: false,
+      error: { code: err.type === "entity.too.large" ? "PAYLOAD_TOO_LARGE" : "BAD_REQUEST", message: "Invalid request body" },
+    });
+    return;
+  }
+
+  // CORS origin rejections are client errors, not server faults.
+  if (err.message?.includes("not allowed by CORS")) {
+    res.status(403).json({
+      success: false,
+      error: { code: "FORBIDDEN", message: "Origin not allowed" },
+    });
+    return;
+  }
+
   if (err instanceof AppError) {
     const response: ApiResponse = {
       success: false,

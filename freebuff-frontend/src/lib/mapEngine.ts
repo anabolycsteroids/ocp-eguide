@@ -24,34 +24,46 @@ export interface MapOverlay {
 }
 export let MAP_OVERLAYS: MapOverlay[] = [];
 
+// Module-level cache: the map dataset is static per deployment; refetching
+// ~2.5MB of JSON on every component mount is wasted work.
+let dataCache: MapData | null = null;
+let dataCachePromise: Promise<MapData> | null = null;
+
 export async function loadMapData(): Promise<MapData> {
-  const [placesRes, nodesRes, edgesRes, connRes, configRes] = await Promise.all([
-    fetch("/assets/map/places.json"),
-    fetch("/assets/map/nodes.json"),
-    fetch("/assets/map/edges.json"),
-    fetch("/assets/map/place-node-connections.json"),
-    fetch("/assets/map/map-config.json"),
-  ]);
-  const [placesJson, nodesJson, edgesJson, connJson, configJson] = await Promise.all([
-    placesRes.json(), nodesRes.json(), edgesRes.json(), connRes.json(), configRes.json(),
-  ]);
-  const img = configJson.image;
-  if (img?.width > 0 && img?.height > 0) {
-    MAP_W = img.width;
-    MAP_H = img.height;
-    MAP_IMAGE = `/assets/map/${img.file}`;
-  } else {
-    MAP_W = configJson.coordinateSystem?.width ?? 1520;
-    MAP_H = configJson.coordinateSystem?.height ?? 933;
+  if (dataCache) return dataCache;
+  if (!dataCachePromise) {
+    dataCachePromise = (async () => {
+      const [placesRes, nodesRes, edgesRes, connRes, configRes] = await Promise.all([
+        fetch("/assets/map/places.json"),
+        fetch("/assets/map/nodes.json"),
+        fetch("/assets/map/edges.json"),
+        fetch("/assets/map/place-node-connections.json"),
+        fetch("/assets/map/map-config.json"),
+      ]);
+      const [placesJson, nodesJson, edgesJson, connJson, configJson] = await Promise.all([
+        placesRes.json(), nodesRes.json(), edgesRes.json(), connRes.json(), configRes.json(),
+      ]);
+      const img = configJson.image;
+      if (img?.width > 0 && img?.height > 0) {
+        MAP_W = img.width;
+        MAP_H = img.height;
+        MAP_IMAGE = `/assets/map/${img.file}`;
+      } else {
+        MAP_W = configJson.coordinateSystem?.width ?? 1520;
+        MAP_H = configJson.coordinateSystem?.height ?? 933;
+      }
+      MAP_OVERLAYS = Array.isArray(configJson.overlays) ? configJson.overlays : [];
+      dataCache = {
+        places: placesJson.places,
+        nodes: nodesJson.nodes,
+        edges: edgesJson.edges,
+        connections: connJson.connections,
+        config: configJson,
+      };
+      return dataCache;
+    })();
   }
-  MAP_OVERLAYS = Array.isArray(configJson.overlays) ? configJson.overlays : [];
-  return {
-    places: placesJson.places,
-    nodes: nodesJson.nodes,
-    edges: edgesJson.edges,
-    connections: connJson.connections,
-    config: configJson,
-  };
+  return dataCachePromise;
 }
 
 function euclidean(a: { x: number; y: number }, b: { x: number; y: number }): number {
@@ -76,6 +88,16 @@ export function searchLocations(places: MapPlace[], query: string): SearchResult
   return results.sort((a, b) => b.score - a.score).slice(0, 10);
 }
 
+// Cached compiled graph (rebuilt only if the nodes/edges arrays change identity).
+let graphCache: {
+  nodes: MapNode[]; edges: MapEdge[];
+  nodeMap: Map<string, MapNode>;
+  adj: Map<string, { node: string; cost: number }[]>;
+} | null = null;
+
+// Cache of computed routes for repeated identical requests (graph is static).
+const routeCache = new Map<string, RoutePath[] | { error: string; place?: string }>();
+
 export function aStar(
   nodes: MapNode[], edges: MapEdge[],
   connections: PlaceNodeConnection[],
@@ -86,23 +108,30 @@ export function aStar(
   const endConn = connections.find(c => c.placeId === endPlaceId);
   if (!endConn) return { error: "Location not mapped", place: endPlaceId };
 
-  const nodeMap = new Map<string, MapNode>();
-  nodes.forEach(n => nodeMap.set(n.id, n));
+  // Adjacency + nodeMap are pure functions of the static graph arrays — build
+  // once per array identity instead of on every route request.
+  if (!graphCache || graphCache.nodes !== nodes || graphCache.edges !== edges) {
+    const nodeMapB = new Map<string, MapNode>();
+    nodes.forEach(n => nodeMapB.set(n.id, n));
+    const adjB = new Map<string, { node: string; cost: number }[]>();
+    nodes.forEach(n => adjB.set(n.id, []));
+    edges.forEach(e => {
+      if (!e.walkable) return;
+      const a = nodeMapB.get(e.from), b = nodeMapB.get(e.to);
+      if (!a || !b) return;
+      const cost = euclidean(a, b);
+      adjB.get(e.from)!.push({ node: e.to, cost });
+      adjB.get(e.to)!.push({ node: e.from, cost });
+    });
+    graphCache = { nodes, edges, nodeMap: nodeMapB, adj: adjB };
+  }
+  const graph = graphCache;
 
-  const startNode = nodeMap.get(startConn.nodeId);
-  const endNode = nodeMap.get(endConn.nodeId);
+  const startNode = graph.nodeMap.get(startConn.nodeId);
+  const endNode = graph.nodeMap.get(endConn.nodeId);
   if (!startNode || !endNode) return { error: "Graph disconnected" };
 
-  const adj = new Map<string, { node: string; cost: number }[]>();
-  nodes.forEach(n => adj.set(n.id, []));
-  edges.forEach(e => {
-    if (!e.walkable) return;
-    const a = nodeMap.get(e.from), b = nodeMap.get(e.to);
-    if (!a || !b) return;
-    const cost = euclidean(a, b);
-    adj.get(e.from)!.push({ node: e.to, cost });
-    adj.get(e.to)!.push({ node: e.from, cost });
-  });
+  const { nodeMap, adj } = graph;
 
   const g = new Map<string, number>();
   const f = new Map<string, number>();
@@ -193,10 +222,25 @@ export function genInstructions(path: RoutePath[], pixelsPerMeter: number): Rout
   return instr;
 }
 
+function buildRouteResult(
+  data: MapData, pathResult: RoutePath[] | { error: string; place?: string },
+): RouteResult | { error: string; place?: string } {
+  if ("error" in pathResult) return pathResult;
+  const ppm = data.config.navigation.pixelsPerMeter;
+  const ws = data.config.navigation.walkingSpeed;
+  const metrics = routeMetrics(pathResult, ppm, ws);
+  const instructions = genInstructions(pathResult, ppm);
+  return { path: pathResult, ...metrics, instructions };
+}
+
 export function getRoute(
   data: MapData, startPlaceId: string, endPlaceId: string,
 ): RouteResult | { error: string; place?: string } {
+  const cacheKey = `${startPlaceId}|${endPlaceId}`;
+  const cachedRoute = routeCache.get(cacheKey);
+  if (cachedRoute) return buildRouteResult(data, cachedRoute);
   const pathResult = aStar(data.nodes, data.edges, data.connections, startPlaceId, endPlaceId);
+  routeCache.set(cacheKey, pathResult);
   if ("error" in pathResult) return pathResult;
 
   const ppm = data.config.navigation.pixelsPerMeter;

@@ -237,6 +237,11 @@ export default function OCPMap({
     dragRef.current = { dragging: true, lastX: e.clientX, lastY: e.clientY, pinchDist: 0, moved: false };
   }, []);
 
+  // Coalesce pointermove deltas into one state update per animation frame —
+  // high-frequency pointer events otherwise trigger a render per event.
+  const panFrameRef = useRef<number | null>(null);
+  const pendingPanRef = useRef({ x: 0, y: 0 });
+
   const handlePointerMove = useCallback((e: React.PointerEvent) => {
     if (!dragRef.current.dragging) return;
     const dx = e.clientX - dragRef.current.lastX;
@@ -244,11 +249,28 @@ export default function OCPMap({
     if (Math.abs(dx) > 3 || Math.abs(dy) > 3) dragRef.current.moved = true;
     dragRef.current.lastX = e.clientX;
     dragRef.current.lastY = e.clientY;
-    setOffset(off => ({ x: off.x + dx, y: off.y + dy }));
+    pendingPanRef.current.x += dx;
+    pendingPanRef.current.y += dy;
+    if (panFrameRef.current === null) {
+      panFrameRef.current = requestAnimationFrame(() => {
+        panFrameRef.current = null;
+        const { x, y } = pendingPanRef.current;
+        if (x === 0 && y === 0) return;
+        pendingPanRef.current = { x: 0, y: 0 };
+        setOffset(off => ({ x: off.x + x, y: off.y + y }));
+      });
+    }
   }, []);
 
   const handlePointerUp = useCallback(() => {
     dragRef.current.dragging = false;
+    if (panFrameRef.current !== null) {
+      cancelAnimationFrame(panFrameRef.current);
+      panFrameRef.current = null;
+      const { x, y } = pendingPanRef.current;
+      pendingPanRef.current = { x: 0, y: 0 };
+      if (x !== 0 || y !== 0) setOffset(off => ({ x: off.x + x, y: off.y + y }));
+    }
     setTimeout(() => { dragRef.current.moved = false; }, 0);
   }, []);
 

@@ -11,6 +11,18 @@ const io = initializeSocketIO(server);
 (app as any).io = io;
 
 async function start() {
+  // Refuse to boot in production with development fallback secrets.
+  if (config.nodeEnv === "production") {
+    const weak = [
+      !config.jwt.secret || config.jwt.secret === "dev-jwt-secret",
+      !config.jwt.refreshSecret || config.jwt.refreshSecret === "dev-refresh-secret",
+    ];
+    if (weak.some(Boolean)) {
+      console.error("[Server] FATAL: production requires strong JWT_SECRET and JWT_REFRESH_SECRET in .env");
+      process.exit(1);
+    }
+  }
+
   try {
     await prisma.$connect();
     console.log("[Database] PostgreSQL connected");

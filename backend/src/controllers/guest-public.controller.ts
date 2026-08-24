@@ -5,7 +5,7 @@ import { ApiResponse } from "../types";
 export class GuestPublicController {
   async searchHosts(req: Request, res: Response, next: NextFunction) {
     try {
-      const q = (req.query.q as string) || "";
+      const q = String(req.query.q ?? "").slice(0, 80).trim();
       const hosts = await guestService.searchHosts(q);
       const response: ApiResponse = { success: true, data: hosts };
       res.status(200).json(response);

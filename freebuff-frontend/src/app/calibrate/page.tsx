@@ -21,6 +21,11 @@ const TARGETS = [
   { id: "ocp_control_tower", name: "OCP CONTROL TOWER", gps: { lat: 33.108814, lng: -8.591850 } },
   { id: "centrelec", name: "Centrelec", gps: { lat: 33.109200, lng: -8.606175 } },
   { id: "station_desalement", name: "Desalement ocp (desalination)", gps: { lat: 33.115869, lng: -8.600764 } },
+  // Refinement round 2 — misplaced-location corrections
+  { id: "pj_2", name: "PJ-2", gps: { lat: 33.12106388888889, lng: -8.618372222222222 } },
+  { id: "entreee_ouest_ocp", name: "Entree OUEST ocp (western entrance)", gps: { lat: 33.13011388888889, lng: -8.608938888888888 } },
+  { id: "centre_sensibilisation_ocp", name: "Centre de sensibilisation OCP", gps: { lat: 33.114044444444446, lng: -8.587580555555556 } },
+  { id: "parkx", name: "PARKX", gps: { lat: 33.081988888888894, lng: -8.609427777777777 } },
 ];
 
 const IMAGE_HD = "/assets/map/campus-map-hd.jpg";
@@ -131,28 +136,23 @@ function CaptureTab() {
     if (wasDrag) return;
     const n = toNative(e.clientX, e.clientY);
     if (!n || n.x < 0 || n.x >= nat.w || n.y < 0 || n.y >= nat.h) return;
-    const nextId = TARGETS[clicks.length]?.id;
-    const targetId =
-      nextId ??
-      (() => {
-        // All targets placed → replace the nearest existing click within 30px.
-        let best: { id: string; d: number } | null = null;
-        for (const c of clicks) {
-          const d = Math.hypot(c.x - n.x, c.y - n.y);
-          if (!best || d < best.d) best = { id: c.id, d };
-        }
-        return best && best.d <= 30 ? best.id : undefined;
-      })();
-    if (!targetId) return;
-    setClicks(c => {
-      const i = c.findIndex(p => p.id === targetId);
-      if (i >= 0) {
-        const nc = [...c];
-        nc[i] = { id: targetId, x: n.x, y: n.y };
-        return nc;
-      }
-      return [...c, { id: targetId, x: n.x, y: n.y }];
-    });
+    // Priority: correcting an existing marker (click within 150px of it) —
+    // works at any time, independent of placement order.
+    let best: { id: string; d: number } | null = null;
+    for (const c of clicks) {
+      const d = Math.hypot(c.x - n.x, c.y - n.y);
+      if (!best || d < best.d) best = { id: c.id, d };
+    }
+    if (best && best.d <= 150) {
+      const targetId = best.id;
+      setClicks(c => c.map(p => (p.id === targetId ? { id: targetId, x: n.x, y: n.y } : p)));
+      return;
+    }
+    // Otherwise assign the next not-yet-placed target in order.
+    const placedIds = new Set(clicks.map(c => c.id));
+    const next = TARGETS.find(t => !placedIds.has(t.id));
+    if (!next) return;
+    setClicks(c => [...c, { id: next.id, x: n.x, y: n.y }]);
   };
 
   const undo = () => setClicks(c => c.slice(0, -1));
@@ -181,14 +181,15 @@ function CaptureTab() {
     setCopied(true); setTimeout(() => setCopied(false), 2000);
   };
 
-  const nextTarget = TARGETS[clicks.length];
+  const placedIdsSet = new Set(clicks.map(c => c.id));
+  const nextTarget = TARGETS.find(t => !placedIdsSet.has(t.id));
   const allDone = clicks.length >= TARGETS.length;
 
   return (
     <div className="flex flex-1 min-h-0 flex-col">
       <div className="flex items-center gap-2 px-4 py-2 bg-[#0d2436] border-b border-white/10 text-xs text-gray-300 flex-wrap">
         <span className="font-semibold text-white">Workflow:</span>
-        <span>1 · Zoom &amp; click each listed building on the WIDE map</span>
+        <span>1 · Zoom &amp; click each listed building on the HD map</span>
         <span className="text-gray-500">→</span>
         <span>2 · Download JSON</span>
         <span className="text-gray-500">→</span>
@@ -198,9 +199,9 @@ function CaptureTab() {
       <div className="flex flex-1 min-h-0">
         <aside className="w-72 flex-shrink-0 overflow-y-auto bg-[#092033] border-r border-white/10 p-3 space-y-2">
           <p className="text-xs text-gray-400 leading-relaxed">
-            These 8 control points span the whole complex (north gate to southern plants).
+            {TARGETS.length} control points across the whole complex. Your previous captures are restored automatically — only the new/refined ones need clicking.
             Click the CENTER of each structure. Zoom in (wheel) — pixels sharpen past ×1.6.
-            To FIX a point after all 12 are placed: just click again within ~30px of it. Markers stay one fixed size at any zoom; labels appear when zoomed.
+            To FIX any point at any time: just click again within ~150px of its marker. Markers stay one fixed size at any zoom; labels appear when zoomed.
           </p>
           {TARGETS.map((t, i) => {
             const hit = clicks.find(c => c.id === t.id);
@@ -233,7 +234,7 @@ function CaptureTab() {
               <RotateCcw size={14} /> Reset
             </button>
             <div className="flex-1" />
-            <span className="text-xs text-gray-400">{allDone ? "All 8 captured ✓" : nextTarget ? `Next: ${nextTarget.name} (${clicks.length}/8)` : ""}</span>
+            <span className="text-xs text-gray-400">{allDone ? `All ${TARGETS.length} captured ✓` : nextTarget ? `Next: ${nextTarget.name} (${clicks.length}/${TARGETS.length})` : ""}</span>
             <button onClick={download} disabled={clicks.length < 4} className="flex items-center gap-1 text-xs px-3 py-1.5 rounded-lg bg-[#00a050] hover:bg-[#00b860] disabled:opacity-30 font-semibold">
               <Download size={14} /> Download JSON
             </button>
