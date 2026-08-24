@@ -23,6 +23,7 @@ const TARGETS = [
   { id: "station_desalement", name: "Desalement ocp (desalination)", gps: { lat: 33.115869, lng: -8.600764 } },
 ];
 
+const IMAGE_HD = "/assets/map/campus-map-hd.jpg";
 const IMAGE_WIDER = "/assets/map/campus-map-wider.png";
 const IMAGE_WIDE = "/assets/map/campus-map-wide.png";
 const IMAGE_CORE = "/assets/map/campus-map.png";
@@ -64,16 +65,16 @@ function CaptureTab() {
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [stage, setStage] = useState({ w: 0, h: 0 });
-  const [nat, setNat] = useState({ w: 1407, h: 932 });
+  const [nat, setNat] = useState({ w: 8192, h: 5282 });
   const wrapRef = useRef<HTMLDivElement>(null);
   const dragRef = useRef<{ sx: number; sy: number; ox: number; oy: number; moved: boolean } | null>(null);
 
   useEffect(() => {
-    const saved = localStorage.getItem("calib-clicks-wider");
+    const saved = localStorage.getItem("calib-clicks-hd");
     if (saved) { try { setClicks(JSON.parse(saved)); } catch {} }
   }, []);
   useEffect(() => {
-    localStorage.setItem("calib-clicks-wider", JSON.stringify(clicks));
+    localStorage.setItem("calib-clicks-hd", JSON.stringify(clicks));
   }, [clicks]);
 
   const layout = useCallback(() => {
@@ -159,7 +160,7 @@ function CaptureTab() {
 
   const buildJson = (): CalibrationFile => ({
     capturedAt: new Date().toISOString(),
-    imageFile: "campus-map-wider.png",
+    imageFile: "campus-map-hd.jpg",
     imageWidth: nat.w,
     imageHeight: nat.h,
     points: clicks.map(c => {
@@ -251,7 +252,7 @@ function CaptureTab() {
                 width: stage.w, height: stage.h,
                 transform: `scale(${zoom})`,
               }}>
-              <img src={IMAGE_WIDER} alt="campus satellite wider" draggable={false} className="w-full h-full"
+              <img src={IMAGE_HD} alt="campus satellite HD" draggable={false} className="w-full h-full"
                 style={{ imageRendering: zoom >= 1.6 ? "pixelated" : "auto" }}
                 onLoad={e => {
                   const im = e.currentTarget;
@@ -261,10 +262,13 @@ function CaptureTab() {
                 }} />
               {clicks.map(c => (
                 <div key={c.id} className="absolute pointer-events-none" style={{ left: `${(c.x / nat.w) * 100}%`, top: `${(c.y / nat.h) * 100}%` }}>
-                  <div className="relative" style={{ transform: `scale(${1 / zoom})`, transformOrigin: "0 0" }}>
-                    <div className="w-2.5 h-2.5 -ml-[5px] -mt-[5px] rounded-full border border-[#00e070] bg-black/50 shadow-[0_0_6px_rgba(0,224,112,0.9)]" />
+                  <div style={{ position: "relative", transform: `scale(${1 / zoom})`, transformOrigin: "0 0", width: 0, height: 0 }}>
+                    {/* crosshair through the exact clicked pixel */}
+                    <div style={{ position: "absolute", left: -9, top: -0.75, width: 18, height: 1.5, background: "#00e070", opacity: 0.85 }} />
+                    <div style={{ position: "absolute", left: -0.75, top: -9, width: 1.5, height: 18, background: "#00e070", opacity: 0.85 }} />
+                    <div style={{ position: "absolute", width: 11, height: 11, marginLeft: -5.5, marginTop: -5.5, borderRadius: "50%", border: "1.5px solid #00e070", background: "rgba(0,0,0,0.45)", boxShadow: "0 0 6px rgba(0,224,112,0.9)" }} />
                     {zoom >= 1.8 && (
-                      <div className="absolute left-3 -top-3 text-[9px] font-mono bg-black/80 text-[#00e070] px-1 rounded whitespace-nowrap">
+                      <div style={{ position: "absolute", left: 8, top: -22, fontSize: 9, fontFamily: "monospace", background: "rgba(0,0,0,0.8)", color: "#00e070", padding: "1px 4px", borderRadius: 4, whiteSpace: "nowrap" }}>
                         {TARGETS.find(t => t.id === c.id)?.name} ({Math.round(c.x)},{Math.round(c.y)})
                       </div>
                     )}

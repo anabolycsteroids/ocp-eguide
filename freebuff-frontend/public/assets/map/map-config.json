@@ -17,36 +17,59 @@
     "description": "Unified campus coordinate system. Coordinates are pixel positions on the campus-01 satellite image (1520x933).",
     "originX": 0,
     "originY": 0,
-    "width": 776,
-    "height": 942,
+    "width": 8192,
+    "height": 5282,
     "units": "pixels",
-    "note": "Pixel coordinates on campus-map-wide.png (776x942); derived from GPS via calibration"
+    "note": "Pixel coordinates on campus-map-hd.jpg (8192x5282); derived from GPS via calibration"
   },
   "calibration": {
-    "description": "Least-squares affine GPS→pixel transform fitted from captured control points",
-    "method": "affine-least-squares",
-    "controlPoints": 8,
-    "rmsPx": 14.44,
-    "maxResidualPx": 22.6,
-    "metersPerPixel": 6.9545,
-    "rotationDeg": -5.71,
-    "centerLat": 33.1045125,
-    "centerLng": -8.599083624999999,
+    "description": "Least-squares quadratic GPS→pixel transform fitted from captured control points",
+    "method": "quadratic-least-squares",
+    "controlPoints": 12,
+    "usedPoints": 11,
+    "excludedIds": [
+      "station_desalement"
+    ],
+    "rmsPx": 22.26,
+    "rmsMeters": 25.3,
+    "maxResidualPx": 55.6,
+    "metersPerPixel": 1.1363,
+    "rotationDeg": -3.64,
+    "centerLat": 33.106814583333325,
+    "centerLng": -8.599059916666667,
     "coeffs": {
-      "a": 0.15040896853361146,
-      "b": 0.0009502220133524695,
-      "c": 430.6250000000185,
-      "d": -0.015027723813869213,
-      "e": -0.13756220185659013,
-      "f": 398.0000000000252
+      "a": 0.9026770510122324,
+      "b": -0.007686323588745196,
+      "c": 3300.2298297421703,
+      "d": -0.05744823876434213,
+      "e": -0.8575561727234499,
+      "f": 2399.1138385462987
     },
-    "capturedAt": "2026-08-24T01:01:50.907Z"
+    "quad": {
+      "ax": [
+        3300.2298297421703,
+        0.9026770510122324,
+        -0.007686323588745196,
+        0.00007261393064944231,
+        -0.00003868364616718224,
+        1.647837047159641e-7
+      ],
+      "ay": [
+        2399.1138385462987,
+        -0.05744823876434213,
+        -0.8575561727234499,
+        -0.00007128024888227066,
+        0.000028991386254720656,
+        0.000004251386924078359
+      ]
+    },
+    "capturedAt": "2026-08-24T18:48:29.818Z"
   },
   "navigation": {
     "walkingSpeed": 1.4,
     "walkingSpeedUnit": "m/s",
-    "pixelsPerMeter": 0.1437925909651942,
-    "note": "1 pixel ≈ 6.954m (derived from 8-point affine calibration)"
+    "pixelsPerMeter": 0.880078316301502,
+    "note": "1 pixel ≈ 1.136m (derived from 12-point quadratic calibration)"
   },
   "display": {
     "defaultZoom": 1,
@@ -58,8 +81,8 @@
     "nodeMinZoom": 0.8
   },
   "image": {
-    "file": "campus-map-wide.png",
-    "width": 776,
-    "height": 942
+    "file": "campus-map-hd.jpg",
+    "width": 8192,
+    "height": 5282
   }
 }

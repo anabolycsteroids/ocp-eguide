@@ -13,6 +13,8 @@ const force = args.includes("--force");
 const validateOnly = args.includes("--validate-only");
 const calibIdx = args.indexOf("--calib");
 const CALIB_PATH = calibIdx >= 0 ? resolve(args[calibIdx + 1]) : resolve(__dirname, "../../calibration-points.json");
+const maxRmsMidx = args.indexOf("--max-rms-m");
+const MAX_RMS_METERS = maxRmsMidx >= 0 ? parseFloat(args[maxRmsMidx + 1]) : 100;
 
 const readJson = p => JSON.parse(readFileSync(p, "utf8"));
 
@@ -81,8 +83,103 @@ function fitAffine(points) {
 function project(fit, lat, lng) {
   const E = (lng - fit.center.lng) * fit.mpd.lng;
   const N = (lat - fit.center.lat) * fit.mpd.lat;
+  if (fit.model === "quadratic" && fit.quad) {
+    const b = [1, E, N, E * E, E * N, N * N];
+    return {
+      x: fit.quad.ax.reduce((s, v, i) => s + v * b[i], 0),
+      y: fit.quad.ay.reduce((s, v, i) => s + v * b[i], 0),
+    };
+  }
   const k = fit.coeffs;
   return { x: k.a * E + k.b * N + k.c, y: k.d * E + k.e * N + k.f };
+}
+
+// ---- Model selection (MUST stay numerically identical to src/lib/geoTransform.ts) ----
+
+function gaussSolveN(Ain, bin) {
+  const n = Ain.length;
+  const M = Ain.map((r, i) => [...r, bin[i]]);
+  for (let c = 0; c < n; c++) {
+    let piv = c;
+    for (let r = c + 1; r < n; r++) if (Math.abs(M[r][c]) > Math.abs(M[piv][c])) piv = r;
+    [M[c], M[piv]] = [M[piv], M[c]];
+    const d = M[c][c];
+    if (Math.abs(d) < 1e-12) throw new Error("Singular system in model fit");
+    for (let r = c + 1; r < n; r++) {
+      const f = M[r][c] / d;
+      for (let k = c; k <= n; k++) M[r][k] -= f * M[c][k];
+    }
+  }
+  const x = new Array(n).fill(0);
+  for (let r = n - 1; r >= 0; r--) {
+    let s = M[r][n];
+    for (let k = r + 1; k < n; k++) s -= M[r][k] * x[k];
+    x[r] = s / M[r][r];
+  }
+  return x;
+}
+
+const quadBasis = (E, N) => [1, E, N, E * E, E * N, N * N];
+
+function residualsOf(model, coeffs, quad, localPts) {
+  return localPts.map(p => {
+    let px, py;
+    if (model === "quadratic" && quad) {
+      const b = quadBasis(p.E, p.N);
+      px = quad.ax.reduce((s, v, i) => s + v * b[i], 0);
+      py = quad.ay.reduce((s, v, i) => s + v * b[i], 0);
+    } else {
+      px = coeffs.a * p.E + coeffs.b * p.N + coeffs.c;
+      py = coeffs.d * p.E + coeffs.e * p.N + coeffs.f;
+    }
+    return { id: p.id ?? p.name, dx: px - p.x, dy: py - p.y, distPx: Math.hypot(px - p.x, py - p.y) };
+  });
+}
+
+function rmsOf(residuals) {
+  return Math.sqrt(residuals.reduce((s, r) => s + r.distPx ** 2, 0) / residuals.length);
+}
+
+function medianOf(xs) {
+  const s = [...xs].sort((a, b) => a - b);
+  return s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2;
+}
+
+// Fits affine on `sub` reusing the SAME center/mpd frame as the full set.
+function fitAffineLocal(sub) {
+  let sEE = 0, sEN = 0, sNN = 0, sE = 0, sN = 0;
+  let sEx = 0, sNx = 0, sx = 0, sEy = 0, sNy = 0, sy = 0;
+  for (const p of sub) {
+    sEE += p.E * p.E; sEN += p.E * p.N; sNN += p.N * p.N;
+    sE += p.E; sN += p.N;
+    sEx += p.E * p.x; sNx += p.N * p.x; sx += p.x;
+    sEy += p.E * p.y; sNy += p.N * p.y; sy += p.y;
+  }
+  const n = sub.length;
+  const A = [[sEE, sEN, sE], [sEN, sNN, sN], [sE, sN, n]];
+  const [a, b, c] = solve3(A, [sEx, sNx, sx]);
+  const [d, e, f] = solve3(A, [sEy, sNy, sy]);
+  const coeffs = { a, b, c, d, e, f };
+  const residuals = residualsOf("affine", coeffs, null, sub);
+  return { model: "affine", coeffs, quad: null, residuals, rmsPx: rmsOf(residuals), maxResidualPx: Math.max(...residuals.map(r => r.distPx)) };
+}
+
+function fitQuadLocal(sub) {
+  const t = 6;
+  const Nrm = Array.from({ length: t }, () => new Array(t).fill(0));
+  const vx = new Array(t).fill(0), vy = new Array(t).fill(0);
+  for (const p of sub) {
+    const bs = quadBasis(p.E, p.N);
+    for (let i = 0; i < t; i++) {
+      for (let j = 0; j < t; j++) Nrm[i][j] += bs[i] * bs[j];
+      vx[i] += bs[i] * p.x;
+      vy[i] += bs[i] * p.y;
+    }
+  }
+  const quad = { ax: gaussSolveN(Nrm.map(r => [...r]), vx), ay: gaussSolveN(Nrm, vy) };
+  const coeffs = { a: quad.ax[1], b: quad.ax[2], c: quad.ax[0], d: quad.ay[1], e: quad.ay[2], f: quad.ay[0] };
+  const residuals = residualsOf("quadratic", coeffs, quad, sub);
+  return { model: "quadratic", coeffs, quad, residuals, rmsPx: rmsOf(residuals), maxResidualPx: Math.max(...residuals.map(r => r.distPx)) };
 }
 
 function astarAllPairsConnectivity(nodes, edges, connections, placeIds) {
@@ -173,21 +270,64 @@ if (!validateOnly) {
 
 let fit = null;
 if (pts.length >= 3) {
-  fit = fitAffine(pts);
-  const mpp = 1 / Math.sqrt(Math.abs(fit.det));
-  const rotDeg = (Math.atan2(fit.coeffs.d, fit.coeffs.a) * 180) / Math.PI;
-  log(`\nControl points: ${pts.length}`);
-  log(`Affine RMS residual: ${fit.rmsPx.toFixed(2)} px (max ${fit.maxResidualPx.toFixed(1)} px)`);
+  // Shared projection frame (identical to geoTransform.ts): centroid + mpd of ALL points.
+  const cLat = pts.reduce((s, p) => s + p.gps.lat, 0) / pts.length;
+  const cLng = pts.reduce((s, p) => s + p.gps.lng, 0) / pts.length;
+  const mpd = metersPerDegree(cLat);
+  const localAll = pts.map(p => ({
+    ...p,
+    E: (p.gps.lng - cLng) * mpd.lng,
+    N: (p.gps.lat - cLat) * mpd.lat,
+  }));
+
+  const allFit = fitAffineLocal(localAll);
+
+  // Single-pass outlier screening — same thresholds as the browser engine.
+  let excludedIds = [];
+  if (localAll.length >= 8) {
+    const med = medianOf(allFit.residuals.map(r => r.distPx));
+    const thr = Math.max(2.5 * med, 60);
+    excludedIds = allFit.residuals
+      .filter(r => r.distPx > thr)
+      .sort((a, b) => b.distPx - a.distPx)
+      .slice(0, 2)
+      .map(r => r.id);
+  }
+  let survivors = localAll.filter(p => !excludedIds.includes(p.id));
+  if (survivors.length < 3) { survivors = localAll; excludedIds = []; }
+
+  const affineSurv = survivors === localAll ? allFit : fitAffineLocal(survivors);
+  let chosen = affineSurv;
+  if (survivors.length >= 8) {
+    try {
+      const qFit = fitQuadLocal(survivors);
+      if (qFit.rmsPx < chosen.rmsPx * 0.95) chosen = qFit;
+    } catch (err) {
+      log(`NOTE: quadratic fit skipped (${err.message}); using affine.`);
+    }
+  }
+  const mpp = 1 / Math.sqrt(Math.abs(chosen.coeffs.a * chosen.coeffs.e - chosen.coeffs.b * chosen.coeffs.d));
+  const rotDeg = (Math.atan2(chosen.coeffs.d, chosen.coeffs.a) * 180) / Math.PI;
+  const rmsMeters = chosen.rmsPx * mpp;
+
+  log(`\nControl points: ${pts.length} (used ${survivors.length}${excludedIds.length ? `, excluded: ${excludedIds.join(", ")}` : ""})`);
+  log(`Model: ${chosen.model.toUpperCase()} · RMS ${chosen.rmsPx.toFixed(2)} px ≈ ${rmsMeters.toFixed(1)} m (max ${chosen.maxResidualPx.toFixed(1)} px)`);
   log(`Scale: ${mpp.toFixed(4)} m/px (${(1 / mpp).toFixed(3)} px/m) · rotation ${rotDeg.toFixed(2)}°`);
-  for (const r of fit.residuals) log(`  · ${r.id}: Δ(${r.dx.toFixed(1)}, ${r.dy.toFixed(1)}) = ${r.distPx.toFixed(1)} px`);
+  for (const r of chosen.residuals) log(`  · ${r.id}: Δ(${r.dx.toFixed(1)}, ${r.dy.toFixed(1)}) = ${r.distPx.toFixed(1)} px = ${(r.distPx * mpp).toFixed(0)} m`);
+
   const xs = pts.map(p => p.x), ys = pts.map(p => p.y);
   if ((Math.max(...xs) - Math.min(...xs) < 400 || Math.max(...ys) - Math.min(...ys) < 250))
     log("WARNING: control points are clustered — add points spread across the campus.");
-  if (fit.rmsPx > 12 && !force) {
-    log("\nABORT: RMS > 12px suggests mislocated clicks. Fix flagged points or rerun with --force.");
+
+  // Gate in METERS: pixel thresholds are meaningless across image resolutions
+  // (12px was fine at 7m/px but absurdly strict at ~1.1m/px).
+  if (rmsMeters > MAX_RMS_METERS && !force) {
+    log(`\nABORT: RMS ${rmsMeters.toFixed(1)} m > ${MAX_RMS_METERS} m limit. Fix flagged points or rerun with --force or --max-rms-m <N>.`);
     writeFileSync(resolve(MAP_DIR, "..", "..", "..", "calibration-report.txt"), report.join("\n"));
     process.exit(1);
   }
+
+  fit = { ...chosen, center: { lat: cLat, lng: cLng }, mpd, mpp };
 }
 
 const placesDoc = readJson(resolve(MAP_DIR, "places.json"));
@@ -247,7 +387,7 @@ for (const pl of places) {
   if (typeof pl.mapX === "number") { pl.x = pl.mapX; pl.y = pl.mapY; }
 }
 
-const mpp = 1 / Math.sqrt(Math.abs(fit.det));
+const mpp = fit.mpp;
 const spacingPx = 100 / mpp;
 // Mesh covers the ENTIRE image so no location can fall outside grid coverage;
 // outlier places that project near/off the image edge still get a reachable node.
@@ -303,25 +443,25 @@ for (const pl of places) {
 }
 
 writeFileSync(resolve(MAP_DIR, "nodes.json"), JSON.stringify({
-  version: "5.0.0",
-  description: "Walking mesh generated from georeferenced positions",
+  version: "6.0.0",
+  description: `Walking mesh generated from georeferenced positions (${fit.model} model)`,
   generatedAt: new Date().toISOString(),
   nodes,
 }, null, 2));
 writeFileSync(resolve(MAP_DIR, "edges.json"), JSON.stringify({
-  version: "5.0.0",
+  version: "6.0.0",
   description: "Walkable mesh edges",
   generatedAt: new Date().toISOString(),
   edges,
 }, null, 2));
 writeFileSync(resolve(MAP_DIR, "place-node-connections.json"), JSON.stringify({
-  version: "5.0.0",
+  version: "6.0.0",
   connections,
 }, null, 2));
 
 const cfg = readJson(resolve(MAP_DIR, "map-config.json"));
 cfg.navigation.pixelsPerMeter = 1 / mpp;
-cfg.navigation.note = `1 pixel ≈ ${mpp.toFixed(3)}m (derived from ${pts.length}-point affine calibration)`;
+cfg.navigation.note = `1 pixel ≈ ${mpp.toFixed(3)}m (derived from ${pts.length}-point ${fit.model} calibration)`;
 cfg.image = {
   file: calib.imageFile ?? "campus-map.png",
   width: IMG_W,
@@ -337,23 +477,33 @@ cfg.coordinateSystem = {
   note: `Pixel coordinates on ${cfg.image.file} (${IMG_W}x${IMG_H}); derived from GPS via calibration`,
 };
 cfg.calibration = {
-  description: "Least-squares affine GPS→pixel transform fitted from captured control points",
-  method: "affine-least-squares",
+  description: `Least-squares ${fit.model} GPS→pixel transform fitted from captured control points`,
+  method: `${fit.model}-least-squares`,
   controlPoints: pts.length,
+  usedPoints: fit.residuals.length,
+  excludedIds: pts.map(p => p.id).filter(id => !fit.residuals.some(r => r.id === id)),
   rmsPx: Math.round(fit.rmsPx * 100) / 100,
+  rmsMeters: Math.round(fit.rmsPx * mpp * 10) / 10,
   maxResidualPx: Math.round(fit.maxResidualPx * 10) / 10,
   metersPerPixel: Math.round(mpp * 10000) / 10000,
   rotationDeg: Math.round(Math.atan2(fit.coeffs.d, fit.coeffs.a) * 18000 / Math.PI) / 100,
   centerLat: fit.center.lat,
   centerLng: fit.center.lng,
   coeffs: fit.coeffs,
+  quad: fit.quad,
   capturedAt: calib.capturedAt ?? null,
 };
 writeFileSync(resolve(MAP_DIR, "map-config.json"), JSON.stringify(cfg, null, 2));
 
-placesDoc.version = "5.0.0";
+// Runtime parity: the browser recomputes the same transform from this captured
+// file (same algorithm in src/lib/geoTransform.ts), so live GPS projection
+// always agrees with the precomputed mapX/mapY written into places.json.
+writeFileSync(resolve(MAP_DIR, "calibration-points.json"), JSON.stringify(calib, null, 2));
+
+placesDoc.version = "6.0.0";
 placesDoc.lastUpdated = new Date().toISOString().slice(0, 10);
-placesDoc.calibrationMethod = `Affine least-squares from ${pts.length} captured control points (RMS ${fit.rmsPx.toFixed(1)}px)`;
+const excludedCount = pts.length - fit.residuals.length;
+placesDoc.calibrationMethod = `${fit.model === "quadratic" ? "Quadratic" : "Affine"} least-squares from ${pts.length} captured control points${excludedCount ? ` (${excludedCount} outlier(s) excluded)` : ""} — RMS ${fit.rmsPx.toFixed(1)}px ≈ ${(fit.rmsPx * mpp).toFixed(1)}m`;
 placesDoc.coordinateSystem.metersPerPixel = Math.round(mpp * 10000) / 10000;
 writeFileSync(resolve(MAP_DIR, "places.json"), JSON.stringify(placesDoc, null, 2));
 

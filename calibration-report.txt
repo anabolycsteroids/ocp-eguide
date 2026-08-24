@@ -1,19 +1,22 @@
 === OCP MAP REGENERATION ===
 Mode: FULL REGENERATION
-Calibration file: /mnt/c/Users/unknown/Downloads/project assets/calibration-points.json
-Image: campus-map-wide.png (776x942)
+Calibration file: /mnt/c/Users/unknown/Downloads/project assets/hd-calibrations.json
+Image: campus-map-hd.jpg (8192x5282)
 
-Control points: 8
-Affine RMS residual: 14.44 px (max 22.6 px)
-Scale: 6.9545 m/px (0.144 px/m) · rotation -5.71°
-  · strocjph: Δ(-7.7, 2.7) = 8.2 px
-  · porte_principale: Δ(11.1, -12.7) = 16.9 px
-  · idea_factory: Δ(3.5, -0.5) = 3.5 px
-  · entre_est_ocp: Δ(-15.0, 14.6) = 20.9 px
-  · imacid: Δ(9.9, -6.4) = 11.8 px
-  · jfc_1: Δ(6.3, -4.0) = 7.4 px
-  · gngr_new_tech_morroco: Δ(6.7, -10.7) = 12.7 px
-  · fluoralpha: Δ(-14.8, 17.1) = 22.6 px
+Control points: 12 (used 11, excluded: station_desalement)
+Model: QUADRATIC · RMS 22.26 px ≈ 25.3 m (max 55.6 px)
+Scale: 1.1363 m/px (0.880 px/m) · rotation -3.64°
+  · strocjph: Δ(12.6, -21.9) = 25.2 px = 29 m
+  · porte_principale: Δ(-8.1, 3.2) = 8.7 px = 10 m
+  · idea_factory: Δ(-3.3, 25.7) = 26.0 px = 29 m
+  · entre_est_ocp: Δ(-6.3, 8.0) = 10.2 px = 12 m
+  · imacid: Δ(-2.2, -1.0) = 2.4 px = 3 m
+  · jfc_1: Δ(-6.5, 5.4) = 8.5 px = 10 m
+  · gngr_new_tech_morroco: Δ(-2.2, 3.4) = 4.1 px = 5 m
+  · fluoralpha: Δ(5.4, -6.7) = 8.6 px = 10 m
+  · mosquee_jorf_lasfar: Δ(-12.9, 8.0) = 15.2 px = 17 m
+  · ocp_control_tower: Δ(38.1, -40.5) = 55.6 px = 63 m
+  · centrelec: Δ(-14.5, 16.2) = 21.7 px = 25 m
 
 Places in dataset: 95
 GPS integrity: 
@@ -25,7 +28,7 @@ GPS integrity:
   COLLISION <2px: jfc5 <-> jfc5_plant (0.0px)
 Projected 95/95 places from immutable GPS coordinates.
 
-Graph rebuilt: 3423 nodes · 13346 edges · 95 connections
+Graph rebuilt: 5523 nodes · 21641 edges · 95 connections
 
 Running all-pairs routing check...
-Routing: 8930/8930 place-pairs routable (100.0%) in 2689ms
+Routing: 8930/8930 place-pairs routable (100.0%) in 2850ms
