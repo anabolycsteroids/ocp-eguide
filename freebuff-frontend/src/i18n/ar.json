@@ -25,7 +25,8 @@
     "internSubtitle": "التعلم والتطوير",
     "visitorSubtitle": "دخول الزوار",
     "profilesCount": "{count} ملفات شخصية",
-    "orContinueAsGuest": "أو المتابعة كضيف"
+    "orContinueAsGuest": "أو المتابعة كضيف",
+    "descriptionShort": "اختر ملفك الشخصي لمعاينة لوحة التحكم المخصصة لك."
   },
   "landing": {
     "previewing": "معاينة:",
@@ -39,7 +40,11 @@
     "chooseProfileCount": "اختر ملفك الشخصي المحدد للمتابعة ({count} متاح)",
     "continue": "متابعة",
     "or": "أو",
-    "browseAllProfiles": "استعراض جميع الملفات الشخصية"
+    "browseAllProfiles": "استعراض جميع الملفات الشخصية",
+    "exploreDashboard": "استكشف لوحة التحكم",
+    "interactivePreview": "معاينة تفاعلية – بدّل الملف الشخصي أعلاه",
+    "chipManager": "مدير",
+    "chipAdmin": "مسؤول"
   },
   "auth": {
     "signIn": "تسجيل الدخول",

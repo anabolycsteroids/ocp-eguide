@@ -213,3 +213,19 @@ select:focus {
 .route-dash {
   animation: routeDash 0.9s linear infinite;
 }
+
+/* Staggered fade-in for landing preview list items */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  opacity: 0;
+  animation: fadeUp 0.5s ease-out forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up {
+    animation: none;
+    opacity: 1;
+  }
+}

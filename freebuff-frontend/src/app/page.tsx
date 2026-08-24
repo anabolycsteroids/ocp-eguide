@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,7 +13,6 @@ import {
   ChevronRight,
   Shield,
   Bell,
-  Activity,
   Wrench,
   FlaskConical,
   Zap,
@@ -30,7 +29,6 @@ import {
   Home,
 } from "lucide-react";
 import OcpLogo from "@/components/OcpLogo";
-import HeroDashboardShowcase from "@/components/HeroDashboardShowcase";
 import MapPreview from "@/components/MapPreview";
 import LanguageSelector from "@/components/LanguageSelector";
 import { useI18n } from "@/i18n";
@@ -356,6 +354,181 @@ const previewComponents: Record<EntityType, React.ComponentType> = {
   visitor: VisitorPreview,
 };
 
+type Chip = "employee" | "manager" | "visitor" | "admin";
+
+const chipConfig: Record<
+  Chip,
+  {
+    labelKey: string;
+    title: string;
+    badge: string;
+    nav: string[];
+    metrics: { label: string; end: number }[];
+    activity: { name: string; action: string; time: string }[];
+  }
+> = {
+  employee: {
+    labelKey: "hero.employee",
+    title: "Employee Dashboard",
+    badge: "3 alerts",
+    nav: ["Dashboard", "Visitors", "Site Map", "Security", "Reports"],
+    metrics: [
+      { label: "Total Visitors", end: 1247 },
+      { label: "Active On Site", end: 89 },
+      { label: "Pending", end: 23 },
+    ],
+    activity: [
+      { name: "Claire Dupont", action: "checked in", time: "2m ago" },
+      { name: "Jean Martin", action: "badge approved", time: "15m ago" },
+      { name: "Amina B.", action: "registered", time: "1h ago" },
+    ],
+  },
+  manager: {
+    labelKey: "landing.chipManager",
+    title: "Manager Dashboard",
+    badge: "7 approvals",
+    nav: ["Overview", "Approvals", "Teams", "Reports", "Settings"],
+    metrics: [
+      { label: "Team Members", end: 24 },
+      { label: "Pending Approvals", end: 7 },
+      { label: "Reports", end: 12 },
+    ],
+    activity: [
+      { name: "Safety drill", action: "approved", time: "5m ago" },
+      { name: "Overtime req.", action: "submitted", time: "22m ago" },
+      { name: "Weekly report", action: "generated", time: "1h ago" },
+    ],
+  },
+  visitor: {
+    labelKey: "hero.visitor",
+    title: "Visitor Dashboard",
+    badge: "Checked In",
+    nav: ["My Visit", "Navigation", "Check-in", "Badge", "Help"],
+    metrics: [
+      { label: "My Visits", end: 4 },
+      { label: "Active Badges", end: 1 },
+      { label: "Notifications", end: 6 },
+    ],
+    activity: [
+      { name: "Building C — Rm 301", action: "meeting at 14:00", time: "now" },
+      { name: "Badge VIS-0847", action: "activated", time: "10m ago" },
+      { name: "Host", action: "Karim Alaoui confirmed", time: "30m ago" },
+    ],
+  },
+  admin: {
+    labelKey: "landing.chipAdmin",
+    title: "Admin Dashboard",
+    badge: "3 alerts",
+    nav: ["Console", "Users", "Roles", "Audit Log", "System"],
+    metrics: [
+      { label: "Total Users", end: 342 },
+      { label: "Active Sessions", end: 57 },
+      { label: "System Alerts", end: 3 },
+    ],
+    activity: [
+      { name: "Role updated", action: "Security Officer", time: "8m ago" },
+      { name: "New account", action: "provisioned", time: "35m ago" },
+      { name: "Backup", action: "completed", time: "2h ago" },
+    ],
+  },
+};
+
+function CountUp({
+  end,
+  duration = 1200,
+}: {
+  end: number;
+  duration?: number;
+}) {
+  const [val, setVal] = useState(0);
+  useEffect(() => {
+    let raf = 0;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const p = Math.min(1, (now - start) / duration);
+      setVal(Math.round(end * (1 - Math.pow(1 - p, 3))));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [end, duration]);
+  return <>{val.toLocaleString("en-US")}</>;
+}
+
+function DashboardPreview({ chip }: { chip: Chip }) {
+  const cfg = chipConfig[chip];
+  return (
+    <div
+      className="glass-dark rounded-2xl overflow-hidden transition-shadow duration-500"
+      style={{
+        boxShadow:
+          "0 20px 60px -15px rgba(0,160,80,0.35), 0 0 40px rgba(0,160,80,0.12)",
+      }}
+    >
+      <div className="flex h-[340px]">
+        <div className="w-44 bg-ocp-navy/90 text-white flex flex-col py-4 px-2 border-r border-white/10">
+          <div className="px-3 mb-5">
+            <div className="w-8 h-8 bg-ocp-green/20 rounded-lg flex items-center justify-center">
+              <Shield size={16} className="text-ocp-green" />
+            </div>
+          </div>
+          {cfg.nav.map((item, i) => (
+            <div
+              key={item}
+              className={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs ${
+                i === 0 ? "bg-ocp-green/20 text-ocp-green" : "text-gray-400"
+              }`}
+            >
+              <div className="w-4 h-4 bg-current/20 rounded" />
+              <span>{item}</span>
+            </div>
+          ))}
+        </div>
+        <div className="flex-1 p-4 bg-white/5">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-sm font-bold text-white">{cfg.title}</h3>
+            <span className="text-[10px] bg-ocp-green/20 text-ocp-green px-2 py-0.5 rounded-full font-medium">
+              {cfg.badge}
+            </span>
+          </div>
+          <div className="grid grid-cols-3 gap-3 mb-4">
+            {cfg.metrics.map((m) => (
+              <div key={m.label} className="glass rounded-lg p-3">
+                <span className="text-[10px] text-gray-300">{m.label}</span>
+                <p className="text-lg font-bold text-white mt-1 tabular-nums">
+                  <CountUp key={`${chip}-${m.label}`} end={m.end} />
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className="glass rounded-lg p-3">
+            <h4 className="text-xs font-semibold text-white mb-2">
+              Recent Activity
+            </h4>
+            {cfg.activity.map((a, i) => (
+              <div
+                key={i}
+                className="animate-fade-up flex items-center justify-between py-1.5 border-t border-white/10 first:border-0"
+                style={{ animationDelay: `${i * 120}ms` }}
+              >
+                <div className="flex items-center gap-2">
+                  <div className="w-5 h-5 bg-ocp-green/20 rounded-full flex items-center justify-center">
+                    <Users size={8} className="text-ocp-green" />
+                  </div>
+                  <span className="text-[10px] text-gray-300">
+                    <strong className="text-white">{a.name}</strong> {a.action}
+                  </span>
+                </div>
+                <span className="text-[9px] text-gray-400">{a.time}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function format(template: string, values: Record<string, string | number>) {
   return template.replace(/\{(\w+)\}/g, (match, key) =>
     key in values ? String(values[key]) : match
@@ -366,38 +539,14 @@ export default function LandingPage() {
   const router = useRouter();
   const { t, dir } = useI18n();
   const [selectedEntity, setSelectedEntity] = useState<EntityType | null>(null);
-  const [isKioskMode, setIsKioskMode] = useState(true);
-  const [isUserActive, setIsUserActive] = useState(false);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
-  const entityIndexRef = useRef(0);
+  const [activeChip, setActiveChip] = useState<Chip>("employee");
 
-  const cycleEntity = useCallback(() => {
-    entityIndexRef.current =
-      (entityIndexRef.current + 1) % entityCategories.length;
-    setSelectedEntity(entityCategories[entityIndexRef.current].type);
-  }, []);
-
-  useEffect(() => {
-    if (!isKioskMode || isUserActive || selectedEntity !== null) return;
-    timerRef.current = setInterval(cycleEntity, 10000);
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
-  }, [isKioskMode, isUserActive, cycleEntity, selectedEntity]);
-
-  const handleUserInteraction = useCallback(() => {
-    setIsUserActive(true);
-    if (timerRef.current) clearInterval(timerRef.current);
-    const resumeTimer = setTimeout(() => setIsUserActive(false), 30000);
-    return () => clearTimeout(resumeTimer);
-  }, []);
-
-  useEffect(() => {
-    const events = ["mousemove", "keydown", "touchstart", "click"];
-    const handler = () => handleUserInteraction();
-    events.forEach((e) => window.addEventListener(e, handler));
-    return () => events.forEach((e) => window.removeEventListener(e, handler));
-  }, [handleUserInteraction]);
+  const chips: { id: Chip; labelKey: string }[] = [
+    { id: "employee", labelKey: "hero.employee" },
+    { id: "manager", labelKey: "landing.chipManager" },
+    { id: "visitor", labelKey: "hero.visitor" },
+    { id: "admin", labelKey: "landing.chipAdmin" },
+  ];
 
   const categories = entityCategories.map((entity) => ({
     ...entity,
@@ -424,11 +573,14 @@ export default function LandingPage() {
     router.push(`/auth/login?role=${card.role}`);
   };
 
+  const handleExploreDashboard = () => {
+    const card = authCards.find((c) => c.entityType === activeChip);
+    if (card) router.push(`/auth/login?role=${card.role}`);
+    else router.push("/auth");
+  };
+
   return (
-    <div
-      className="min-h-screen flex flex-col relative overflow-hidden"
-      onClick={handleUserInteraction}
-    >
+    <div className="min-h-screen flex flex-col relative overflow-hidden">
       {/* Vegetation Background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-[#061210] via-[#0a2818] to-[#0d3a1f]" />
@@ -464,6 +616,30 @@ export default function LandingPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/40" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/15" />
+        {/* Center-weighted depth: darker core, lighter edges */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(2,10,7,0.55) 0%, rgba(2,10,7,0.18) 45%, rgba(18,64,38,0.22) 100%)",
+          }}
+        />
+        {/* Subtle diamond grid pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(45deg, rgba(255,255,255,0.6) 0px, rgba(255,255,255,0.6) 1px, transparent 1px, transparent 48px), repeating-linear-gradient(-45deg, rgba(255,255,255,0.6) 0px, rgba(255,255,255,0.6) 1px, transparent 1px, transparent 48px)",
+          }}
+        />
+        {/* Soft noise texture */}
+        <div
+          className="absolute inset-0 opacity-[0.05] mix-blend-overlay"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+          }}
+        />
       </div>
 
       <div className="absolute top-16 right-16 w-[500px] h-[500px] rounded-full bg-ocp-green/[0.04] blur-[100px] pointer-events-none" />
@@ -512,9 +688,9 @@ export default function LandingPage() {
       </header>
 
       {/* Main Content */}
-      <main className="relative z-10 flex-1 flex flex-col items-center px-6 md:px-10 py-6">
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 glass rounded-full text-ocp-green text-xs font-semibold mb-4">
+      <main className="relative z-10 flex-1 flex flex-col items-center px-6 md:px-10 py-4">
+        <div className="text-center mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 glass rounded-full text-ocp-green text-xs font-semibold mb-3">
             <span className="w-1.5 h-1.5 bg-ocp-green rounded-full animate-pulse" />
             {t("hero.badge")}
           </div>
@@ -522,21 +698,46 @@ export default function LandingPage() {
             {t("hero.welcome")}{" "}
             <span className="text-ocp-green drop-shadow-[0_0_20px_rgba(0,160,80,0.4)]">{t("hero.title")}</span>
           </h1>
-          <p className="text-base lg:text-lg text-gray-300 max-w-xl mx-auto mt-4 leading-relaxed">
-            {selectedEntity
-              ? format(t("hero.selectEntityProfile"), {
-                  entity: t(`hero.${selectedEntity}`),
-                })
-              : t("hero.description")}
+          <p className="text-base lg:text-lg text-gray-300 max-w-xl mx-auto mt-2 leading-relaxed">
+            {t("hero.descriptionShort")}
           </p>
         </div>
 
-        {/* Hero Dashboard Showcase */}
-        {selectedEntity === null && (
-          <div className="w-full max-w-lg mx-auto mb-10">
-            <HeroDashboardShowcase />
-          </div>
-        )}
+        {/* Profile chips + primary CTA */}
+        <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-5">
+          {chips.map((chip) => {
+            const active = activeChip === chip.id;
+            return (
+              <button
+                key={chip.id}
+                onClick={() => setActiveChip(chip.id)}
+                aria-pressed={active}
+                className={`px-4 sm:px-5 py-2 rounded-full text-sm font-semibold border transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ocp-green focus-visible:ring-offset-2 focus-visible:ring-offset-transparent ${
+                  active
+                    ? "bg-ocp-green text-white border-ocp-green shadow-lg shadow-ocp-green/30"
+                    : "bg-white/5 text-gray-300 border-white/20 hover:bg-white/10 hover:text-white"
+                }`}
+              >
+                {t(chip.labelKey)}
+              </button>
+            );
+          })}
+          <button
+            onClick={handleExploreDashboard}
+            className="sm:ml-2 px-6 py-2 bg-ocp-green text-white rounded-full text-sm font-semibold hover:bg-ocp-green-dark transition-all shadow-lg shadow-ocp-green/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+          >
+            {t("landing.exploreDashboard")}
+            {dir === "rtl" ? "" : " →"}
+          </button>
+        </div>
+
+        {/* Interactive dashboard preview */}
+        <div className="w-full max-w-2xl mx-auto mb-8">
+          <p className="text-center text-xs text-gray-400 mb-2 tracking-wide">
+            {t("landing.interactivePreview")}
+          </p>
+          <DashboardPreview chip={activeChip} />
+        </div>
 
         {/* Campus Map Preview */}
         {selectedEntity === null && (
@@ -556,9 +757,6 @@ export default function LandingPage() {
                     key={entity.type}
                     onClick={() => {
                       setSelectedEntity(entity.type);
-                      entityIndexRef.current = entityCategories.findIndex(
-                        (e) => e.type === entity.type
-                      );
                     }}
                     className="flex-1 group rounded-2xl overflow-hidden transition-all duration-300 cursor-pointer hover:scale-[1.02] hover:shadow-2xl"
                     style={{ boxShadow: `0 8px 32px ${entity.color}20` }}
@@ -608,49 +806,6 @@ export default function LandingPage() {
             >
               {t("hero.orContinueAsGuest")}{dir === "rtl" ? "" : " →"}
             </button>
-
-            <div className="w-full max-w-5xl mx-auto">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-2">
-                  <span className="text-xs text-gray-400">
-                    {t("landing.previewing")}
-                  </span>
-                  <span className="text-xs font-bold text-ocp-green">
-                    {categories[entityIndexRef.current]?.title ||
-                      t("hero.employee")}{" "}
-                    {t("landing.dashboard")}
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="flex items-center gap-2 text-xs text-gray-400">
-                    <Activity
-                      size={12}
-                      className={
-                        isKioskMode && !isUserActive
-                          ? "text-ocp-green animate-pulse"
-                          : "text-gray-400"
-                      }
-                    />
-                    <span>
-                      {isKioskMode && !isUserActive
-                        ? t("landing.autoCycling")
-                        : t("landing.manual")}
-                    </span>
-                  </div>
-                  <button
-                    onClick={() => setIsKioskMode(!isKioskMode)}
-                    className={`text-xs px-3 py-1.5 rounded-lg font-medium transition-colors ${
-                      isKioskMode ? "glass-green text-ocp-green" : "glass text-gray-400"
-                    }`}
-                  >
-                    {isKioskMode ? t("landing.kioskOn") : t("landing.kioskOff")}
-                  </button>
-                </div>
-              </div>
-              <div className="transition-opacity duration-500 ease-in-out">
-                <EmployeePreview />
-              </div>
-            </div>
           </>
         )}
 

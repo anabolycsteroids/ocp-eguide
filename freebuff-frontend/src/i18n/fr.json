@@ -25,7 +25,8 @@
     "internSubtitle": "Apprentissage & Développement",
     "visitorSubtitle": "Accès invité",
     "profilesCount": "{count} profils",
-    "orContinueAsGuest": "ou Continuer en tant qu'invité"
+    "orContinueAsGuest": "ou Continuer en tant qu'invité",
+    "descriptionShort": "Choisissez votre profil pour prévisualiser votre tableau de bord personnalisé."
   },
   "landing": {
     "previewing": "Aperçu :",
@@ -39,7 +40,11 @@
     "chooseProfileCount": "Choisissez votre profil spécifique pour continuer ({count} disponibles)",
     "continue": "Continuer",
     "or": "Ou",
-    "browseAllProfiles": "parcourir tous les profils"
+    "browseAllProfiles": "parcourir tous les profils",
+    "exploreDashboard": "Explorer le tableau de bord",
+    "interactivePreview": "Aperçu interactif – changez de profil ci-dessus",
+    "chipManager": "Manager",
+    "chipAdmin": "Administrateur"
   },
   "auth": {
     "signIn": "Se connecter",
@@ -359,7 +364,7 @@
     "internProgress": "Progression du stage",
     "progressComplete": "{pct}% terminé",
     "welcomeIntern": "Bienvenue, {name} !",
-    "internSubtitle": "Stagiaire {dept} \u2022 Semaine {week} sur {total}",
+    "internSubtitle": "Stagiaire {dept} • Semaine {week} sur {total}",
     "statusInProgress": "En cours",
     "statusCompleted": "Terminé",
     "statusPending": "En attente",
@@ -414,7 +419,7 @@
     "visitDetails": "Détails de la visite",
     "purposeOfVisit": "Objet de la visite *",
     "hostLabel": "Hôte (recherche par nom ou e-mail) *",
-    "selectedHost": "\u2713 Sélectionné : {name}",
+    "selectedHost": "✓ Sélectionné : {name}",
     "searching": "Recherche...",
     "date": "Date *",
     "timeOptional": "Heure (optionnel)",
@@ -456,7 +461,7 @@
     "needHelp": "Besoin d'aide ?",
     "contactReception": "Contacter l'accueil",
     "campusAssistance": "Assistance campus",
-    "poweredBy": "Propulsé par OCP eGuide \u00b7 Portail invité",
+    "poweredBy": "Propulsé par OCP eGuide · Portail invité",
     "campusPlacesTitle": "Lieux du campus",
     "pendingApproval": "En attente d'approbation",
     "approved": "Approuvé",

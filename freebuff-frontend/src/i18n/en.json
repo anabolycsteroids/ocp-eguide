@@ -25,7 +25,8 @@
     "internSubtitle": "Learning & Development",
     "visitorSubtitle": "Guest Access",
     "profilesCount": "{count} profiles",
-    "orContinueAsGuest": "or Continue as Guest"
+    "orContinueAsGuest": "or Continue as Guest",
+    "descriptionShort": "Choose your profile to preview your personalized dashboard."
   },
   "landing": {
     "previewing": "Previewing:",
@@ -39,7 +40,11 @@
     "chooseProfileCount": "Choose your specific profile to continue ({count} available)",
     "continue": "Continue",
     "or": "Or",
-    "browseAllProfiles": "browse all profiles"
+    "browseAllProfiles": "browse all profiles",
+    "exploreDashboard": "Explore Dashboard",
+    "interactivePreview": "Interactive preview – switch profiles above",
+    "chipManager": "Manager",
+    "chipAdmin": "Admin"
   },
   "auth": {
     "signIn": "Sign In",
