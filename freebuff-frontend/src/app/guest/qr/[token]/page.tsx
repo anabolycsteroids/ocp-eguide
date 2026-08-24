@@ -2,6 +2,7 @@
 
 import { use, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import OcpLogo from "@/components/OcpLogo";
 import LanguageSelector from "@/components/LanguageSelector";
 import { publicGetVisit } from "@/lib/guestApi";
@@ -51,9 +52,9 @@ export default function QrNavigatePage({ params }: { params: Promise<{ token: st
             <AlertCircle size={40} className="mx-auto text-red-400 mb-3" />
             <h1 className="text-lg font-bold text-ocp-navy mb-1">QR Code Not Valid</h1>
             <p className="text-sm text-ocp-gray-dark">{error || "This QR code could not be recognized."}</p>
-            <button onClick={() => router.push("/dashboard/guest")} className="mt-4 px-4 py-2 rounded-lg bg-ocp-green text-white text-sm font-semibold hover:bg-ocp-green-dark transition-colors">
+            <Link href="/dashboard/guest" className="inline-block mt-4 px-4 py-2 rounded-lg bg-ocp-green text-white text-sm font-semibold hover:bg-ocp-green-dark transition-colors">
               Go to Guest Portal
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -122,12 +123,12 @@ export default function QrNavigatePage({ params }: { params: Promise<{ token: st
           )}
         </div>
 
-        <button
-          onClick={() => router.push("/dashboard/guest")}
-          className="w-full py-3 rounded-xl border border-ocp-border bg-white text-sm font-semibold text-ocp-navy hover:bg-ocp-gray transition-colors"
+        <Link
+          href="/dashboard/guest"
+          className="block w-full py-3 rounded-xl border border-ocp-border bg-white text-sm font-semibold text-ocp-navy hover:bg-ocp-gray transition-colors text-center"
         >
           Go to Guest Portal
-        </button>
+        </Link>
       </div>
     </div>
   );

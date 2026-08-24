@@ -94,7 +94,7 @@
     "settings": "Paramètres",
     "logout": "Déconnexion",
     "visitorDashboard": "Tableau de bord visiteur",
-    "welcomeVisitor": "Bienvenue, Visiteur !",
+    "welcomeVisitor": "Bienvenue, Client !",
     "visitingOcp": "Vous visitez le groupe OCP aujourd'hui",
     "yourVisitDetails": "Détails de votre visite",
     "host": "Hôte",
@@ -332,7 +332,7 @@
     "noRequests": "Aucune demande"
   },
   "visitor": {
-    "welcomeVisitor": "Bienvenue, Visiteur !",
+    "welcomeVisitor": "Bienvenue, Client !",
     "visitingOcp": "Vous visitez le groupe OCP aujourd'hui",
     "yourVisitDetails": "Détails de votre visite",
     "host": "Hôte",

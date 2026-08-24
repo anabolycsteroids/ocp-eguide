@@ -671,12 +671,12 @@ export default function LandingPage() {
           >
             {t("nav.contact")}
           </Link>
-          <button
-            onClick={() => router.push("/dashboard/guest")}
-            className="px-5 py-2.5 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-lg text-sm font-semibold hover:bg-white/20 transition-all"
+          <Link
+            href="/dashboard/guest"
+            className="px-5 py-2.5 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-lg text-sm font-semibold hover:bg-white/20 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
           >
             {t("nav.continueAsGuest")}
-          </button>
+          </Link>
           <LanguageSelector />
           <button
             onClick={() => router.push("/auth")}
@@ -800,12 +800,12 @@ export default function LandingPage() {
               })}
             </div>
 
-            <button
-              onClick={() => router.push("/dashboard/guest")}
-              className="mb-8 px-6 py-3 rounded-xl backdrop-blur-md bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:bg-white/10 transition-all text-sm font-medium"
+            <Link
+              href="/dashboard/guest"
+              className="mb-8 px-6 py-3 rounded-xl backdrop-blur-md bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:bg-white/10 transition-all text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ocp-green"
             >
               {t("hero.orContinueAsGuest")}{dir === "rtl" ? "" : " →"}
-            </button>
+            </Link>
           </>
         )}
 
