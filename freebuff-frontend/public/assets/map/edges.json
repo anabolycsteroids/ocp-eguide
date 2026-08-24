@@ -1,7 +1,7 @@
 {
   "version": "6.0.0",
   "description": "Walkable mesh edges",
-  "generatedAt": "2026-08-24T19:09:48.098Z",
+  "generatedAt": "2026-08-24T19:45:14.197Z",
   "edges": [
     {
       "from": "g_0_0",
@@ -1820,12 +1820,32 @@
     },
     {
       "from": "g_0_91",
+      "to": "g_0_92",
+      "walkable": true
+    },
+    {
+      "from": "g_0_91",
       "to": "g_1_91",
       "walkable": true
     },
     {
       "from": "g_0_91",
+      "to": "g_1_92",
+      "walkable": true
+    },
+    {
+      "from": "g_0_91",
       "to": "g_1_90",
+      "walkable": true
+    },
+    {
+      "from": "g_0_92",
+      "to": "g_1_92",
+      "walkable": true
+    },
+    {
+      "from": "g_0_92",
+      "to": "g_1_91",
       "walkable": true
     },
     {
@@ -3645,12 +3665,32 @@
     },
     {
       "from": "g_1_91",
+      "to": "g_1_92",
+      "walkable": true
+    },
+    {
+      "from": "g_1_91",
       "to": "g_2_91",
       "walkable": true
     },
     {
       "from": "g_1_91",
+      "to": "g_2_92",
+      "walkable": true
+    },
+    {
+      "from": "g_1_91",
       "to": "g_2_90",
+      "walkable": true
+    },
+    {
+      "from": "g_1_92",
+      "to": "g_2_92",
+      "walkable": true
+    },
+    {
+      "from": "g_1_92",
+      "to": "g_2_91",
       "walkable": true
     },
     {
@@ -5470,12 +5510,32 @@
     },
     {
       "from": "g_2_91",
+      "to": "g_2_92",
+      "walkable": true
+    },
+    {
+      "from": "g_2_91",
       "to": "g_3_91",
       "walkable": true
     },
     {
       "from": "g_2_91",
+      "to": "g_3_92",
+      "walkable": true
+    },
+    {
+      "from": "g_2_91",
       "to": "g_3_90",
+      "walkable": true
+    },
+    {
+      "from": "g_2_92",
+      "to": "g_3_92",
+      "walkable": true
+    },
+    {
+      "from": "g_2_92",
+      "to": "g_3_91",
       "walkable": true
     },
     {
@@ -7295,12 +7355,32 @@
     },
     {
       "from": "g_3_91",
+      "to": "g_3_92",
+      "walkable": true
+    },
+    {
+      "from": "g_3_91",
       "to": "g_4_91",
       "walkable": true
     },
     {
       "from": "g_3_91",
+      "to": "g_4_92",
+      "walkable": true
+    },
+    {
+      "from": "g_3_91",
       "to": "g_4_90",
+      "walkable": true
+    },
+    {
+      "from": "g_3_92",
+      "to": "g_4_92",
+      "walkable": true
+    },
+    {
+      "from": "g_3_92",
+      "to": "g_4_91",
       "walkable": true
     },
     {
@@ -9120,12 +9200,32 @@
     },
     {
       "from": "g_4_91",
+      "to": "g_4_92",
+      "walkable": true
+    },
+    {
+      "from": "g_4_91",
       "to": "g_5_91",
       "walkable": true
     },
     {
       "from": "g_4_91",
+      "to": "g_5_92",
+      "walkable": true
+    },
+    {
+      "from": "g_4_91",
       "to": "g_5_90",
+      "walkable": true
+    },
+    {
+      "from": "g_4_92",
+      "to": "g_5_92",
+      "walkable": true
+    },
+    {
+      "from": "g_4_92",
+      "to": "g_5_91",
       "walkable": true
     },
     {
@@ -10945,12 +11045,32 @@
     },
     {
       "from": "g_5_91",
+      "to": "g_5_92",
+      "walkable": true
+    },
+    {
+      "from": "g_5_91",
       "to": "g_6_91",
       "walkable": true
     },
     {
       "from": "g_5_91",
+      "to": "g_6_92",
+      "walkable": true
+    },
+    {
+      "from": "g_5_91",
       "to": "g_6_90",
+      "walkable": true
+    },
+    {
+      "from": "g_5_92",
+      "to": "g_6_92",
+      "walkable": true
+    },
+    {
+      "from": "g_5_92",
+      "to": "g_6_91",
       "walkable": true
     },
     {
@@ -12770,12 +12890,32 @@
     },
     {
       "from": "g_6_91",
+      "to": "g_6_92",
+      "walkable": true
+    },
+    {
+      "from": "g_6_91",
       "to": "g_7_91",
       "walkable": true
     },
     {
       "from": "g_6_91",
+      "to": "g_7_92",
+      "walkable": true
+    },
+    {
+      "from": "g_6_91",
       "to": "g_7_90",
+      "walkable": true
+    },
+    {
+      "from": "g_6_92",
+      "to": "g_7_92",
+      "walkable": true
+    },
+    {
+      "from": "g_6_92",
+      "to": "g_7_91",
       "walkable": true
     },
     {
@@ -14595,12 +14735,32 @@
     },
     {
       "from": "g_7_91",
+      "to": "g_7_92",
+      "walkable": true
+    },
+    {
+      "from": "g_7_91",
       "to": "g_8_91",
       "walkable": true
     },
     {
       "from": "g_7_91",
+      "to": "g_8_92",
+      "walkable": true
+    },
+    {
+      "from": "g_7_91",
       "to": "g_8_90",
+      "walkable": true
+    },
+    {
+      "from": "g_7_92",
+      "to": "g_8_92",
+      "walkable": true
+    },
+    {
+      "from": "g_7_92",
+      "to": "g_8_91",
       "walkable": true
     },
     {
@@ -16420,12 +16580,32 @@
     },
     {
       "from": "g_8_91",
+      "to": "g_8_92",
+      "walkable": true
+    },
+    {
+      "from": "g_8_91",
       "to": "g_9_91",
       "walkable": true
     },
     {
       "from": "g_8_91",
+      "to": "g_9_92",
+      "walkable": true
+    },
+    {
+      "from": "g_8_91",
       "to": "g_9_90",
+      "walkable": true
+    },
+    {
+      "from": "g_8_92",
+      "to": "g_9_92",
+      "walkable": true
+    },
+    {
+      "from": "g_8_92",
+      "to": "g_9_91",
       "walkable": true
     },
     {
@@ -18245,12 +18425,32 @@
     },
     {
       "from": "g_9_91",
+      "to": "g_9_92",
+      "walkable": true
+    },
+    {
+      "from": "g_9_91",
       "to": "g_10_91",
       "walkable": true
     },
     {
       "from": "g_9_91",
+      "to": "g_10_92",
+      "walkable": true
+    },
+    {
+      "from": "g_9_91",
       "to": "g_10_90",
+      "walkable": true
+    },
+    {
+      "from": "g_9_92",
+      "to": "g_10_92",
+      "walkable": true
+    },
+    {
+      "from": "g_9_92",
+      "to": "g_10_91",
       "walkable": true
     },
     {
@@ -20070,12 +20270,32 @@
     },
     {
       "from": "g_10_91",
+      "to": "g_10_92",
+      "walkable": true
+    },
+    {
+      "from": "g_10_91",
       "to": "g_11_91",
       "walkable": true
     },
     {
       "from": "g_10_91",
+      "to": "g_11_92",
+      "walkable": true
+    },
+    {
+      "from": "g_10_91",
       "to": "g_11_90",
+      "walkable": true
+    },
+    {
+      "from": "g_10_92",
+      "to": "g_11_92",
+      "walkable": true
+    },
+    {
+      "from": "g_10_92",
+      "to": "g_11_91",
       "walkable": true
     },
     {
@@ -21895,12 +22115,32 @@
     },
     {
       "from": "g_11_91",
+      "to": "g_11_92",
+      "walkable": true
+    },
+    {
+      "from": "g_11_91",
       "to": "g_12_91",
       "walkable": true
     },
     {
       "from": "g_11_91",
+      "to": "g_12_92",
+      "walkable": true
+    },
+    {
+      "from": "g_11_91",
       "to": "g_12_90",
+      "walkable": true
+    },
+    {
+      "from": "g_11_92",
+      "to": "g_12_92",
+      "walkable": true
+    },
+    {
+      "from": "g_11_92",
+      "to": "g_12_91",
       "walkable": true
     },
     {
@@ -23720,12 +23960,32 @@
     },
     {
       "from": "g_12_91",
+      "to": "g_12_92",
+      "walkable": true
+    },
+    {
+      "from": "g_12_91",
       "to": "g_13_91",
       "walkable": true
     },
     {
       "from": "g_12_91",
+      "to": "g_13_92",
+      "walkable": true
+    },
+    {
+      "from": "g_12_91",
       "to": "g_13_90",
+      "walkable": true
+    },
+    {
+      "from": "g_12_92",
+      "to": "g_13_92",
+      "walkable": true
+    },
+    {
+      "from": "g_12_92",
+      "to": "g_13_91",
       "walkable": true
     },
     {
@@ -25545,12 +25805,32 @@
     },
     {
       "from": "g_13_91",
+      "to": "g_13_92",
+      "walkable": true
+    },
+    {
+      "from": "g_13_91",
       "to": "g_14_91",
       "walkable": true
     },
     {
       "from": "g_13_91",
+      "to": "g_14_92",
+      "walkable": true
+    },
+    {
+      "from": "g_13_91",
       "to": "g_14_90",
+      "walkable": true
+    },
+    {
+      "from": "g_13_92",
+      "to": "g_14_92",
+      "walkable": true
+    },
+    {
+      "from": "g_13_92",
+      "to": "g_14_91",
       "walkable": true
     },
     {
@@ -27370,12 +27650,32 @@
     },
     {
       "from": "g_14_91",
+      "to": "g_14_92",
+      "walkable": true
+    },
+    {
+      "from": "g_14_91",
       "to": "g_15_91",
       "walkable": true
     },
     {
       "from": "g_14_91",
+      "to": "g_15_92",
+      "walkable": true
+    },
+    {
+      "from": "g_14_91",
       "to": "g_15_90",
+      "walkable": true
+    },
+    {
+      "from": "g_14_92",
+      "to": "g_15_92",
+      "walkable": true
+    },
+    {
+      "from": "g_14_92",
+      "to": "g_15_91",
       "walkable": true
     },
     {
@@ -29195,12 +29495,32 @@
     },
     {
       "from": "g_15_91",
+      "to": "g_15_92",
+      "walkable": true
+    },
+    {
+      "from": "g_15_91",
       "to": "g_16_91",
       "walkable": true
     },
     {
       "from": "g_15_91",
+      "to": "g_16_92",
+      "walkable": true
+    },
+    {
+      "from": "g_15_91",
       "to": "g_16_90",
+      "walkable": true
+    },
+    {
+      "from": "g_15_92",
+      "to": "g_16_92",
+      "walkable": true
+    },
+    {
+      "from": "g_15_92",
+      "to": "g_16_91",
       "walkable": true
     },
     {
@@ -31020,12 +31340,32 @@
     },
     {
       "from": "g_16_91",
+      "to": "g_16_92",
+      "walkable": true
+    },
+    {
+      "from": "g_16_91",
       "to": "g_17_91",
       "walkable": true
     },
     {
       "from": "g_16_91",
+      "to": "g_17_92",
+      "walkable": true
+    },
+    {
+      "from": "g_16_91",
       "to": "g_17_90",
+      "walkable": true
+    },
+    {
+      "from": "g_16_92",
+      "to": "g_17_92",
+      "walkable": true
+    },
+    {
+      "from": "g_16_92",
+      "to": "g_17_91",
       "walkable": true
     },
     {
@@ -32845,12 +33185,32 @@
     },
     {
       "from": "g_17_91",
+      "to": "g_17_92",
+      "walkable": true
+    },
+    {
+      "from": "g_17_91",
       "to": "g_18_91",
       "walkable": true
     },
     {
       "from": "g_17_91",
+      "to": "g_18_92",
+      "walkable": true
+    },
+    {
+      "from": "g_17_91",
       "to": "g_18_90",
+      "walkable": true
+    },
+    {
+      "from": "g_17_92",
+      "to": "g_18_92",
+      "walkable": true
+    },
+    {
+      "from": "g_17_92",
+      "to": "g_18_91",
       "walkable": true
     },
     {
@@ -34670,12 +35030,32 @@
     },
     {
       "from": "g_18_91",
+      "to": "g_18_92",
+      "walkable": true
+    },
+    {
+      "from": "g_18_91",
       "to": "g_19_91",
       "walkable": true
     },
     {
       "from": "g_18_91",
+      "to": "g_19_92",
+      "walkable": true
+    },
+    {
+      "from": "g_18_91",
       "to": "g_19_90",
+      "walkable": true
+    },
+    {
+      "from": "g_18_92",
+      "to": "g_19_92",
+      "walkable": true
+    },
+    {
+      "from": "g_18_92",
+      "to": "g_19_91",
       "walkable": true
     },
     {
@@ -36495,12 +36875,32 @@
     },
     {
       "from": "g_19_91",
+      "to": "g_19_92",
+      "walkable": true
+    },
+    {
+      "from": "g_19_91",
       "to": "g_20_91",
       "walkable": true
     },
     {
       "from": "g_19_91",
+      "to": "g_20_92",
+      "walkable": true
+    },
+    {
+      "from": "g_19_91",
       "to": "g_20_90",
+      "walkable": true
+    },
+    {
+      "from": "g_19_92",
+      "to": "g_20_92",
+      "walkable": true
+    },
+    {
+      "from": "g_19_92",
+      "to": "g_20_91",
       "walkable": true
     },
     {
@@ -38320,12 +38720,32 @@
     },
     {
       "from": "g_20_91",
+      "to": "g_20_92",
+      "walkable": true
+    },
+    {
+      "from": "g_20_91",
       "to": "g_21_91",
       "walkable": true
     },
     {
       "from": "g_20_91",
+      "to": "g_21_92",
+      "walkable": true
+    },
+    {
+      "from": "g_20_91",
       "to": "g_21_90",
+      "walkable": true
+    },
+    {
+      "from": "g_20_92",
+      "to": "g_21_92",
+      "walkable": true
+    },
+    {
+      "from": "g_20_92",
+      "to": "g_21_91",
       "walkable": true
     },
     {
@@ -40145,12 +40565,32 @@
     },
     {
       "from": "g_21_91",
+      "to": "g_21_92",
+      "walkable": true
+    },
+    {
+      "from": "g_21_91",
       "to": "g_22_91",
       "walkable": true
     },
     {
       "from": "g_21_91",
+      "to": "g_22_92",
+      "walkable": true
+    },
+    {
+      "from": "g_21_91",
       "to": "g_22_90",
+      "walkable": true
+    },
+    {
+      "from": "g_21_92",
+      "to": "g_22_92",
+      "walkable": true
+    },
+    {
+      "from": "g_21_92",
+      "to": "g_22_91",
       "walkable": true
     },
     {
@@ -41970,12 +42410,32 @@
     },
     {
       "from": "g_22_91",
+      "to": "g_22_92",
+      "walkable": true
+    },
+    {
+      "from": "g_22_91",
       "to": "g_23_91",
       "walkable": true
     },
     {
       "from": "g_22_91",
+      "to": "g_23_92",
+      "walkable": true
+    },
+    {
+      "from": "g_22_91",
       "to": "g_23_90",
+      "walkable": true
+    },
+    {
+      "from": "g_22_92",
+      "to": "g_23_92",
+      "walkable": true
+    },
+    {
+      "from": "g_22_92",
+      "to": "g_23_91",
       "walkable": true
     },
     {
@@ -43795,12 +44255,32 @@
     },
     {
       "from": "g_23_91",
+      "to": "g_23_92",
+      "walkable": true
+    },
+    {
+      "from": "g_23_91",
       "to": "g_24_91",
       "walkable": true
     },
     {
       "from": "g_23_91",
+      "to": "g_24_92",
+      "walkable": true
+    },
+    {
+      "from": "g_23_91",
       "to": "g_24_90",
+      "walkable": true
+    },
+    {
+      "from": "g_23_92",
+      "to": "g_24_92",
+      "walkable": true
+    },
+    {
+      "from": "g_23_92",
+      "to": "g_24_91",
       "walkable": true
     },
     {
@@ -45620,12 +46100,32 @@
     },
     {
       "from": "g_24_91",
+      "to": "g_24_92",
+      "walkable": true
+    },
+    {
+      "from": "g_24_91",
       "to": "g_25_91",
       "walkable": true
     },
     {
       "from": "g_24_91",
+      "to": "g_25_92",
+      "walkable": true
+    },
+    {
+      "from": "g_24_91",
       "to": "g_25_90",
+      "walkable": true
+    },
+    {
+      "from": "g_24_92",
+      "to": "g_25_92",
+      "walkable": true
+    },
+    {
+      "from": "g_24_92",
+      "to": "g_25_91",
       "walkable": true
     },
     {
@@ -47445,12 +47945,32 @@
     },
     {
       "from": "g_25_91",
+      "to": "g_25_92",
+      "walkable": true
+    },
+    {
+      "from": "g_25_91",
       "to": "g_26_91",
       "walkable": true
     },
     {
       "from": "g_25_91",
+      "to": "g_26_92",
+      "walkable": true
+    },
+    {
+      "from": "g_25_91",
       "to": "g_26_90",
+      "walkable": true
+    },
+    {
+      "from": "g_25_92",
+      "to": "g_26_92",
+      "walkable": true
+    },
+    {
+      "from": "g_25_92",
+      "to": "g_26_91",
       "walkable": true
     },
     {
@@ -49270,12 +49790,32 @@
     },
     {
       "from": "g_26_91",
+      "to": "g_26_92",
+      "walkable": true
+    },
+    {
+      "from": "g_26_91",
       "to": "g_27_91",
       "walkable": true
     },
     {
       "from": "g_26_91",
+      "to": "g_27_92",
+      "walkable": true
+    },
+    {
+      "from": "g_26_91",
       "to": "g_27_90",
+      "walkable": true
+    },
+    {
+      "from": "g_26_92",
+      "to": "g_27_92",
+      "walkable": true
+    },
+    {
+      "from": "g_26_92",
+      "to": "g_27_91",
       "walkable": true
     },
     {
@@ -51095,12 +51635,32 @@
     },
     {
       "from": "g_27_91",
+      "to": "g_27_92",
+      "walkable": true
+    },
+    {
+      "from": "g_27_91",
       "to": "g_28_91",
       "walkable": true
     },
     {
       "from": "g_27_91",
+      "to": "g_28_92",
+      "walkable": true
+    },
+    {
+      "from": "g_27_91",
       "to": "g_28_90",
+      "walkable": true
+    },
+    {
+      "from": "g_27_92",
+      "to": "g_28_92",
+      "walkable": true
+    },
+    {
+      "from": "g_27_92",
+      "to": "g_28_91",
       "walkable": true
     },
     {
@@ -52920,12 +53480,32 @@
     },
     {
       "from": "g_28_91",
+      "to": "g_28_92",
+      "walkable": true
+    },
+    {
+      "from": "g_28_91",
       "to": "g_29_91",
       "walkable": true
     },
     {
       "from": "g_28_91",
+      "to": "g_29_92",
+      "walkable": true
+    },
+    {
+      "from": "g_28_91",
       "to": "g_29_90",
+      "walkable": true
+    },
+    {
+      "from": "g_28_92",
+      "to": "g_29_92",
+      "walkable": true
+    },
+    {
+      "from": "g_28_92",
+      "to": "g_29_91",
       "walkable": true
     },
     {
@@ -54745,12 +55325,32 @@
     },
     {
       "from": "g_29_91",
+      "to": "g_29_92",
+      "walkable": true
+    },
+    {
+      "from": "g_29_91",
       "to": "g_30_91",
       "walkable": true
     },
     {
       "from": "g_29_91",
+      "to": "g_30_92",
+      "walkable": true
+    },
+    {
+      "from": "g_29_91",
       "to": "g_30_90",
+      "walkable": true
+    },
+    {
+      "from": "g_29_92",
+      "to": "g_30_92",
+      "walkable": true
+    },
+    {
+      "from": "g_29_92",
+      "to": "g_30_91",
       "walkable": true
     },
     {
@@ -56570,12 +57170,32 @@
     },
     {
       "from": "g_30_91",
+      "to": "g_30_92",
+      "walkable": true
+    },
+    {
+      "from": "g_30_91",
       "to": "g_31_91",
       "walkable": true
     },
     {
       "from": "g_30_91",
+      "to": "g_31_92",
+      "walkable": true
+    },
+    {
+      "from": "g_30_91",
       "to": "g_31_90",
+      "walkable": true
+    },
+    {
+      "from": "g_30_92",
+      "to": "g_31_92",
+      "walkable": true
+    },
+    {
+      "from": "g_30_92",
+      "to": "g_31_91",
       "walkable": true
     },
     {
@@ -58395,12 +59015,32 @@
     },
     {
       "from": "g_31_91",
+      "to": "g_31_92",
+      "walkable": true
+    },
+    {
+      "from": "g_31_91",
       "to": "g_32_91",
       "walkable": true
     },
     {
       "from": "g_31_91",
+      "to": "g_32_92",
+      "walkable": true
+    },
+    {
+      "from": "g_31_91",
       "to": "g_32_90",
+      "walkable": true
+    },
+    {
+      "from": "g_31_92",
+      "to": "g_32_92",
+      "walkable": true
+    },
+    {
+      "from": "g_31_92",
+      "to": "g_32_91",
       "walkable": true
     },
     {
@@ -60220,12 +60860,32 @@
     },
     {
       "from": "g_32_91",
+      "to": "g_32_92",
+      "walkable": true
+    },
+    {
+      "from": "g_32_91",
       "to": "g_33_91",
       "walkable": true
     },
     {
       "from": "g_32_91",
+      "to": "g_33_92",
+      "walkable": true
+    },
+    {
+      "from": "g_32_91",
       "to": "g_33_90",
+      "walkable": true
+    },
+    {
+      "from": "g_32_92",
+      "to": "g_33_92",
+      "walkable": true
+    },
+    {
+      "from": "g_32_92",
+      "to": "g_33_91",
       "walkable": true
     },
     {
@@ -62045,12 +62705,32 @@
     },
     {
       "from": "g_33_91",
+      "to": "g_33_92",
+      "walkable": true
+    },
+    {
+      "from": "g_33_91",
       "to": "g_34_91",
       "walkable": true
     },
     {
       "from": "g_33_91",
+      "to": "g_34_92",
+      "walkable": true
+    },
+    {
+      "from": "g_33_91",
       "to": "g_34_90",
+      "walkable": true
+    },
+    {
+      "from": "g_33_92",
+      "to": "g_34_92",
+      "walkable": true
+    },
+    {
+      "from": "g_33_92",
+      "to": "g_34_91",
       "walkable": true
     },
     {
@@ -63870,12 +64550,32 @@
     },
     {
       "from": "g_34_91",
+      "to": "g_34_92",
+      "walkable": true
+    },
+    {
+      "from": "g_34_91",
       "to": "g_35_91",
       "walkable": true
     },
     {
       "from": "g_34_91",
+      "to": "g_35_92",
+      "walkable": true
+    },
+    {
+      "from": "g_34_91",
       "to": "g_35_90",
+      "walkable": true
+    },
+    {
+      "from": "g_34_92",
+      "to": "g_35_92",
+      "walkable": true
+    },
+    {
+      "from": "g_34_92",
+      "to": "g_35_91",
       "walkable": true
     },
     {
@@ -65695,12 +66395,32 @@
     },
     {
       "from": "g_35_91",
+      "to": "g_35_92",
+      "walkable": true
+    },
+    {
+      "from": "g_35_91",
       "to": "g_36_91",
       "walkable": true
     },
     {
       "from": "g_35_91",
+      "to": "g_36_92",
+      "walkable": true
+    },
+    {
+      "from": "g_35_91",
       "to": "g_36_90",
+      "walkable": true
+    },
+    {
+      "from": "g_35_92",
+      "to": "g_36_92",
+      "walkable": true
+    },
+    {
+      "from": "g_35_92",
+      "to": "g_36_91",
       "walkable": true
     },
     {
@@ -67520,12 +68240,32 @@
     },
     {
       "from": "g_36_91",
+      "to": "g_36_92",
+      "walkable": true
+    },
+    {
+      "from": "g_36_91",
       "to": "g_37_91",
       "walkable": true
     },
     {
       "from": "g_36_91",
+      "to": "g_37_92",
+      "walkable": true
+    },
+    {
+      "from": "g_36_91",
       "to": "g_37_90",
+      "walkable": true
+    },
+    {
+      "from": "g_36_92",
+      "to": "g_37_92",
+      "walkable": true
+    },
+    {
+      "from": "g_36_92",
+      "to": "g_37_91",
       "walkable": true
     },
     {
@@ -69345,12 +70085,32 @@
     },
     {
       "from": "g_37_91",
+      "to": "g_37_92",
+      "walkable": true
+    },
+    {
+      "from": "g_37_91",
       "to": "g_38_91",
       "walkable": true
     },
     {
       "from": "g_37_91",
+      "to": "g_38_92",
+      "walkable": true
+    },
+    {
+      "from": "g_37_91",
       "to": "g_38_90",
+      "walkable": true
+    },
+    {
+      "from": "g_37_92",
+      "to": "g_38_92",
+      "walkable": true
+    },
+    {
+      "from": "g_37_92",
+      "to": "g_38_91",
       "walkable": true
     },
     {
@@ -71170,12 +71930,32 @@
     },
     {
       "from": "g_38_91",
+      "to": "g_38_92",
+      "walkable": true
+    },
+    {
+      "from": "g_38_91",
       "to": "g_39_91",
       "walkable": true
     },
     {
       "from": "g_38_91",
+      "to": "g_39_92",
+      "walkable": true
+    },
+    {
+      "from": "g_38_91",
       "to": "g_39_90",
+      "walkable": true
+    },
+    {
+      "from": "g_38_92",
+      "to": "g_39_92",
+      "walkable": true
+    },
+    {
+      "from": "g_38_92",
+      "to": "g_39_91",
       "walkable": true
     },
     {
@@ -72995,12 +73775,32 @@
     },
     {
       "from": "g_39_91",
+      "to": "g_39_92",
+      "walkable": true
+    },
+    {
+      "from": "g_39_91",
       "to": "g_40_91",
       "walkable": true
     },
     {
       "from": "g_39_91",
+      "to": "g_40_92",
+      "walkable": true
+    },
+    {
+      "from": "g_39_91",
       "to": "g_40_90",
+      "walkable": true
+    },
+    {
+      "from": "g_39_92",
+      "to": "g_40_92",
+      "walkable": true
+    },
+    {
+      "from": "g_39_92",
+      "to": "g_40_91",
       "walkable": true
     },
     {
@@ -74820,12 +75620,32 @@
     },
     {
       "from": "g_40_91",
+      "to": "g_40_92",
+      "walkable": true
+    },
+    {
+      "from": "g_40_91",
       "to": "g_41_91",
       "walkable": true
     },
     {
       "from": "g_40_91",
+      "to": "g_41_92",
+      "walkable": true
+    },
+    {
+      "from": "g_40_91",
       "to": "g_41_90",
+      "walkable": true
+    },
+    {
+      "from": "g_40_92",
+      "to": "g_41_92",
+      "walkable": true
+    },
+    {
+      "from": "g_40_92",
+      "to": "g_41_91",
       "walkable": true
     },
     {
@@ -76645,12 +77465,32 @@
     },
     {
       "from": "g_41_91",
+      "to": "g_41_92",
+      "walkable": true
+    },
+    {
+      "from": "g_41_91",
       "to": "g_42_91",
       "walkable": true
     },
     {
       "from": "g_41_91",
+      "to": "g_42_92",
+      "walkable": true
+    },
+    {
+      "from": "g_41_91",
       "to": "g_42_90",
+      "walkable": true
+    },
+    {
+      "from": "g_41_92",
+      "to": "g_42_92",
+      "walkable": true
+    },
+    {
+      "from": "g_41_92",
+      "to": "g_42_91",
       "walkable": true
     },
     {
@@ -78470,12 +79310,32 @@
     },
     {
       "from": "g_42_91",
+      "to": "g_42_92",
+      "walkable": true
+    },
+    {
+      "from": "g_42_91",
       "to": "g_43_91",
       "walkable": true
     },
     {
       "from": "g_42_91",
+      "to": "g_43_92",
+      "walkable": true
+    },
+    {
+      "from": "g_42_91",
       "to": "g_43_90",
+      "walkable": true
+    },
+    {
+      "from": "g_42_92",
+      "to": "g_43_92",
+      "walkable": true
+    },
+    {
+      "from": "g_42_92",
+      "to": "g_43_91",
       "walkable": true
     },
     {
@@ -80295,12 +81155,32 @@
     },
     {
       "from": "g_43_91",
+      "to": "g_43_92",
+      "walkable": true
+    },
+    {
+      "from": "g_43_91",
       "to": "g_44_91",
       "walkable": true
     },
     {
       "from": "g_43_91",
+      "to": "g_44_92",
+      "walkable": true
+    },
+    {
+      "from": "g_43_91",
       "to": "g_44_90",
+      "walkable": true
+    },
+    {
+      "from": "g_43_92",
+      "to": "g_44_92",
+      "walkable": true
+    },
+    {
+      "from": "g_43_92",
+      "to": "g_44_91",
       "walkable": true
     },
     {
@@ -82120,12 +83000,32 @@
     },
     {
       "from": "g_44_91",
+      "to": "g_44_92",
+      "walkable": true
+    },
+    {
+      "from": "g_44_91",
       "to": "g_45_91",
       "walkable": true
     },
     {
       "from": "g_44_91",
+      "to": "g_45_92",
+      "walkable": true
+    },
+    {
+      "from": "g_44_91",
       "to": "g_45_90",
+      "walkable": true
+    },
+    {
+      "from": "g_44_92",
+      "to": "g_45_92",
+      "walkable": true
+    },
+    {
+      "from": "g_44_92",
+      "to": "g_45_91",
       "walkable": true
     },
     {
@@ -83945,12 +84845,32 @@
     },
     {
       "from": "g_45_91",
+      "to": "g_45_92",
+      "walkable": true
+    },
+    {
+      "from": "g_45_91",
       "to": "g_46_91",
       "walkable": true
     },
     {
       "from": "g_45_91",
+      "to": "g_46_92",
+      "walkable": true
+    },
+    {
+      "from": "g_45_91",
       "to": "g_46_90",
+      "walkable": true
+    },
+    {
+      "from": "g_45_92",
+      "to": "g_46_92",
+      "walkable": true
+    },
+    {
+      "from": "g_45_92",
+      "to": "g_46_91",
       "walkable": true
     },
     {
@@ -85770,12 +86690,32 @@
     },
     {
       "from": "g_46_91",
+      "to": "g_46_92",
+      "walkable": true
+    },
+    {
+      "from": "g_46_91",
       "to": "g_47_91",
       "walkable": true
     },
     {
       "from": "g_46_91",
+      "to": "g_47_92",
+      "walkable": true
+    },
+    {
+      "from": "g_46_91",
       "to": "g_47_90",
+      "walkable": true
+    },
+    {
+      "from": "g_46_92",
+      "to": "g_47_92",
+      "walkable": true
+    },
+    {
+      "from": "g_46_92",
+      "to": "g_47_91",
       "walkable": true
     },
     {
@@ -87595,12 +88535,32 @@
     },
     {
       "from": "g_47_91",
+      "to": "g_47_92",
+      "walkable": true
+    },
+    {
+      "from": "g_47_91",
       "to": "g_48_91",
       "walkable": true
     },
     {
       "from": "g_47_91",
+      "to": "g_48_92",
+      "walkable": true
+    },
+    {
+      "from": "g_47_91",
       "to": "g_48_90",
+      "walkable": true
+    },
+    {
+      "from": "g_47_92",
+      "to": "g_48_92",
+      "walkable": true
+    },
+    {
+      "from": "g_47_92",
+      "to": "g_48_91",
       "walkable": true
     },
     {
@@ -89420,12 +90380,32 @@
     },
     {
       "from": "g_48_91",
+      "to": "g_48_92",
+      "walkable": true
+    },
+    {
+      "from": "g_48_91",
       "to": "g_49_91",
       "walkable": true
     },
     {
       "from": "g_48_91",
+      "to": "g_49_92",
+      "walkable": true
+    },
+    {
+      "from": "g_48_91",
       "to": "g_49_90",
+      "walkable": true
+    },
+    {
+      "from": "g_48_92",
+      "to": "g_49_92",
+      "walkable": true
+    },
+    {
+      "from": "g_48_92",
+      "to": "g_49_91",
       "walkable": true
     },
     {
@@ -91245,12 +92225,32 @@
     },
     {
       "from": "g_49_91",
+      "to": "g_49_92",
+      "walkable": true
+    },
+    {
+      "from": "g_49_91",
       "to": "g_50_91",
       "walkable": true
     },
     {
       "from": "g_49_91",
+      "to": "g_50_92",
+      "walkable": true
+    },
+    {
+      "from": "g_49_91",
       "to": "g_50_90",
+      "walkable": true
+    },
+    {
+      "from": "g_49_92",
+      "to": "g_50_92",
+      "walkable": true
+    },
+    {
+      "from": "g_49_92",
+      "to": "g_50_91",
       "walkable": true
     },
     {
@@ -93070,12 +94070,32 @@
     },
     {
       "from": "g_50_91",
+      "to": "g_50_92",
+      "walkable": true
+    },
+    {
+      "from": "g_50_91",
       "to": "g_51_91",
       "walkable": true
     },
     {
       "from": "g_50_91",
+      "to": "g_51_92",
+      "walkable": true
+    },
+    {
+      "from": "g_50_91",
       "to": "g_51_90",
+      "walkable": true
+    },
+    {
+      "from": "g_50_92",
+      "to": "g_51_92",
+      "walkable": true
+    },
+    {
+      "from": "g_50_92",
+      "to": "g_51_91",
       "walkable": true
     },
     {
@@ -94895,12 +95915,32 @@
     },
     {
       "from": "g_51_91",
+      "to": "g_51_92",
+      "walkable": true
+    },
+    {
+      "from": "g_51_91",
       "to": "g_52_91",
       "walkable": true
     },
     {
       "from": "g_51_91",
+      "to": "g_52_92",
+      "walkable": true
+    },
+    {
+      "from": "g_51_91",
       "to": "g_52_90",
+      "walkable": true
+    },
+    {
+      "from": "g_51_92",
+      "to": "g_52_92",
+      "walkable": true
+    },
+    {
+      "from": "g_51_92",
+      "to": "g_52_91",
       "walkable": true
     },
     {
@@ -96720,12 +97760,32 @@
     },
     {
       "from": "g_52_91",
+      "to": "g_52_92",
+      "walkable": true
+    },
+    {
+      "from": "g_52_91",
       "to": "g_53_91",
       "walkable": true
     },
     {
       "from": "g_52_91",
+      "to": "g_53_92",
+      "walkable": true
+    },
+    {
+      "from": "g_52_91",
       "to": "g_53_90",
+      "walkable": true
+    },
+    {
+      "from": "g_52_92",
+      "to": "g_53_92",
+      "walkable": true
+    },
+    {
+      "from": "g_52_92",
+      "to": "g_53_91",
       "walkable": true
     },
     {
@@ -98545,12 +99605,32 @@
     },
     {
       "from": "g_53_91",
+      "to": "g_53_92",
+      "walkable": true
+    },
+    {
+      "from": "g_53_91",
       "to": "g_54_91",
       "walkable": true
     },
     {
       "from": "g_53_91",
+      "to": "g_54_92",
+      "walkable": true
+    },
+    {
+      "from": "g_53_91",
       "to": "g_54_90",
+      "walkable": true
+    },
+    {
+      "from": "g_53_92",
+      "to": "g_54_92",
+      "walkable": true
+    },
+    {
+      "from": "g_53_92",
+      "to": "g_54_91",
       "walkable": true
     },
     {
@@ -100370,12 +101450,32 @@
     },
     {
       "from": "g_54_91",
+      "to": "g_54_92",
+      "walkable": true
+    },
+    {
+      "from": "g_54_91",
       "to": "g_55_91",
       "walkable": true
     },
     {
       "from": "g_54_91",
+      "to": "g_55_92",
+      "walkable": true
+    },
+    {
+      "from": "g_54_91",
       "to": "g_55_90",
+      "walkable": true
+    },
+    {
+      "from": "g_54_92",
+      "to": "g_55_92",
+      "walkable": true
+    },
+    {
+      "from": "g_54_92",
+      "to": "g_55_91",
       "walkable": true
     },
     {
@@ -102195,12 +103295,32 @@
     },
     {
       "from": "g_55_91",
+      "to": "g_55_92",
+      "walkable": true
+    },
+    {
+      "from": "g_55_91",
       "to": "g_56_91",
       "walkable": true
     },
     {
       "from": "g_55_91",
+      "to": "g_56_92",
+      "walkable": true
+    },
+    {
+      "from": "g_55_91",
       "to": "g_56_90",
+      "walkable": true
+    },
+    {
+      "from": "g_55_92",
+      "to": "g_56_92",
+      "walkable": true
+    },
+    {
+      "from": "g_55_92",
+      "to": "g_56_91",
       "walkable": true
     },
     {
@@ -104020,12 +105140,32 @@
     },
     {
       "from": "g_56_91",
+      "to": "g_56_92",
+      "walkable": true
+    },
+    {
+      "from": "g_56_91",
       "to": "g_57_91",
       "walkable": true
     },
     {
       "from": "g_56_91",
+      "to": "g_57_92",
+      "walkable": true
+    },
+    {
+      "from": "g_56_91",
       "to": "g_57_90",
+      "walkable": true
+    },
+    {
+      "from": "g_56_92",
+      "to": "g_57_92",
+      "walkable": true
+    },
+    {
+      "from": "g_56_92",
+      "to": "g_57_91",
       "walkable": true
     },
     {
@@ -105845,12 +106985,32 @@
     },
     {
       "from": "g_57_91",
+      "to": "g_57_92",
+      "walkable": true
+    },
+    {
+      "from": "g_57_91",
       "to": "g_58_91",
       "walkable": true
     },
     {
       "from": "g_57_91",
+      "to": "g_58_92",
+      "walkable": true
+    },
+    {
+      "from": "g_57_91",
       "to": "g_58_90",
+      "walkable": true
+    },
+    {
+      "from": "g_57_92",
+      "to": "g_58_92",
+      "walkable": true
+    },
+    {
+      "from": "g_57_92",
+      "to": "g_58_91",
       "walkable": true
     },
     {
@@ -106309,8 +107469,18 @@
       "walkable": true
     },
     {
+      "from": "g_58_91",
+      "to": "g_58_92",
+      "walkable": true
+    },
+    {
       "from": "n_07b",
       "to": "g_22_30",
+      "walkable": true
+    },
+    {
+      "from": "n_07b",
+      "to": "g_22_31",
       "walkable": true
     },
     {
@@ -106320,12 +107490,7 @@
     },
     {
       "from": "n_07b",
-      "to": "g_22_29",
-      "walkable": true
-    },
-    {
-      "from": "n_07b",
-      "to": "g_21_29",
+      "to": "g_21_31",
       "walkable": true
     },
     {
@@ -106335,12 +107500,12 @@
     },
     {
       "from": "n_07c",
-      "to": "g_22_29",
+      "to": "g_23_30",
       "walkable": true
     },
     {
       "from": "n_07c",
-      "to": "g_23_30",
+      "to": "g_22_29",
       "walkable": true
     },
     {
@@ -106350,7 +107515,7 @@
     },
     {
       "from": "n_dap_107_def",
-      "to": "g_39_22",
+      "to": "g_41_22",
       "walkable": true
     },
     {
@@ -106360,42 +107525,47 @@
     },
     {
       "from": "n_dap_107_def",
-      "to": "g_39_23",
+      "to": "g_41_23",
       "walkable": true
     },
     {
       "from": "n_dap_107_def",
-      "to": "g_39_21",
+      "to": "g_40_23",
       "walkable": true
     },
     {
       "from": "n_255",
-      "to": "g_13_23",
+      "to": "g_15_22",
       "walkable": true
     },
     {
       "from": "n_255",
-      "to": "g_13_24",
+      "to": "g_14_22",
       "walkable": true
     },
     {
       "from": "n_255",
-      "to": "g_12_23",
+      "to": "g_15_21",
       "walkable": true
     },
     {
       "from": "n_255",
-      "to": "g_14_23",
+      "to": "g_14_21",
       "walkable": true
     },
     {
       "from": "n_a",
-      "to": "g_31_45",
+      "to": "g_32_44",
       "walkable": true
     },
     {
       "from": "n_a",
-      "to": "g_30_45",
+      "to": "g_32_45",
+      "walkable": true
+    },
+    {
+      "from": "n_a",
+      "to": "g_33_44",
       "walkable": true
     },
     {
@@ -106404,53 +107574,48 @@
       "walkable": true
     },
     {
-      "from": "n_a",
-      "to": "g_30_44",
+      "from": "n_acces_ocp_chateau",
+      "to": "g_25_51",
       "walkable": true
     },
     {
       "from": "n_acces_ocp_chateau",
-      "to": "g_22_53",
+      "to": "g_25_52",
       "walkable": true
     },
     {
       "from": "n_acces_ocp_chateau",
-      "to": "g_22_52",
+      "to": "g_26_51",
       "walkable": true
     },
     {
       "from": "n_acces_ocp_chateau",
-      "to": "g_23_53",
-      "walkable": true
-    },
-    {
-      "from": "n_acces_ocp_chateau",
-      "to": "g_23_52",
+      "to": "g_24_51",
       "walkable": true
     },
     {
       "from": "n_actemium_office",
-      "to": "g_32_46",
+      "to": "g_34_46",
       "walkable": true
     },
     {
       "from": "n_actemium_office",
-      "to": "g_33_46",
+      "to": "g_34_45",
       "walkable": true
     },
     {
       "from": "n_actemium_office",
-      "to": "g_32_47",
+      "to": "g_35_46",
       "walkable": true
     },
     {
       "from": "n_actemium_office",
-      "to": "g_33_47",
+      "to": "g_35_45",
       "walkable": true
     },
     {
       "from": "n_afc",
-      "to": "g_31_38",
+      "to": "g_32_39",
       "walkable": true
     },
     {
@@ -106465,7 +107630,12 @@
     },
     {
       "from": "n_afc",
-      "to": "g_32_39",
+      "to": "g_31_38",
+      "walkable": true
+    },
+    {
+      "from": "n_atelier_electrique_instrumentation_pap",
+      "to": "g_21_34",
       "walkable": true
     },
     {
@@ -106475,37 +107645,42 @@
     },
     {
       "from": "n_atelier_electrique_instrumentation_pap",
+      "to": "g_20_34",
+      "walkable": true
+    },
+    {
+      "from": "n_atelier_electrique_instrumentation_pap",
       "to": "g_20_33",
       "walkable": true
     },
     {
-      "from": "n_atelier_electrique_instrumentation_pap",
-      "to": "g_21_32",
-      "walkable": true
-    },
-    {
-      "from": "n_atelier_electrique_instrumentation_pap",
-      "to": "g_21_34",
+      "from": "n_atner_office",
+      "to": "g_35_45",
       "walkable": true
     },
     {
       "from": "n_atner_office",
-      "to": "g_33_45",
+      "to": "g_34_45",
       "walkable": true
     },
     {
       "from": "n_atner_office",
-      "to": "g_33_46",
+      "to": "g_35_44",
       "walkable": true
     },
     {
       "from": "n_atner_office",
-      "to": "g_32_45",
+      "to": "g_34_44",
       "walkable": true
     },
     {
-      "from": "n_atner_office",
-      "to": "g_32_46",
+      "from": "n_base_art_vert",
+      "to": "g_26_43",
+      "walkable": true
+    },
+    {
+      "from": "n_base_art_vert",
+      "to": "g_26_44",
       "walkable": true
     },
     {
@@ -106519,23 +107694,8 @@
       "walkable": true
     },
     {
-      "from": "n_base_art_vert",
-      "to": "g_24_43",
-      "walkable": true
-    },
-    {
-      "from": "n_base_art_vert",
-      "to": "g_24_44",
-      "walkable": true
-    },
-    {
       "from": "n_base_de_vie_jdida_improvement",
       "to": "g_13_28",
-      "walkable": true
-    },
-    {
-      "from": "n_base_de_vie_jdida_improvement",
-      "to": "g_13_29",
       "walkable": true
     },
     {
@@ -106545,12 +107705,12 @@
     },
     {
       "from": "n_base_de_vie_jdida_improvement",
-      "to": "g_12_28",
+      "to": "g_13_29",
       "walkable": true
     },
     {
-      "from": "n_base_de_vie_phb",
-      "to": "g_39_31",
+      "from": "n_base_de_vie_jdida_improvement",
+      "to": "g_14_29",
       "walkable": true
     },
     {
@@ -106560,7 +107720,12 @@
     },
     {
       "from": "n_base_de_vie_phb",
-      "to": "g_38_31",
+      "to": "g_39_33",
+      "walkable": true
+    },
+    {
+      "from": "n_base_de_vie_phb",
+      "to": "g_40_32",
       "walkable": true
     },
     {
@@ -106570,12 +107735,7 @@
     },
     {
       "from": "n_batiment_d",
-      "to": "g_21_40",
-      "walkable": true
-    },
-    {
-      "from": "n_batiment_d",
-      "to": "g_22_40",
+      "to": "g_22_41",
       "walkable": true
     },
     {
@@ -106585,7 +107745,12 @@
     },
     {
       "from": "n_batiment_d",
-      "to": "g_22_41",
+      "to": "g_22_40",
+      "walkable": true
+    },
+    {
+      "from": "n_batiment_d",
+      "to": "g_21_40",
       "walkable": true
     },
     {
@@ -106595,7 +107760,12 @@
     },
     {
       "from": "n_batiment_phosphorique_jln",
-      "to": "g_19_31",
+      "to": "g_18_32",
+      "walkable": true
+    },
+    {
+      "from": "n_batiment_phosphorique_jln",
+      "to": "g_19_33",
       "walkable": true
     },
     {
@@ -106604,38 +107774,28 @@
       "walkable": true
     },
     {
-      "from": "n_batiment_phosphorique_jln",
-      "to": "g_20_31",
+      "from": "n_bureau_rhandi",
+      "to": "g_26_47",
       "walkable": true
     },
     {
       "from": "n_bureau_rhandi",
-      "to": "g_25_47",
+      "to": "g_26_46",
       "walkable": true
     },
     {
       "from": "n_bureau_rhandi",
-      "to": "g_24_47",
+      "to": "g_27_47",
       "walkable": true
     },
     {
       "from": "n_bureau_rhandi",
-      "to": "g_25_48",
-      "walkable": true
-    },
-    {
-      "from": "n_bureau_rhandi",
-      "to": "g_24_48",
+      "to": "g_27_46",
       "walkable": true
     },
     {
       "from": "n_centre_de_formation_hse_pmp",
-      "to": "g_30_31",
-      "walkable": true
-    },
-    {
-      "from": "n_centre_de_formation_hse_pmp",
-      "to": "g_31_31",
+      "to": "g_31_32",
       "walkable": true
     },
     {
@@ -106645,7 +107805,12 @@
     },
     {
       "from": "n_centre_de_formation_hse_pmp",
-      "to": "g_31_32",
+      "to": "g_31_31",
+      "walkable": true
+    },
+    {
+      "from": "n_centre_de_formation_hse_pmp",
+      "to": "g_30_31",
       "walkable": true
     },
     {
@@ -106655,22 +107820,17 @@
     },
     {
       "from": "n_centre_de_recherche_et_developement",
-      "to": "g_21_42",
-      "walkable": true
-    },
-    {
-      "from": "n_centre_de_recherche_et_developement",
       "to": "g_22_43",
       "walkable": true
     },
     {
       "from": "n_centre_de_recherche_et_developement",
-      "to": "g_21_43",
+      "to": "g_23_42",
       "walkable": true
     },
     {
-      "from": "n_centre_sensibilisation_ocp",
-      "to": "g_17_48",
+      "from": "n_centre_de_recherche_et_developement",
+      "to": "g_21_42",
       "walkable": true
     },
     {
@@ -106680,22 +107840,17 @@
     },
     {
       "from": "n_centre_sensibilisation_ocp",
-      "to": "g_17_47",
+      "to": "g_18_47",
       "walkable": true
     },
     {
       "from": "n_centre_sensibilisation_ocp",
-      "to": "g_17_49",
+      "to": "g_19_48",
       "walkable": true
     },
     {
-      "from": "n_centrelec",
-      "to": "g_24_30",
-      "walkable": true
-    },
-    {
-      "from": "n_centrelec",
-      "to": "g_23_30",
+      "from": "n_centre_sensibilisation_ocp",
+      "to": "g_19_47",
       "walkable": true
     },
     {
@@ -106705,7 +107860,17 @@
     },
     {
       "from": "n_centrelec",
+      "to": "g_24_30",
+      "walkable": true
+    },
+    {
+      "from": "n_centrelec",
       "to": "g_23_31",
+      "walkable": true
+    },
+    {
+      "from": "n_centrelec",
+      "to": "g_23_30",
       "walkable": true
     },
     {
@@ -106715,22 +107880,17 @@
     },
     {
       "from": "n_centrelec_sa_project_offices",
-      "to": "g_24_39",
-      "walkable": true
-    },
-    {
-      "from": "n_centrelec_sa_project_offices",
       "to": "g_25_40",
       "walkable": true
     },
     {
       "from": "n_centrelec_sa_project_offices",
-      "to": "g_25_38",
+      "to": "g_26_39",
       "walkable": true
     },
     {
-      "from": "n_gobco",
-      "to": "g_56_32",
+      "from": "n_centrelec_sa_project_offices",
+      "to": "g_26_40",
       "walkable": true
     },
     {
@@ -106740,17 +107900,22 @@
     },
     {
       "from": "n_gobco",
-      "to": "g_55_32",
+      "to": "g_57_33",
       "walkable": true
     },
     {
       "from": "n_gobco",
-      "to": "g_55_33",
+      "to": "g_56_34",
+      "walkable": true
+    },
+    {
+      "from": "n_gobco",
+      "to": "g_57_34",
       "walkable": true
     },
     {
       "from": "n_porte_principale",
-      "to": "g_15_39",
+      "to": "g_14_40",
       "walkable": true
     },
     {
@@ -106760,12 +107925,22 @@
     },
     {
       "from": "n_porte_principale",
-      "to": "g_14_39",
+      "to": "g_14_41",
       "walkable": true
     },
     {
       "from": "n_porte_principale",
-      "to": "g_14_40",
+      "to": "g_14_39",
+      "walkable": true
+    },
+    {
+      "from": "n_dap_107_e",
+      "to": "g_41_22",
+      "walkable": true
+    },
+    {
+      "from": "n_dap_107_e",
+      "to": "g_41_23",
       "walkable": true
     },
     {
@@ -106775,32 +107950,12 @@
     },
     {
       "from": "n_dap_107_e",
-      "to": "g_39_22",
-      "walkable": true
-    },
-    {
-      "from": "n_dap_107_e",
-      "to": "g_40_21",
-      "walkable": true
-    },
-    {
-      "from": "n_dap_107_e",
-      "to": "g_40_23",
+      "to": "g_42_22",
       "walkable": true
     },
     {
       "from": "n_dap_107_f",
-      "to": "g_39_21",
-      "walkable": true
-    },
-    {
-      "from": "n_dap_107_f",
-      "to": "g_39_22",
-      "walkable": true
-    },
-    {
-      "from": "n_dap_107_f",
-      "to": "g_38_21",
+      "to": "g_41_21",
       "walkable": true
     },
     {
@@ -106809,8 +107964,13 @@
       "walkable": true
     },
     {
-      "from": "n_dddd",
-      "to": "g_44_28",
+      "from": "n_dap_107_f",
+      "to": "g_41_22",
+      "walkable": true
+    },
+    {
+      "from": "n_dap_107_f",
+      "to": "g_40_22",
       "walkable": true
     },
     {
@@ -106820,37 +107980,37 @@
     },
     {
       "from": "n_dddd",
-      "to": "g_43_28",
+      "to": "g_45_29",
       "walkable": true
     },
     {
       "from": "n_dddd",
-      "to": "g_43_29",
+      "to": "g_44_30",
+      "walkable": true
+    },
+    {
+      "from": "n_dddd",
+      "to": "g_44_28",
       "walkable": true
     },
     {
       "from": "n_decharge_zone_2",
-      "to": "g_35_18",
+      "to": "g_38_17",
       "walkable": true
     },
     {
       "from": "n_decharge_zone_2",
-      "to": "g_35_19",
+      "to": "g_38_18",
       "walkable": true
     },
     {
       "from": "n_decharge_zone_2",
-      "to": "g_36_18",
+      "to": "g_37_17",
       "walkable": true
     },
     {
       "from": "n_decharge_zone_2",
-      "to": "g_34_18",
-      "walkable": true
-    },
-    {
-      "from": "n_station_desalement",
-      "to": "g_17_35",
+      "to": "g_37_18",
       "walkable": true
     },
     {
@@ -106860,32 +108020,37 @@
     },
     {
       "from": "n_station_desalement",
-      "to": "g_17_34",
+      "to": "g_16_36",
       "walkable": true
     },
     {
       "from": "n_station_desalement",
-      "to": "g_16_34",
+      "to": "g_17_35",
+      "walkable": true
+    },
+    {
+      "from": "n_station_desalement",
+      "to": "g_17_36",
       "walkable": true
     },
     {
       "from": "n_downstreamflashdryer",
-      "to": "g_20_19",
+      "to": "g_24_17",
       "walkable": true
     },
     {
       "from": "n_downstreamflashdryer",
-      "to": "g_21_19",
+      "to": "g_24_16",
       "walkable": true
     },
     {
       "from": "n_downstreamflashdryer",
-      "to": "g_20_18",
+      "to": "g_23_17",
       "walkable": true
     },
     {
       "from": "n_downstreamflashdryer",
-      "to": "g_20_20",
+      "to": "g_23_16",
       "walkable": true
     },
     {
@@ -106900,27 +108065,17 @@
     },
     {
       "from": "n_emaphos_euro_maroc_phosphore",
-      "to": "g_19_30",
+      "to": "g_19_32",
       "walkable": true
     },
     {
       "from": "n_emaphos_euro_maroc_phosphore",
-      "to": "g_20_30",
+      "to": "g_20_32",
       "walkable": true
     },
     {
       "from": "n_entite_infrastructure_jph",
-      "to": "g_19_25",
-      "walkable": true
-    },
-    {
-      "from": "n_entite_infrastructure_jph",
-      "to": "g_19_24",
-      "walkable": true
-    },
-    {
-      "from": "n_entite_infrastructure_jph",
-      "to": "g_20_25",
+      "to": "g_21_24",
       "walkable": true
     },
     {
@@ -106929,48 +108084,53 @@
       "walkable": true
     },
     {
-      "from": "n_entre_est_ocp",
-      "to": "g_17_62",
+      "from": "n_entite_infrastructure_jph",
+      "to": "g_21_25",
+      "walkable": true
+    },
+    {
+      "from": "n_entite_infrastructure_jph",
+      "to": "g_21_23",
       "walkable": true
     },
     {
       "from": "n_entre_est_ocp",
-      "to": "g_17_61",
+      "to": "g_22_58",
       "walkable": true
     },
     {
       "from": "n_entre_est_ocp",
-      "to": "g_16_62",
-      "walkable": true
-    },
-    {
-      "from": "n_entre_est_ocp",
-      "to": "g_16_61",
-      "walkable": true
-    },
-    {
-      "from": "n_entre_nord_ocp",
-      "to": "g_20_58",
-      "walkable": true
-    },
-    {
-      "from": "n_entre_nord_ocp",
-      "to": "g_20_59",
-      "walkable": true
-    },
-    {
-      "from": "n_entre_nord_ocp",
       "to": "g_21_58",
       "walkable": true
     },
     {
-      "from": "n_entre_nord_ocp",
-      "to": "g_21_59",
+      "from": "n_entre_est_ocp",
+      "to": "g_22_59",
       "walkable": true
     },
     {
-      "from": "n_entre_principale",
-      "to": "g_17_38",
+      "from": "n_entre_est_ocp",
+      "to": "g_22_57",
+      "walkable": true
+    },
+    {
+      "from": "n_entre_nord_ocp",
+      "to": "g_24_55",
+      "walkable": true
+    },
+    {
+      "from": "n_entre_nord_ocp",
+      "to": "g_25_55",
+      "walkable": true
+    },
+    {
+      "from": "n_entre_nord_ocp",
+      "to": "g_24_56",
+      "walkable": true
+    },
+    {
+      "from": "n_entre_nord_ocp",
+      "to": "g_25_56",
       "walkable": true
     },
     {
@@ -106980,7 +108140,12 @@
     },
     {
       "from": "n_entre_principale",
-      "to": "g_18_38",
+      "to": "g_16_39",
+      "walkable": true
+    },
+    {
+      "from": "n_entre_principale",
+      "to": "g_17_38",
       "walkable": true
     },
     {
@@ -106990,12 +108155,7 @@
     },
     {
       "from": "n_entreee_ouest_ocp",
-      "to": "g_1_29",
-      "walkable": true
-    },
-    {
-      "from": "n_entreee_ouest_ocp",
-      "to": "g_0_29",
+      "to": "g_0_28",
       "walkable": true
     },
     {
@@ -107005,12 +108165,12 @@
     },
     {
       "from": "n_entreee_ouest_ocp",
-      "to": "g_0_28",
+      "to": "g_0_29",
       "walkable": true
     },
     {
-      "from": "n_es_data",
-      "to": "g_12_28",
+      "from": "n_entreee_ouest_ocp",
+      "to": "g_0_27",
       "walkable": true
     },
     {
@@ -107020,12 +108180,27 @@
     },
     {
       "from": "n_es_data",
-      "to": "g_12_29",
+      "to": "g_12_28",
       "walkable": true
     },
     {
       "from": "n_es_data",
       "to": "g_13_29",
+      "walkable": true
+    },
+    {
+      "from": "n_es_data",
+      "to": "g_12_29",
+      "walkable": true
+    },
+    {
+      "from": "n_fluoralpha",
+      "to": "g_47_22",
+      "walkable": true
+    },
+    {
+      "from": "n_fluoralpha",
+      "to": "g_47_23",
       "walkable": true
     },
     {
@@ -107035,37 +108210,27 @@
     },
     {
       "from": "n_fluoralpha",
-      "to": "g_45_22",
+      "to": "g_48_22",
       "walkable": true
     },
     {
-      "from": "n_fluoralpha",
+      "from": "n_fluoralpha_jesa_tsf",
+      "to": "g_46_22",
+      "walkable": true
+    },
+    {
+      "from": "n_fluoralpha_jesa_tsf",
       "to": "g_46_21",
       "walkable": true
     },
     {
-      "from": "n_fluoralpha",
-      "to": "g_45_21",
-      "walkable": true
-    },
-    {
-      "from": "n_fluoralpha_jesa_tsf",
-      "to": "g_45_21",
-      "walkable": true
-    },
-    {
       "from": "n_fluoralpha_jesa_tsf",
       "to": "g_45_22",
       "walkable": true
     },
     {
       "from": "n_fluoralpha_jesa_tsf",
-      "to": "g_44_21",
-      "walkable": true
-    },
-    {
-      "from": "n_fluoralpha_jesa_tsf",
-      "to": "g_44_22",
+      "to": "g_47_22",
       "walkable": true
     },
     {
@@ -107075,7 +108240,7 @@
     },
     {
       "from": "n_generale",
-      "to": "g_22_35",
+      "to": "g_22_37",
       "walkable": true
     },
     {
@@ -107085,12 +108250,7 @@
     },
     {
       "from": "n_generale",
-      "to": "g_23_35",
-      "walkable": true
-    },
-    {
-      "from": "n_gngr_new_tech_morroco",
-      "to": "g_58_34",
+      "to": "g_21_36",
       "walkable": true
     },
     {
@@ -107100,7 +108260,12 @@
     },
     {
       "from": "n_gngr_new_tech_morroco",
-      "to": "g_57_34",
+      "to": "g_58_34",
+      "walkable": true
+    },
+    {
+      "from": "n_gngr_new_tech_morroco",
+      "to": "g_58_36",
       "walkable": true
     },
     {
@@ -107110,22 +108275,22 @@
     },
     {
       "from": "n_gtr_jorfoffice",
-      "to": "g_45_20",
+      "to": "g_46_21",
       "walkable": true
     },
     {
       "from": "n_gtr_jorfoffice",
-      "to": "g_44_20",
+      "to": "g_46_20",
+      "walkable": true
+    },
+    {
+      "from": "n_gtr_jorfoffice",
+      "to": "g_47_21",
       "walkable": true
     },
     {
       "from": "n_gtr_jorfoffice",
       "to": "g_45_21",
-      "walkable": true
-    },
-    {
-      "from": "n_gtr_jorfoffice",
-      "to": "g_44_21",
       "walkable": true
     },
     {
@@ -107135,22 +108300,17 @@
     },
     {
       "from": "n_idea_factory",
+      "to": "g_17_35",
+      "walkable": true
+    },
+    {
+      "from": "n_idea_factory",
       "to": "g_18_34",
       "walkable": true
     },
     {
       "from": "n_idea_factory",
-      "to": "g_17_33",
-      "walkable": true
-    },
-    {
-      "from": "n_idea_factory",
-      "to": "g_18_33",
-      "walkable": true
-    },
-    {
-      "from": "n_imacid",
-      "to": "g_28_39",
+      "to": "g_18_35",
       "walkable": true
     },
     {
@@ -107160,22 +108320,17 @@
     },
     {
       "from": "n_imacid",
-      "to": "g_27_39",
+      "to": "g_29_40",
       "walkable": true
     },
     {
       "from": "n_imacid",
-      "to": "g_27_40",
+      "to": "g_28_39",
       "walkable": true
     },
     {
-      "from": "n_infirmerie_ocp",
-      "to": "g_21_35",
-      "walkable": true
-    },
-    {
-      "from": "n_infirmerie_ocp",
-      "to": "g_22_35",
+      "from": "n_imacid",
+      "to": "g_29_39",
       "walkable": true
     },
     {
@@ -107185,12 +108340,17 @@
     },
     {
       "from": "n_infirmerie_ocp",
-      "to": "g_21_34",
+      "to": "g_21_35",
       "walkable": true
     },
     {
-      "from": "n_jesa_bloc6",
-      "to": "g_19_28",
+      "from": "n_infirmerie_ocp",
+      "to": "g_22_36",
+      "walkable": true
+    },
+    {
+      "from": "n_infirmerie_ocp",
+      "to": "g_22_35",
       "walkable": true
     },
     {
@@ -107200,7 +108360,7 @@
     },
     {
       "from": "n_jesa_bloc6",
-      "to": "g_20_28",
+      "to": "g_19_28",
       "walkable": true
     },
     {
@@ -107209,8 +108369,13 @@
       "walkable": true
     },
     {
+      "from": "n_jesa_bloc6",
+      "to": "g_20_28",
+      "walkable": true
+    },
+    {
       "from": "n_jesa_mission",
-      "to": "g_14_39",
+      "to": "g_13_40",
       "walkable": true
     },
     {
@@ -107220,17 +108385,22 @@
     },
     {
       "from": "n_jesa_mission",
-      "to": "g_13_39",
+      "to": "g_13_41",
       "walkable": true
     },
     {
       "from": "n_jesa_mission",
-      "to": "g_13_40",
+      "to": "g_13_39",
       "walkable": true
     },
     {
       "from": "n_jesa_site_office",
-      "to": "g_26_41",
+      "to": "g_27_42",
+      "walkable": true
+    },
+    {
+      "from": "n_jesa_site_office",
+      "to": "g_27_41",
       "walkable": true
     },
     {
@@ -107240,12 +108410,7 @@
     },
     {
       "from": "n_jesa_site_office",
-      "to": "g_25_41",
-      "walkable": true
-    },
-    {
-      "from": "n_jesa_site_office",
-      "to": "g_27_41",
+      "to": "g_26_41",
       "walkable": true
     },
     {
@@ -107255,17 +108420,17 @@
     },
     {
       "from": "n_jesa_tsf",
-      "to": "g_19_29",
-      "walkable": true
-    },
-    {
-      "from": "n_jesa_tsf",
       "to": "g_20_28",
       "walkable": true
     },
     {
       "from": "n_jesa_tsf",
-      "to": "g_18_28",
+      "to": "g_19_29",
+      "walkable": true
+    },
+    {
+      "from": "n_jesa_tsf",
+      "to": "g_20_29",
       "walkable": true
     },
     {
@@ -107275,27 +108440,17 @@
     },
     {
       "from": "n_jfc_1",
-      "to": "g_32_37",
+      "to": "g_33_38",
       "walkable": true
     },
     {
       "from": "n_jfc_1",
-      "to": "g_33_36",
+      "to": "g_34_37",
       "walkable": true
     },
     {
       "from": "n_jfc_1",
-      "to": "g_32_36",
-      "walkable": true
-    },
-    {
-      "from": "n_jfc4",
-      "to": "g_37_27",
-      "walkable": true
-    },
-    {
-      "from": "n_jfc4",
-      "to": "g_37_26",
+      "to": "g_34_38",
       "walkable": true
     },
     {
@@ -107305,37 +108460,37 @@
     },
     {
       "from": "n_jfc4",
-      "to": "g_36_27",
+      "to": "g_38_28",
       "walkable": true
     },
     {
-      "from": "n_john_cockerill_maroc_tsf",
-      "to": "g_41_19",
-      "walkable": true
-    },
-    {
-      "from": "n_john_cockerill_maroc_tsf",
-      "to": "g_42_19",
-      "walkable": true
-    },
-    {
-      "from": "n_john_cockerill_maroc_tsf",
-      "to": "g_41_18",
-      "walkable": true
-    },
-    {
-      "from": "n_john_cockerill_maroc_tsf",
-      "to": "g_41_20",
-      "walkable": true
-    },
-    {
-      "from": "n_jorf_fertilizer_company_4",
+      "from": "n_jfc4",
       "to": "g_37_27",
       "walkable": true
     },
     {
-      "from": "n_jorf_fertilizer_company_4",
-      "to": "g_37_26",
+      "from": "n_jfc4",
+      "to": "g_37_28",
+      "walkable": true
+    },
+    {
+      "from": "n_john_cockerill_maroc_tsf",
+      "to": "g_43_19",
+      "walkable": true
+    },
+    {
+      "from": "n_john_cockerill_maroc_tsf",
+      "to": "g_44_19",
+      "walkable": true
+    },
+    {
+      "from": "n_john_cockerill_maroc_tsf",
+      "to": "g_43_18",
+      "walkable": true
+    },
+    {
+      "from": "n_john_cockerill_maroc_tsf",
+      "to": "g_44_18",
       "walkable": true
     },
     {
@@ -107345,12 +108500,22 @@
     },
     {
       "from": "n_jorf_fertilizer_company_4",
-      "to": "g_36_27",
+      "to": "g_38_28",
+      "walkable": true
+    },
+    {
+      "from": "n_jorf_fertilizer_company_4",
+      "to": "g_37_27",
+      "walkable": true
+    },
+    {
+      "from": "n_jorf_fertilizer_company_4",
+      "to": "g_37_28",
       "walkable": true
     },
     {
       "from": "n_jfc5",
-      "to": "g_31_29",
+      "to": "g_32_30",
       "walkable": true
     },
     {
@@ -107365,12 +108530,7 @@
     },
     {
       "from": "n_jfc5",
-      "to": "g_32_30",
-      "walkable": true
-    },
-    {
-      "from": "n_jorf_fertilizer_company2_jfc_2",
-      "to": "g_36_25",
+      "to": "g_33_30",
       "walkable": true
     },
     {
@@ -107380,17 +108540,22 @@
     },
     {
       "from": "n_jorf_fertilizer_company2_jfc_2",
-      "to": "g_36_24",
+      "to": "g_37_26",
       "walkable": true
     },
     {
       "from": "n_jorf_fertilizer_company2_jfc_2",
-      "to": "g_36_26",
+      "to": "g_38_25",
+      "walkable": true
+    },
+    {
+      "from": "n_jorf_fertilizer_company2_jfc_2",
+      "to": "g_38_26",
       "walkable": true
     },
     {
       "from": "n_jfc5_plant",
-      "to": "g_31_29",
+      "to": "g_32_30",
       "walkable": true
     },
     {
@@ -107405,17 +108570,7 @@
     },
     {
       "from": "n_jfc5_plant",
-      "to": "g_32_30",
-      "walkable": true
-    },
-    {
-      "from": "n_kofert_ex_jfc2",
-      "to": "g_35_38",
-      "walkable": true
-    },
-    {
-      "from": "n_kofert_ex_jfc2",
-      "to": "g_35_37",
+      "to": "g_33_30",
       "walkable": true
     },
     {
@@ -107425,12 +108580,27 @@
     },
     {
       "from": "n_kofert_ex_jfc2",
+      "to": "g_37_38",
+      "walkable": true
+    },
+    {
+      "from": "n_kofert_ex_jfc2",
       "to": "g_36_37",
       "walkable": true
     },
     {
+      "from": "n_kofert_ex_jfc2",
+      "to": "g_36_39",
+      "walkable": true
+    },
+    {
       "from": "n_la_base",
-      "to": "g_22_24",
+      "to": "g_24_24",
+      "walkable": true
+    },
+    {
+      "from": "n_la_base",
+      "to": "g_24_23",
       "walkable": true
     },
     {
@@ -107440,12 +108610,7 @@
     },
     {
       "from": "n_la_base",
-      "to": "g_22_25",
-      "walkable": true
-    },
-    {
-      "from": "n_la_base",
-      "to": "g_22_23",
+      "to": "g_23_23",
       "walkable": true
     },
     {
@@ -107455,7 +108620,7 @@
     },
     {
       "from": "n_ligne_ab",
-      "to": "g_22_33",
+      "to": "g_22_35",
       "walkable": true
     },
     {
@@ -107465,17 +108630,7 @@
     },
     {
       "from": "n_ligne_ab",
-      "to": "g_21_33",
-      "walkable": true
-    },
-    {
-      "from": "n_ligne_f",
-      "to": "g_20_34",
-      "walkable": true
-    },
-    {
-      "from": "n_ligne_f",
-      "to": "g_19_34",
+      "to": "g_21_35",
       "walkable": true
     },
     {
@@ -107485,22 +108640,32 @@
     },
     {
       "from": "n_ligne_f",
-      "to": "g_20_33",
+      "to": "g_20_34",
+      "walkable": true
+    },
+    {
+      "from": "n_ligne_f",
+      "to": "g_19_35",
+      "walkable": true
+    },
+    {
+      "from": "n_ligne_f",
+      "to": "g_19_34",
       "walkable": true
     },
     {
       "from": "n_mag_downstream",
-      "to": "g_25_23",
+      "to": "g_27_22",
       "walkable": true
     },
     {
       "from": "n_mag_downstream",
-      "to": "g_25_22",
+      "to": "g_26_22",
       "walkable": true
     },
     {
       "from": "n_mag_downstream",
-      "to": "g_24_23",
+      "to": "g_27_23",
       "walkable": true
     },
     {
@@ -107530,17 +108695,12 @@
     },
     {
       "from": "n_mosquee_jorf_lasfar",
-      "to": "g_21_38",
-      "walkable": true
-    },
-    {
-      "from": "n_mosquee_jorf_lasfar",
-      "to": "g_20_38",
-      "walkable": true
-    },
-    {
-      "from": "n_mosquee_jorf_lasfar",
       "to": "g_21_39",
+      "walkable": true
+    },
+    {
+      "from": "n_mosquee_jorf_lasfar",
+      "to": "g_21_38",
       "walkable": true
     },
     {
@@ -107549,28 +108709,28 @@
       "walkable": true
     },
     {
-      "from": "n_new_rss",
-      "to": "g_23_20",
+      "from": "n_mosquee_jorf_lasfar",
+      "to": "g_20_38",
       "walkable": true
     },
     {
       "from": "n_new_rss",
-      "to": "g_23_21",
+      "to": "g_26_19",
       "walkable": true
     },
     {
       "from": "n_new_rss",
-      "to": "g_22_20",
+      "to": "g_25_19",
       "walkable": true
     },
     {
       "from": "n_new_rss",
-      "to": "g_24_20",
+      "to": "g_26_18",
       "walkable": true
     },
     {
-      "from": "n_ocp_control_tower",
-      "to": "g_23_44",
+      "from": "n_new_rss",
+      "to": "g_25_18",
       "walkable": true
     },
     {
@@ -107580,22 +108740,17 @@
     },
     {
       "from": "n_ocp_control_tower",
-      "to": "g_23_43",
-      "walkable": true
-    },
-    {
-      "from": "n_ocp_control_tower",
       "to": "g_24_43",
       "walkable": true
     },
     {
-      "from": "n_ocp_green_water",
-      "to": "g_16_37",
+      "from": "n_ocp_control_tower",
+      "to": "g_25_44",
       "walkable": true
     },
     {
-      "from": "n_ocp_green_water",
-      "to": "g_16_36",
+      "from": "n_ocp_control_tower",
+      "to": "g_25_43",
       "walkable": true
     },
     {
@@ -107605,12 +108760,17 @@
     },
     {
       "from": "n_ocp_green_water",
-      "to": "g_15_36",
+      "to": "g_16_37",
       "walkable": true
     },
     {
-      "from": "n_ocp_jorf_lasfar",
-      "to": "g_34_39",
+      "from": "n_ocp_green_water",
+      "to": "g_15_38",
+      "walkable": true
+    },
+    {
+      "from": "n_ocp_green_water",
+      "to": "g_16_38",
       "walkable": true
     },
     {
@@ -107620,7 +108780,7 @@
     },
     {
       "from": "n_ocp_jorf_lasfar",
-      "to": "g_34_38",
+      "to": "g_36_39",
       "walkable": true
     },
     {
@@ -107629,13 +108789,8 @@
       "walkable": true
     },
     {
-      "from": "n_ocp_mainteance_solution_jorf_lasfar",
-      "to": "g_22_36",
-      "walkable": true
-    },
-    {
-      "from": "n_ocp_mainteance_solution_jorf_lasfar",
-      "to": "g_23_36",
+      "from": "n_ocp_jorf_lasfar",
+      "to": "g_35_40",
       "walkable": true
     },
     {
@@ -107649,8 +108804,18 @@
       "walkable": true
     },
     {
+      "from": "n_ocp_mainteance_solution_jorf_lasfar",
+      "to": "g_22_36",
+      "walkable": true
+    },
+    {
+      "from": "n_ocp_mainteance_solution_jorf_lasfar",
+      "to": "g_23_36",
+      "walkable": true
+    },
+    {
       "from": "n_ofas",
-      "to": "g_43_26",
+      "to": "g_44_27",
       "walkable": true
     },
     {
@@ -107660,12 +108825,12 @@
     },
     {
       "from": "n_ofas",
-      "to": "g_42_26",
+      "to": "g_44_28",
       "walkable": true
     },
     {
       "from": "n_ofas",
-      "to": "g_42_27",
+      "to": "g_43_28",
       "walkable": true
     },
     {
@@ -107675,22 +108840,22 @@
     },
     {
       "from": "n_pakistan_maroc_phosphore",
+      "to": "g_29_33",
+      "walkable": true
+    },
+    {
+      "from": "n_pakistan_maroc_phosphore",
       "to": "g_28_32",
       "walkable": true
     },
     {
       "from": "n_pakistan_maroc_phosphore",
-      "to": "g_29_31",
-      "walkable": true
-    },
-    {
-      "from": "n_pakistan_maroc_phosphore",
-      "to": "g_28_31",
+      "to": "g_28_33",
       "walkable": true
     },
     {
       "from": "n_parkx",
-      "to": "g_54_26",
+      "to": "g_54_28",
       "walkable": true
     },
     {
@@ -107700,7 +108865,7 @@
     },
     {
       "from": "n_parkx",
-      "to": "g_55_26",
+      "to": "g_55_28",
       "walkable": true
     },
     {
@@ -107710,17 +108875,12 @@
     },
     {
       "from": "n_pe_262",
-      "to": "g_8_25",
+      "to": "g_9_23",
       "walkable": true
     },
     {
       "from": "n_pe_262",
-      "to": "g_8_24",
-      "walkable": true
-    },
-    {
-      "from": "n_pe_262",
-      "to": "g_9_25",
+      "to": "g_10_23",
       "walkable": true
     },
     {
@@ -107729,33 +108889,33 @@
       "walkable": true
     },
     {
-      "from": "n_pj_2",
-      "to": "g_9_22",
+      "from": "n_pe_262",
+      "to": "g_10_24",
       "walkable": true
     },
     {
       "from": "n_pj_2",
-      "to": "g_8_22",
+      "to": "g_11_20",
       "walkable": true
     },
     {
       "from": "n_pj_2",
-      "to": "g_9_21",
+      "to": "g_11_19",
       "walkable": true
     },
     {
       "from": "n_pj_2",
-      "to": "g_8_21",
+      "to": "g_12_20",
+      "walkable": true
+    },
+    {
+      "from": "n_pj_2",
+      "to": "g_12_19",
       "walkable": true
     },
     {
       "from": "n_pmp",
-      "to": "g_28_30",
-      "walkable": true
-    },
-    {
-      "from": "n_pmp",
-      "to": "g_29_30",
+      "to": "g_29_31",
       "walkable": true
     },
     {
@@ -107765,47 +108925,52 @@
     },
     {
       "from": "n_pmp",
-      "to": "g_29_31",
+      "to": "g_29_30",
+      "walkable": true
+    },
+    {
+      "from": "n_pmp",
+      "to": "g_28_30",
       "walkable": true
     },
     {
       "from": "n_point_de_rassemblement_jph",
-      "to": "g_20_24",
+      "to": "g_21_23",
       "walkable": true
     },
     {
       "from": "n_point_de_rassemblement_jph",
-      "to": "g_19_24",
+      "to": "g_21_24",
       "walkable": true
     },
     {
       "from": "n_point_de_rassemblement_jph",
-      "to": "g_20_25",
+      "to": "g_22_23",
       "walkable": true
     },
     {
       "from": "n_point_de_rassemblement_jph",
-      "to": "g_20_23",
+      "to": "g_22_24",
       "walkable": true
     },
     {
       "from": "n_printer_c_308",
-      "to": "g_31_45",
+      "to": "g_32_44",
       "walkable": true
     },
     {
       "from": "n_printer_c_308",
-      "to": "g_31_44",
+      "to": "g_33_44",
       "walkable": true
     },
     {
       "from": "n_printer_c_308",
-      "to": "g_30_45",
+      "to": "g_32_45",
       "walkable": true
     },
     {
       "from": "n_printer_c_308",
-      "to": "g_30_44",
+      "to": "g_33_45",
       "walkable": true
     },
     {
@@ -107815,22 +108980,17 @@
     },
     {
       "from": "n_salle_de_controle_phosphorique",
+      "to": "g_27_40",
+      "walkable": true
+    },
+    {
+      "from": "n_salle_de_controle_phosphorique",
+      "to": "g_28_39",
+      "walkable": true
+    },
+    {
+      "from": "n_salle_de_controle_phosphorique",
       "to": "g_26_39",
-      "walkable": true
-    },
-    {
-      "from": "n_salle_de_controle_phosphorique",
-      "to": "g_27_38",
-      "walkable": true
-    },
-    {
-      "from": "n_salle_de_controle_phosphorique",
-      "to": "g_26_38",
-      "walkable": true
-    },
-    {
-      "from": "n_sape",
-      "to": "g_25_44",
       "walkable": true
     },
     {
@@ -107840,12 +109000,22 @@
     },
     {
       "from": "n_sape",
-      "to": "g_25_43",
+      "to": "g_26_43",
       "walkable": true
     },
     {
       "from": "n_sape",
-      "to": "g_25_45",
+      "to": "g_27_44",
+      "walkable": true
+    },
+    {
+      "from": "n_sape",
+      "to": "g_27_43",
+      "walkable": true
+    },
+    {
+      "from": "n_scif_tsf",
+      "to": "g_44_25",
       "walkable": true
     },
     {
@@ -107855,52 +109025,42 @@
     },
     {
       "from": "n_scif_tsf",
-      "to": "g_43_24",
+      "to": "g_44_26",
       "walkable": true
     },
     {
       "from": "n_scif_tsf",
-      "to": "g_42_25",
-      "walkable": true
-    },
-    {
-      "from": "n_scif_tsf",
-      "to": "g_42_24",
+      "to": "g_43_26",
       "walkable": true
     },
     {
       "from": "n_service_electrique_mmg",
-      "to": "g_23_48",
+      "to": "g_25_47",
       "walkable": true
     },
     {
       "from": "n_service_electrique_mmg",
-      "to": "g_24_48",
+      "to": "g_25_48",
       "walkable": true
     },
     {
       "from": "n_service_electrique_mmg",
-      "to": "g_23_49",
+      "to": "g_26_47",
       "walkable": true
     },
     {
       "from": "n_service_electrique_mmg",
-      "to": "g_23_47",
-      "walkable": true
-    },
-    {
-      "from": "n_service_genie_civil",
       "to": "g_24_47",
       "walkable": true
     },
     {
       "from": "n_service_genie_civil",
-      "to": "g_24_46",
+      "to": "g_25_46",
       "walkable": true
     },
     {
       "from": "n_service_genie_civil",
-      "to": "g_23_47",
+      "to": "g_26_46",
       "walkable": true
     },
     {
@@ -107909,18 +109069,13 @@
       "walkable": true
     },
     {
-      "from": "n_smart_composite_company_tsf",
-      "to": "g_43_24",
+      "from": "n_service_genie_civil",
+      "to": "g_26_47",
       "walkable": true
     },
     {
       "from": "n_smart_composite_company_tsf",
-      "to": "g_42_24",
-      "walkable": true
-    },
-    {
-      "from": "n_smart_composite_company_tsf",
-      "to": "g_43_23",
+      "to": "g_44_25",
       "walkable": true
     },
     {
@@ -107929,8 +109084,13 @@
       "walkable": true
     },
     {
-      "from": "n_sogea_ahf_plant",
-      "to": "g_46_23",
+      "from": "n_smart_composite_company_tsf",
+      "to": "g_44_24",
+      "walkable": true
+    },
+    {
+      "from": "n_smart_composite_company_tsf",
+      "to": "g_43_24",
       "walkable": true
     },
     {
@@ -107940,12 +109100,22 @@
     },
     {
       "from": "n_sogea_ahf_plant",
-      "to": "g_46_22",
+      "to": "g_47_24",
       "walkable": true
     },
     {
       "from": "n_sogea_ahf_plant",
-      "to": "g_47_22",
+      "to": "g_48_23",
+      "walkable": true
+    },
+    {
+      "from": "n_sogea_ahf_plant",
+      "to": "g_48_24",
+      "walkable": true
+    },
+    {
+      "from": "n_sogea_maroc_office",
+      "to": "g_33_43",
       "walkable": true
     },
     {
@@ -107955,22 +109125,12 @@
     },
     {
       "from": "n_sogea_maroc_office",
-      "to": "g_31_43",
+      "to": "g_33_44",
       "walkable": true
     },
     {
       "from": "n_sogea_maroc_office",
-      "to": "g_32_44",
-      "walkable": true
-    },
-    {
-      "from": "n_sogea_maroc_office",
-      "to": "g_31_44",
-      "walkable": true
-    },
-    {
-      "from": "n_station_terminale",
-      "to": "g_37_40",
+      "to": "g_33_42",
       "walkable": true
     },
     {
@@ -107980,12 +109140,17 @@
     },
     {
       "from": "n_station_terminale",
-      "to": "g_37_39",
+      "to": "g_39_40",
       "walkable": true
     },
     {
       "from": "n_station_terminale",
       "to": "g_38_39",
+      "walkable": true
+    },
+    {
+      "from": "n_station_terminale",
+      "to": "g_38_41",
       "walkable": true
     },
     {
@@ -107995,12 +109160,12 @@
     },
     {
       "from": "n_strocjph",
-      "to": "g_13_29",
+      "to": "g_12_30",
       "walkable": true
     },
     {
       "from": "n_strocjph",
-      "to": "g_12_30",
+      "to": "g_13_29",
       "walkable": true
     },
     {
@@ -108010,12 +109175,7 @@
     },
     {
       "from": "n_surete_operationnel_ocp",
-      "to": "g_41_42",
-      "walkable": true
-    },
-    {
-      "from": "n_surete_operationnel_ocp",
-      "to": "g_41_43",
+      "to": "g_43_42",
       "walkable": true
     },
     {
@@ -108025,7 +109185,12 @@
     },
     {
       "from": "n_surete_operationnel_ocp",
-      "to": "g_40_42",
+      "to": "g_43_41",
+      "walkable": true
+    },
+    {
+      "from": "n_surete_operationnel_ocp",
+      "to": "g_42_41",
       "walkable": true
     },
     {
@@ -108035,32 +109200,22 @@
     },
     {
       "from": "n_ted_ligne_d",
-      "to": "g_23_40",
-      "walkable": true
-    },
-    {
-      "from": "n_ted_ligne_d",
       "to": "g_24_41",
       "walkable": true
     },
     {
       "from": "n_ted_ligne_d",
-      "to": "g_24_39",
+      "to": "g_23_40",
+      "walkable": true
+    },
+    {
+      "from": "n_ted_ligne_d",
+      "to": "g_25_40",
       "walkable": true
     },
     {
       "from": "n_tsf",
-      "to": "g_44_21",
-      "walkable": true
-    },
-    {
-      "from": "n_tsf",
-      "to": "g_45_21",
-      "walkable": true
-    },
-    {
-      "from": "n_tsf",
-      "to": "g_44_22",
+      "to": "g_46_22",
       "walkable": true
     },
     {
@@ -108069,33 +109224,33 @@
       "walkable": true
     },
     {
-      "from": "n_tsf_jesa_handling_project",
-      "to": "g_38_20",
+      "from": "n_tsf",
+      "to": "g_46_21",
+      "walkable": true
+    },
+    {
+      "from": "n_tsf",
+      "to": "g_45_21",
       "walkable": true
     },
     {
       "from": "n_tsf_jesa_handling_project",
-      "to": "g_38_19",
+      "to": "g_40_19",
       "walkable": true
     },
     {
       "from": "n_tsf_jesa_handling_project",
-      "to": "g_37_20",
+      "to": "g_39_19",
       "walkable": true
     },
     {
       "from": "n_tsf_jesa_handling_project",
-      "to": "g_37_19",
+      "to": "g_40_20",
       "walkable": true
     },
     {
-      "from": "n_tsf_jesa_handling_system_ax3_project",
-      "to": "g_37_30",
-      "walkable": true
-    },
-    {
-      "from": "n_tsf_jesa_handling_system_ax3_project",
-      "to": "g_36_30",
+      "from": "n_tsf_jesa_handling_project",
+      "to": "g_40_18",
       "walkable": true
     },
     {
@@ -108105,12 +109260,17 @@
     },
     {
       "from": "n_tsf_jesa_handling_system_ax3_project",
-      "to": "g_37_29",
+      "to": "g_37_30",
       "walkable": true
     },
     {
-      "from": "n_tsf_new_water",
-      "to": "g_21_44",
+      "from": "n_tsf_jesa_handling_system_ax3_project",
+      "to": "g_38_31",
+      "walkable": true
+    },
+    {
+      "from": "n_tsf_jesa_handling_system_ax3_project",
+      "to": "g_38_30",
       "walkable": true
     },
     {
@@ -108120,22 +109280,17 @@
     },
     {
       "from": "n_tsf_new_water",
-      "to": "g_21_45",
+      "to": "g_23_44",
       "walkable": true
     },
     {
       "from": "n_tsf_new_water",
-      "to": "g_21_43",
+      "to": "g_22_45",
       "walkable": true
     },
     {
-      "from": "n_tsf_scif_ammonia_storage",
-      "to": "g_41_25",
-      "walkable": true
-    },
-    {
-      "from": "n_tsf_scif_ammonia_storage",
-      "to": "g_41_24",
+      "from": "n_tsf_new_water",
+      "to": "g_22_43",
       "walkable": true
     },
     {
@@ -108145,12 +109300,22 @@
     },
     {
       "from": "n_tsf_scif_ammonia_storage",
-      "to": "g_42_24",
+      "to": "g_42_26",
+      "walkable": true
+    },
+    {
+      "from": "n_tsf_scif_ammonia_storage",
+      "to": "g_43_25",
+      "walkable": true
+    },
+    {
+      "from": "n_tsf_scif_ammonia_storage",
+      "to": "g_41_25",
       "walkable": true
     },
     {
       "from": "n_tsf_x_daewoo",
-      "to": "g_30_44",
+      "to": "g_32_44",
       "walkable": true
     },
     {
@@ -108160,37 +109325,32 @@
     },
     {
       "from": "n_tsf_x_daewoo",
-      "to": "g_30_43",
+      "to": "g_32_43",
       "walkable": true
     },
     {
       "from": "n_tsf_x_daewoo",
-      "to": "g_30_45",
+      "to": "g_31_43",
       "walkable": true
     },
     {
       "from": "n_tsp1",
-      "to": "g_30_22",
+      "to": "g_31_22",
       "walkable": true
     },
     {
       "from": "n_tsp1",
-      "to": "g_30_23",
+      "to": "g_32_22",
       "walkable": true
     },
     {
       "from": "n_tsp1",
-      "to": "g_29_22",
+      "to": "g_31_21",
       "walkable": true
     },
     {
       "from": "n_tsp1",
-      "to": "g_29_23",
-      "walkable": true
-    },
-    {
-      "from": "n_wave_2_east",
-      "to": "g_17_43",
+      "to": "g_32_21",
       "walkable": true
     },
     {
@@ -108200,12 +109360,17 @@
     },
     {
       "from": "n_wave_2_east",
-      "to": "g_17_42",
+      "to": "g_17_43",
       "walkable": true
     },
     {
       "from": "n_wave_2_east",
       "to": "g_18_42",
+      "walkable": true
+    },
+    {
+      "from": "n_wave_2_east",
+      "to": "g_17_42",
       "walkable": true
     }
   ]

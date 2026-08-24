@@ -1,22 +1,25 @@
 === OCP MAP REGENERATION ===
 Mode: FULL REGENERATION
-Calibration file: /mnt/c/Users/unknown/Downloads/project assets/hd-calibrations.json
+Calibration file: /mnt/c/Users/unknown/Downloads/project assets/hd-refine.json
 Image: campus-map-hd.jpg (8192x5282)
 
-Control points: 12 (used 11, excluded: station_desalement)
-Model: QUADRATIC · RMS 22.26 px ≈ 25.3 m (max 55.6 px)
-Scale: 1.1363 m/px (0.880 px/m) · rotation -3.64°
-  · strocjph: Δ(12.6, -21.9) = 25.2 px = 29 m
-  · porte_principale: Δ(-8.1, 3.2) = 8.7 px = 10 m
-  · idea_factory: Δ(-3.3, 25.7) = 26.0 px = 29 m
-  · entre_est_ocp: Δ(-6.3, 8.0) = 10.2 px = 12 m
-  · imacid: Δ(-2.2, -1.0) = 2.4 px = 3 m
-  · jfc_1: Δ(-6.5, 5.4) = 8.5 px = 10 m
-  · gngr_new_tech_morroco: Δ(-2.2, 3.4) = 4.1 px = 5 m
-  · fluoralpha: Δ(5.4, -6.7) = 8.6 px = 10 m
-  · mosquee_jorf_lasfar: Δ(-12.9, 8.0) = 15.2 px = 17 m
-  · ocp_control_tower: Δ(38.1, -40.5) = 55.6 px = 63 m
-  · centrelec: Δ(-14.5, 16.2) = 21.7 px = 25 m
+Control points: 16 (used 14, excluded: station_desalement, entre_est_ocp)
+Model: QUADRATIC · RMS 25.24 px ≈ 29.0 m (max 47.4 px)
+Scale: 1.1480 m/px (0.871 px/m) · rotation -0.95°
+  · strocjph: Δ(6.8, -31.7) = 32.4 px = 37 m
+  · porte_principale: Δ(6.4, -39.0) = 39.6 px = 45 m
+  · idea_factory: Δ(15.1, -15.0) = 21.3 px = 24 m
+  · imacid: Δ(-5.8, 9.3) = 11.0 px = 13 m
+  · jfc_1: Δ(-4.5, 30.7) = 31.0 px = 36 m
+  · gngr_new_tech_morroco: Δ(13.5, -18.2) = 22.7 px = 26 m
+  · fluoralpha: Δ(12.6, 19.3) = 23.0 px = 26 m
+  · mosquee_jorf_lasfar: Δ(-1.2, -1.9) = 2.2 px = 3 m
+  · ocp_control_tower: Δ(-2.8, 21.5) = 21.7 px = 25 m
+  · centrelec: Δ(-8.8, 5.5) = 10.4 px = 12 m
+  · pj_2: Δ(-0.1, -20.0) = 20.0 px = 23 m
+  · entreee_ouest_ocp: Δ(-8.1, 46.7) = 47.4 px = 54 m
+  · centre_sensibilisation_ocp: Δ(-1.4, -2.4) = 2.8 px = 3 m
+  · parkx: Δ(-21.5, -4.7) = 22.0 px = 25 m
 
 Places in dataset: 95
 GPS integrity: 
@@ -28,7 +31,7 @@ GPS integrity:
   COLLISION <2px: jfc5 <-> jfc5_plant (0.0px)
 Projected 95/95 places from immutable GPS coordinates.
 
-Graph rebuilt: 5523 nodes · 21641 edges · 95 connections
+Graph rebuilt: 5582 nodes · 21874 edges · 95 connections
 
 Running all-pairs routing check...
-Routing: 8930/8930 place-pairs routable (100.0%) in 2850ms
+Routing: 8930/8930 place-pairs routable (100.0%) in 2833ms

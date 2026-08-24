@@ -25,51 +25,52 @@
   "calibration": {
     "description": "Least-squares quadratic GPS→pixel transform fitted from captured control points",
     "method": "quadratic-least-squares",
-    "controlPoints": 12,
-    "usedPoints": 11,
+    "controlPoints": 16,
+    "usedPoints": 14,
     "excludedIds": [
+      "entre_est_ocp",
       "station_desalement"
     ],
-    "rmsPx": 22.26,
-    "rmsMeters": 25.3,
-    "maxResidualPx": 55.6,
-    "metersPerPixel": 1.1363,
-    "rotationDeg": -3.64,
-    "centerLat": 33.106814583333325,
-    "centerLng": -8.599059916666667,
+    "rmsPx": 25.24,
+    "rmsMeters": 29,
+    "maxResidualPx": 47.4,
+    "metersPerPixel": 1.148,
+    "rotationDeg": -0.95,
+    "centerLat": 33.108061631944445,
+    "centerLng": -8.600814902777776,
     "coeffs": {
-      "a": 0.9026770510122324,
-      "b": -0.007686323588745196,
-      "c": 3300.2298297421703,
-      "d": -0.05744823876434213,
-      "e": -0.8575561727234499,
-      "f": 2399.1138385462987
+      "a": 0.8525974170645778,
+      "b": -0.00022378382114357953,
+      "c": 3175.0973864413786,
+      "d": -0.01410210679018616,
+      "e": -0.8899765106328,
+      "f": 2272.4133512313606
     },
     "quad": {
       "ax": [
-        3300.2298297421703,
-        0.9026770510122324,
-        -0.007686323588745196,
-        0.00007261393064944231,
-        -0.00003868364616718224,
-        1.647837047159641e-7
+        3175.0973864413786,
+        0.8525974170645778,
+        -0.00022378382114357953,
+        0.0000024834375985360592,
+        -0.0000012745557677349862,
+        -6.557586823941095e-7
       ],
       "ay": [
-        2399.1138385462987,
-        -0.05744823876434213,
-        -0.8575561727234499,
-        -0.00007128024888227066,
-        0.000028991386254720656,
-        0.000004251386924078359
+        2272.4133512313606,
+        -0.01410210679018616,
+        -0.8899765106328,
+        0.000013345086309872688,
+        -0.000002162522432336161,
+        -0.000003413425487472438
       ]
     },
-    "capturedAt": "2026-08-24T18:48:29.818Z"
+    "capturedAt": "2026-08-24T19:43:50.565Z"
   },
   "navigation": {
     "walkingSpeed": 1.4,
     "walkingSpeedUnit": "m/s",
-    "pixelsPerMeter": 0.880078316301502,
-    "note": "1 pixel ≈ 1.136m (derived from 12-point quadratic calibration)"
+    "pixelsPerMeter": 0.871088302089412,
+    "note": "1 pixel ≈ 1.148m (derived from 16-point quadratic calibration)"
   },
   "display": {
     "defaultZoom": 1,

@@ -1,16 +1,22 @@
 === OCP MAP REGENERATION ===
 Mode: FULL REGENERATION
-Calibration file: /mnt/c/Users/unknown/Downloads/project assets/calibration-points.json
+Calibration file: /mnt/c/Users/unknown/Downloads/project assets/hd-calibrations.json
+Image: campus-map-hd.jpg (8192x5282)
 
-Control points: 7
-Affine RMS residual: 14.25 px (max 17.8 px)
-Scale: 2.3091 m/px (0.433 px/m) · rotation -58.37°
-  · porte_principale: Δ(-6.1, -12.7) = 14.1 px
-  · idea_factory: Δ(8.8, 13.4) = 16.0 px
-  · emaphos: Δ(-8.5, -3.9) = 9.3 px
-  · jesa_tsf_bloc7: Δ(9.9, -11.7) = 15.4 px
-  · strocjph: Δ(-5.9, 9.7) = 11.3 px
-  · jfc_1: Δ(-13.8, -3.5) = 14.3 px
-  · imacid: Δ(15.5, 8.7) = 17.8 px
+Control points: 12
+Affine RMS residual: 124.58 px (max 257.8 px)
+Scale: 1.0914 m/px (0.916 px/m) · rotation -5.84°
+  · strocjph: Δ(-46.2, -25.2) = 52.6 px
+  · porte_principale: Δ(73.0, -111.5) = 133.3 px
+  · idea_factory: Δ(23.8, -38.9) = 45.6 px
+  · entre_est_ocp: Δ(-137.2, 138.7) = 195.1 px
+  · imacid: Δ(51.0, -63.4) = 81.4 px
+  · jfc_1: Δ(37.3, -43.3) = 57.2 px
+  · gngr_new_tech_morroco: Δ(29.7, -30.7) = 42.7 px
+  · fluoralpha: Δ(-85.8, 98.3) = 130.5 px
+  · mosquee_jorf_lasfar: Δ(50.4, -77.2) = 92.2 px
+  · ocp_control_tower: Δ(94.6, -107.9) = 143.5 px
+  · centrelec: Δ(-34.4, 9.5) = 35.7 px
+  · station_desalement: Δ(-56.2, 251.6) = 257.8 px
 
 ABORT: RMS > 12px suggests mislocated clicks. Fix flagged points or rerun with --force.
