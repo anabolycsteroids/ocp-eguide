@@ -94,7 +94,7 @@
     "settings": "الإعدادات",
     "logout": "تسجيل الخروج",
     "visitorDashboard": "لوحة تحكم الزائر",
-    "welcomeVisitor": "مرحباً، يا عميل!",
+    "welcomeVisitor": "مرحباً بك، عميلنا العزيز!",
     "visitingOcp": "أنت تزور مجموعة OCP اليوم",
     "yourVisitDetails": "تفاصيل زيارتك",
     "host": "المضيف",
@@ -332,7 +332,7 @@
     "noRequests": "لا توجد طلبات"
   },
   "visitor": {
-    "welcomeVisitor": "مرحباً، يا عميل!",
+    "welcomeVisitor": "مرحباً بك، عميلنا العزيز!",
     "visitingOcp": "أنت تزور مجموعة OCP اليوم",
     "yourVisitDetails": "تفاصيل زيارتك",
     "host": "المضيف",

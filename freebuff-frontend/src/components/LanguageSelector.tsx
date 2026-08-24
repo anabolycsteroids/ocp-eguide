@@ -7,7 +7,7 @@ import type { Lang } from "@/i18n";
 const languages: { code: Lang; label: string; flag: string }[] = [
   { code: "en", label: "EN", flag: "🇬🇧" },
   { code: "fr", label: "FR", flag: "🇫🇷" },
-  { code: "ar", label: "عربي", flag: "🇲🇦" },
+  { code: "ar", label: "العربية", flag: "🇲🇦" },
 ];
 
 export default function LanguageSelector({ variant = "dark" }: { variant?: "dark" | "light" }) {
