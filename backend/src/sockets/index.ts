@@ -7,9 +7,19 @@ import { SocketUser } from "../types";
 const connectedUsers = new Map<string, SocketUser>();
 
 export function initializeSocketIO(httpServer: HttpServer): Server {
+  const socketOrigins = String(config.cors.origin ?? "")
+    .split(",")
+    .map((o: string) => o.trim())
+    .filter(Boolean);
+
   const io = new Server(httpServer, {
     cors: {
-      origin: config.cors.origin,
+      origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
+        if (!origin || socketOrigins.includes(origin)) {
+          return callback(null, true);
+        }
+        return callback(new Error("Not allowed by CORS"));
+      },
       methods: ["GET", "POST"],
       credentials: true,
     },

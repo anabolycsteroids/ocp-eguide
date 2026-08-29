@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
 
+const LAN_IP = process.env.LAN_IP || "";
+
 const securityHeaders = [
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
@@ -8,6 +10,11 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  allowedDevOrigins: [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    ...(LAN_IP ? [`http://${LAN_IP}:3000`] : []),
+  ],
   async headers() {
     return [
       { source: "/(.*)", headers: securityHeaders },

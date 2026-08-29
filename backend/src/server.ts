@@ -27,8 +27,8 @@ async function start() {
     await prisma.$connect();
     console.log("[Database] PostgreSQL connected");
 
-    server.listen(config.port, () => {
-      console.log(`[Server] Running on port ${config.port}`);
+    server.listen(config.port, "0.0.0.0", () => {
+      console.log(`[Server] Running on port ${config.port} (all interfaces)`);
       console.log(`[Server] Environment: ${config.nodeEnv}`);
       console.log(`[API] http://localhost:${config.port}/api`);
       console.log(`[Docs] http://localhost:${config.port}/api/docs`);

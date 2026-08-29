@@ -1,7 +1,16 @@
 import { getAccessToken } from "./api";
 import type { GuestVisit, HostPresence, GuestNotification } from "@/types/guest";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+function resolveApiBase(): string {
+  const envUrl = process.env.NEXT_PUBLIC_API_URL;
+  if (envUrl) return envUrl;
+  if (typeof window !== "undefined") {
+    return `${window.location.protocol}//${window.location.hostname}:5000`;
+  }
+  return "http://localhost:5000";
+}
+
+const API_BASE = resolveApiBase();
 
 interface GuestApiOptions extends RequestInit {
   params?: Record<string, string>;
